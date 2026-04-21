@@ -230,9 +230,9 @@ footer{background:var(--ink);padding:48px 2rem 24px}
 <body>
 <!-- SHARED NAV -->
 <nav class="snav" id="snav">
-  <a href="hazrin_website.html" class="snav-brand">Hazrin <span>Hashim</span></a>
+  <a href="index.html" class="snav-brand">Hazrin <span>Hashim</span></a>
   <div class="snav-links">
-    <a href="hazrin_website.html">Laman Utama</a>
+    <a href="index.html">Laman Utama</a>
     <a href="asbf_guide.html">ASBF Guide</a>
     <a href="refinancing_guide.html">Refinancing</a>
     <a href="takaful_guide.html">Takaful</a>
@@ -245,7 +245,7 @@ footer{background:var(--ink);padding:48px 2rem 24px}
   <button class="snav-ham" onclick="toggleSNav()" id="snavHam"><span></span><span></span><span></span></button>
 </nav>
 <div class="snav-mob" id="snavMob">
-  <a href="hazrin_website.html">Laman Utama</a>
+  <a href="index.html">Laman Utama</a>
   <a href="asbf_guide.html">ASBF Guide</a>
   <a href="refinancing_guide.html">Home Refinancing</a>
   <a href="takaful_guide.html">Takaful &amp; Perlindungan</a>
@@ -549,10 +549,10 @@ footer{background:var(--ink);padding:48px 2rem 24px}
       </div>
       <div class="sfooter-col">
         <h4>Maklumat</h4>
-        <a href="hazrin_website.html#about">Tentang Hazrin</a>
-        <a href="hazrin_website.html#process">Cara Kerja</a>
-        <a href="hazrin_website.html#faq">FAQ</a>
-        <a href="hazrin_website.html#testimonial">Testimoni</a>
+        <a href="index.html#about">Tentang Hazrin</a>
+        <a href="index.html#process">Cara Kerja</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="index.html#testimonial">Testimoni</a>
       </div>
     </div>
     <div class="sfooter-bottom">
@@ -598,7 +598,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
 <script>
 function toggleSNav(){document.getElementById('snavMob').classList.toggle('open');}
 (function(){
-  const path=window.location.pathname.split('/').pop()||'hazrin_website.html';
+  const path=window.location.pathname.split('/').pop()||'index.html';
   document.querySelectorAll('.snav-links a,.snav-mob a').forEach(a=>{
     if(a.getAttribute('href')===path)a.classList.add('active');
   });
