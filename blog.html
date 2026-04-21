@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog & Artikel — Hazrin Hashim | Kewangan Islam</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --forest:#1B4332;--forest2:#2D6A4F;--forest3:#40916C;--forestlt:#D8F3DC;
+  --gold:#B8860B;--goldlt:#F5E6A3;--goldvlt:#FFFBEB;
+  --cream:#FAF8F3;--ink:#0D1F17;--muted:#5A7A6A;--border:#D4E6DA;--white:#FFFFFF;
+  --red:#DC2626;--redlt:#FEF2F2;--blue:#1D4ED8;--bluelt:#EFF6FF;
+  --amber:#92400E;--amberlt:#FFFBEB;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden}
+
+/* SHARED NAV */
+.snav{position:fixed;top:0;left:0;right:0;z-index:200;height:60px;background:rgba(27,67,50,.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.08);display:flex;align-items:center;padding:0 1.5rem;gap:1rem}
+.snav-brand{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:#fff;text-decoration:none;white-space:nowrap;flex-shrink:0}
+.snav-brand span{color:#C9A84C}
+.snav-links{display:flex;gap:2px;flex:1;justify-content:center;overflow:hidden}
+.snav-links a{font-size:12px;font-weight:500;color:rgba(255,255,255,.65);text-decoration:none;padding:6px 10px;border-radius:8px;transition:all .2s;white-space:nowrap}
+.snav-links a:hover,.snav-links a.active{background:rgba(255,255,255,.1);color:#C9A84C}
+.snav-wa{background:#25D366;color:#fff;font-size:12px;font-weight:700;padding:7px 16px;border-radius:50px;text-decoration:none;white-space:nowrap;flex-shrink:0;transition:all .2s}
+.snav-wa:hover{background:#1DAE55}
+.snav-ham{display:none;flex-direction:column;gap:4px;cursor:pointer;padding:6px;background:none;border:none;flex-shrink:0}
+.snav-ham span{width:20px;height:2px;background:rgba(255,255,255,.8);border-radius:2px;display:block}
+.snav-mob{display:none;position:fixed;inset:60px 0 0 0;background:rgba(27,67,50,.98);z-index:199;flex-direction:column;padding:1.5rem;gap:.5rem;overflow-y:auto}
+.snav-mob.open{display:flex}
+.snav-mob a{font-size:15px;font-weight:500;color:rgba(255,255,255,.8);text-decoration:none;padding:12px 16px;border-radius:10px;border-bottom:1px solid rgba(255,255,255,.06)}
+.snav-mob a:hover,.snav-mob a.active{background:rgba(255,255,255,.08);color:#C9A84C}
+.snav-mob-wa{margin-top:.5rem;display:flex;align-items:center;justify-content:center;background:#25D366;color:#fff;font-size:14px;font-weight:700;padding:13px;border-radius:12px;text-decoration:none}
+@media(max-width:820px){.snav-links{display:none}.snav-ham{display:flex}}
+@media(max-width:480px){.snav-wa{display:none}}
+
+/* SHARED FOOTER */
+.sfooter{background:#0D1F17;padding:48px 1.5rem 24px}
+.sfooter-inner{max-width:1100px;margin:0 auto}
+.sfooter-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem;margin-bottom:2rem}
+.sfooter-brand{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#fff;margin-bottom:.5rem}
+.sfooter-brand span{color:#C9A84C}
+.sfooter-tagline{font-size:12px;color:rgba(255,255,255,.4);margin-bottom:1rem}
+.sfooter-wa{display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#fff;font-size:12px;font-weight:700;padding:9px 18px;border-radius:50px;text-decoration:none}
+.sfooter-col h4{font-size:11px;font-weight:600;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.75rem}
+.sfooter-col a{display:block;font-size:13px;color:rgba(255,255,255,.55);text-decoration:none;margin-bottom:.4rem;transition:color .2s}
+.sfooter-col a:hover{color:#C9A84C}
+.sfooter-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.sfooter-copy{font-size:11px;color:rgba(255,255,255,.25)}
+.sfooter-disclaimer{font-size:10px;color:rgba(255,255,255,.2);max-width:600px;line-height:1.5}
+@media(max-width:768px){.sfooter-top{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.sfooter-top{grid-template-columns:1fr}}
+
+/* HERO */
+.blog-hero{background:var(--forest);padding:100px 1.5rem 60px;position:relative;overflow:hidden}
+.blog-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 20%,rgba(201,168,76,.1),transparent 50%),radial-gradient(ellipse at 20% 80%,rgba(64,145,108,.2),transparent 50%)}
+.blog-hero-inner{max-width:1100px;margin:0 auto;position:relative;z-index:1}
+.blog-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:50px;padding:6px 16px;font-size:11px;font-weight:600;color:var(--goldlt);letter-spacing:.1em;text-transform:uppercase;margin-bottom:1rem}
+.blog-hero h1{font-family:'Playfair Display',serif;font-size:clamp(32px,5vw,56px);font-weight:900;color:var(--white);line-height:1.1;letter-spacing:-.02em;margin-bottom:1rem}
+.blog-hero h1 em{color:var(--goldlt);font-style:normal}
+.blog-hero-sub{font-size:16px;color:rgba(255,255,255,.7);line-height:1.7;max-width:560px;margin-bottom:2rem}
+.blog-stats{display:flex;gap:2rem;flex-wrap:wrap}
+.bs{text-align:center}
+.bs .bsn{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--goldlt)}
+.bs .bsl{font-size:11px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.08em;margin-top:2px}
+
+/* SEARCH + FILTER */
+.filter-bar{background:var(--white);border-bottom:1px solid var(--border);padding:1rem 1.5rem;position:sticky;top:60px;z-index:99}
+.filter-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.search-wrap{position:relative;flex:1;min-width:200px}
+.search-wrap input{width:100%;border:0.5px solid var(--border);border-radius:50px;padding:9px 16px 9px 38px;font-size:13px;font-family:'Outfit',sans-serif;background:var(--cream);color:var(--ink);transition:border-color .2s}
+.search-wrap input:focus{outline:none;border-color:var(--forest3)}
+.search-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:14px}
+.cats{display:flex;gap:6px;flex-wrap:wrap}
+.cat-btn{padding:7px 14px;border-radius:50px;font-size:12px;font-weight:600;border:0.5px solid var(--border);background:transparent;cursor:pointer;font-family:'Outfit',sans-serif;color:var(--muted);transition:all .2s;white-space:nowrap}
+.cat-btn:hover{border-color:var(--forest3);color:var(--forest)}
+.cat-btn.active{background:var(--forest);color:var(--white);border-color:var(--forest)}
+
+/* MAIN LAYOUT */
+.blog-main{max-width:1100px;margin:0 auto;padding:2.5rem 1.5rem 4rem;display:grid;grid-template-columns:1fr 320px;gap:2.5rem;align-items:start}
+@media(max-width:900px){.blog-main{grid-template-columns:1fr}}
+
+/* FEATURED */
+.featured-label{font-size:11px;font-weight:600;color:var(--forest3);text-transform:uppercase;letter-spacing:.12em;margin-bottom:1rem}
+.featured-card{background:var(--white);border:1px solid var(--border);border-radius:20px;overflow:hidden;margin-bottom:2rem;display:grid;grid-template-columns:1fr 1fr;transition:all .25s;cursor:pointer}
+.featured-card:hover{box-shadow:0 12px 40px rgba(27,67,50,.1);transform:translateY(-2px)}
+.featured-img{background:linear-gradient(135deg,var(--forest) 0%,var(--forest3) 100%);min-height:280px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.featured-img::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 70%,rgba(201,168,76,.2),transparent)}
+.featured-img-icon{font-size:64px;opacity:.4;position:relative;z-index:1}
+.featured-body{padding:2rem}
+.art-cat{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;padding:4px 10px;border-radius:50px;margin-bottom:.75rem}
+.cat-asbf{background:var(--forestlt);color:var(--forest2)}
+.cat-refi{background:var(--bluelt);color:var(--blue)}
+.cat-kewangan{background:var(--goldvlt);color:var(--amber)}
+.cat-takaful{background:#F0FDF4;color:#166534}
+.cat-pusaka{background:#FDF4FF;color:#7E22CE}
+.cat-ekonomi{background:var(--redlt);color:var(--red)}
+.cat-kredit{background:#F0F9FF;color:#0369A1}
+.featured-body h2{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--ink);line-height:1.25;margin-bottom:.75rem}
+.featured-body p{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:1rem}
+.art-meta{display:flex;align-items:center;gap:12px;font-size:12px;color:var(--muted)}
+.art-meta .dot{width:3px;height:3px;background:var(--muted);border-radius:50%}
+.read-btn{display:inline-flex;align-items:center;gap:6px;background:var(--forest);color:var(--white);font-size:12px;font-weight:600;padding:8px 16px;border-radius:50px;text-decoration:none;margin-top:1rem;transition:all .2s}
+.read-btn:hover{background:var(--forest2)}
+
+/* ARTICLE GRID */
+.articles-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+@media(max-width:600px){.articles-grid{grid-template-columns:1fr}}
+.art-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:all .25s;cursor:pointer;display:flex;flex-direction:column}
+.art-card:hover{transform:translateY(-3px);box-shadow:0 10px 32px rgba(27,67,50,.09);border-color:var(--forest3)}
+.art-thumb{height:140px;display:flex;align-items:center;justify-content:center;font-size:40px;position:relative;overflow:hidden}
+.art-thumb.bg-asbf{background:linear-gradient(135deg,#1B4332,#40916C)}
+.art-thumb.bg-refi{background:linear-gradient(135deg,#1e3a8a,#3b82f6)}
+.art-thumb.bg-kewangan{background:linear-gradient(135deg,#78350f,#f59e0b)}
+.art-thumb.bg-takaful{background:linear-gradient(135deg,#14532d,#22c55e)}
+.art-thumb.bg-pusaka{background:linear-gradient(135deg,#581c87,#a855f7)}
+.art-thumb.bg-ekonomi{background:linear-gradient(135deg,#7f1d1d,#ef4444)}
+.art-thumb.bg-kredit{background:linear-gradient(135deg,#0c4a6e,#0ea5e9)}
+.art-thumb.bg-placeholder{background:linear-gradient(135deg,#374151,#9ca3af)}
+.art-body{padding:16px;flex:1;display:flex;flex-direction:column}
+.art-body h3{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--ink);line-height:1.3;margin-bottom:.5rem;flex:1}
+.art-body p{font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:.75rem}
+.art-footer{display:flex;align-items:center;justify-content:space-between;margin-top:auto}
+
+/* PLACEHOLDER CARD */
+.art-card.placeholder{border-style:dashed;background:var(--cream);opacity:.7}
+.art-card.placeholder:hover{opacity:1}
+.placeholder-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;text-align:center;margin-top:.5rem}
+
+/* LOAD MORE */
+.load-more-wrap{text-align:center;margin-top:2rem}
+.load-more-btn{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--forest);font-size:13px;font-weight:600;padding:12px 28px;border-radius:50px;border:1.5px solid var(--forest3);cursor:pointer;font-family:'Outfit',sans-serif;transition:all .2s}
+.load-more-btn:hover{background:var(--forestlt)}
+
+/* SIDEBAR */
+.sidebar{display:flex;flex-direction:column;gap:1.5rem}
+.sidebar-card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.25rem}
+.sidebar-title{font-size:13px;font-weight:700;color:var(--ink);text-transform:uppercase;letter-spacing:.06em;margin-bottom:1rem;display:flex;align-items:center;gap:8px}
+.sidebar-title::before{content:'';width:3px;height:14px;background:var(--forest3);border-radius:2px}
+.trending-item{display:flex;gap:10px;padding:.75rem 0;border-bottom:0.5px solid var(--border);cursor:pointer;transition:all .2s}
+.trending-item:last-child{border-bottom:none;padding-bottom:0}
+.trending-item:hover .ti-title{color:var(--forest)}
+.ti-num{font-family:'Playfair Display',serif;font-size:20px;font-weight:900;color:var(--forestlt);line-height:1;flex-shrink:0;width:24px}
+.ti-title{font-size:13px;font-weight:600;color:var(--ink);line-height:1.4;transition:color .2s}
+.ti-cat{font-size:10px;color:var(--muted);margin-top:3px}
+.cat-list{display:flex;flex-direction:column;gap:6px}
+.cat-list-item{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;border-radius:8px;background:var(--cream);cursor:pointer;transition:all .2s;border:0.5px solid transparent}
+.cat-list-item:hover{border-color:var(--border);background:var(--white)}
+.cat-list-item.selected{background:var(--forestlt);border-color:var(--forest3)}
+.cli-label{font-size:13px;font-weight:500;color:var(--ink)}
+.cli-count{font-size:11px;font-weight:600;color:var(--muted);background:var(--border);padding:2px 8px;border-radius:50px}
+.wa-cta-card{background:var(--forest);border-radius:16px;padding:1.25rem;text-align:center}
+.wa-cta-card p{font-size:13px;color:rgba(255,255,255,.75);line-height:1.6;margin-bottom:1rem}
+.wa-cta-btn{display:flex;align-items:center;justify-content:center;gap:8px;background:#25D366;color:var(--white);font-size:13px;font-weight:700;padding:11px;border-radius:10px;text-decoration:none;transition:all .2s}
+.wa-cta-btn:hover{background:#1DAE55}
+
+/* NO RESULTS */
+.no-results{text-align:center;padding:3rem 1rem;color:var(--muted);grid-column:1/-1}
+.no-results p{font-size:14px}
+
+/* MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(13,31,23,.7);z-index:500;align-items:flex-start;justify-content:center;padding:80px 1rem 1rem;overflow-y:auto}
+.modal-overlay.open{display:flex}
+.modal-box{background:var(--white);border-radius:20px;max-width:720px;width:100%;max-height:85vh;overflow-y:auto;position:relative}
+.modal-header{background:var(--forest);padding:2rem;border-radius:20px 20px 0 0;position:relative}
+.modal-close{position:absolute;top:1rem;right:1rem;background:rgba(255,255,255,.15);border:none;color:white;width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center}
+.modal-close:hover{background:rgba(255,255,255,.25)}
+.modal-cat{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--goldlt);margin-bottom:.5rem}
+.modal-title{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:var(--white);line-height:1.2;margin-bottom:.75rem}
+.modal-meta{font-size:12px;color:rgba(255,255,255,.5)}
+.modal-body{padding:2rem}
+.modal-body p{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:1rem}
+.modal-body p strong{color:var(--ink)}
+.modal-body h3{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--ink);margin:1.5rem 0 .75rem}
+.modal-body ul{padding-left:1.25rem;margin-bottom:1rem}
+.modal-body ul li{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:.4rem}
+.modal-highlight{background:var(--forestlt);border-left:3px solid var(--forest3);border-radius:0 8px 8px 0;padding:1rem 1.25rem;margin:1rem 0}
+.modal-highlight p{color:var(--forest2);font-size:14px;margin:0}
+.modal-cta{background:var(--cream);border-radius:12px;padding:1.25rem;text-align:center;margin-top:1.5rem}
+.modal-cta p{font-size:13px;color:var(--muted);margin-bottom:.75rem}
+
+/* ANIMATIONS */
+.fade-up{opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+/* STICKY WA */
+.sticky-wa{position:fixed;bottom:24px;right:24px;z-index:300;width:54px;height:54px;border-radius:50%;background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.5);text-decoration:none;animation:pulseWA 2.5s ease-in-out infinite}
+.sticky-wa:hover{transform:scale(1.1)}
+@keyframes pulseWA{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,.5)}50%{box-shadow:0 4px 32px rgba(37,211,102,.8)}}
+
+/* ARTICLE COUNT BADGE */
+.count-badge{font-size:11px;background:var(--forestlt);color:var(--forest2);padding:2px 8px;border-radius:50px;font-weight:600;margin-left:6px}
+</style>
+</head>
+<body>
+
+<!-- SHARED NAV -->
+<nav class="snav" id="snav">
+  <a href="hazrin_website.html" class="snav-brand">Hazrin <span>Hashim</span></a>
+  <div class="snav-links">
+    <a href="hazrin_website.html">Laman Utama</a>
+    <a href="asbf_guide.html">ASBF Guide</a>
+    <a href="refinancing_guide.html">Refinancing</a>
+    <a href="takaful_guide.html">Takaful</a>
+    <a href="pusaka_guide.html">Pusaka Islam</a>
+    <a href="credit_guide.html">Credit Guide</a>
+    <a href="blog.html" class="active">Blog</a>
+    <a href="ifp_dashboard.html">Kalkulator</a>
+  </div>
+  <a href="https://wa.me/60165581540?text=Salam%20Hazrin%2C%20saya%20nak%20konsultasi%20percuma" class="snav-wa" target="_blank">WhatsApp</a>
+  <button class="snav-ham" onclick="toggleSNav()"><span></span><span></span><span></span></button>
+</nav>
+<div class="snav-mob" id="snavMob">
+  <a href="hazrin_website.html">Laman Utama</a>
+  <a href="asbf_guide.html">ASBF Guide</a>
+  <a href="refinancing_guide.html">Home Refinancing</a>
+  <a href="takaful_guide.html">Takaful &amp; Perlindungan</a>
+  <a href="pusaka_guide.html">Pusaka Islam</a>
+  <a href="credit_guide.html">Credit &amp; CCRIS Guide</a>
+  <a href="blog.html">Blog &amp; Artikel</a>
+  <a href="ifp_dashboard.html">Kalkulator IFP</a>
+  <a href="https://wa.me/60165581540" class="snav-mob-wa" target="_blank">WhatsApp Hazrin Sekarang</a>
+</div>
+
+<!-- HERO -->
+<div class="blog-hero">
+  <div class="blog-hero-inner">
+    <div class="blog-eyebrow">Ilmu Kewangan Islam &bull; 1st Tier Information Hub</div>
+    <h1>Belajar. Faham. <em>Bertindak.</em></h1>
+    <p class="blog-hero-sub">Artikel kewangan Islam, analisa ekonomi Malaysia &amp; global, strategi pelaburan, dan panduan praktik — semua dalam satu tempat.</p>
+    <div class="blog-stats">
+      <div class="bs"><div class="bsn" id="totalArticles">12</div><div class="bsl">Artikel</div></div>
+      <div class="bs"><div class="bsn">7</div><div class="bsl">Kategori</div></div>
+      <div class="bs"><div class="bsn">Free</div><div class="bsl">100% Percuma</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+  <div class="filter-inner">
+    <div class="search-wrap">
+      <span class="search-icon">&#128269;</span>
+      <input type="text" id="searchInput" placeholder="Cari artikel..." oninput="filterArticles()">
+    </div>
+    <div class="cats">
+      <button class="cat-btn active" onclick="filterCat('semua',this)">Semua</button>
+      <button class="cat-btn" onclick="filterCat('asbf',this)">ASBF</button>
+      <button class="cat-btn" onclick="filterCat('refinancing',this)">Refinancing</button>
+      <button class="cat-btn" onclick="filterCat('kewangan',this)">Kewangan</button>
+      <button class="cat-btn" onclick="filterCat('ekonomi',this)">Ekonomi</button>
+      <button class="cat-btn" onclick="filterCat('takaful',this)">Takaful</button>
+      <button class="cat-btn" onclick="filterCat('pusaka',this)">Pusaka</button>
+      <button class="cat-btn" onclick="filterCat('kredit',this)">Kredit</button>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="blog-main">
+  <div>
+    <!-- FEATURED -->
+    <div class="featured-label">Artikel Pilihan</div>
+    <div class="featured-card" id="featuredCard" onclick="openModal(0)">
+      <div class="featured-img">
+        <div class="featured-img-icon">&#128200;</div>
+      </div>
+      <div class="featured-body">
+        <span class="art-cat cat-asbf">ASBF &amp; Pelaburan</span>
+        <h2>"Untung 1.6% Je?" — ROI Sebenar ASBF Yang Ramai Tak Tahu</h2>
+        <p>Ramai yang salah faham tentang keuntungan ASBF. Mereka kira dari nilai sijil, bukan dari modal sebenar. Ini perbezaan antara 1.6% dan 31% — dan kenapa ianya penting untuk keputusan kewangan kau.</p>
+        <div class="art-meta">
+          <span>Hazrin Hashim</span>
+          <span class="dot"></span>
+          <span>Jan 2025</span>
+          <span class="dot"></span>
+          <span>5 min baca</span>
+        </div>
+        <a class="read-btn">Baca Selanjutnya &#8594;</a>
+      </div>
+    </div>
+
+    <!-- ARTICLE GRID -->
+    <div class="articles-grid" id="articlesGrid"></div>
+    <div class="load-more-wrap" id="loadMoreWrap">
+      <button class="load-more-btn" onclick="loadMore()">Muatkan Lebih Banyak &#8595;</button>
+    </div>
+  </div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-card">
+      <div class="sidebar-title">Trending</div>
+      <div id="trendingList"></div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-title">Kategori</div>
+      <div class="cat-list" id="catList"></div>
+    </div>
+
+    <div class="sidebar-card wa-cta-card">
+      <div style="font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:#fff;margin-bottom:.5rem">Ada Soalan?</div>
+      <p>Jangan simpan soalan tu sorang-sorang. Hazrin sedia bantu — percuma, tanpa tekanan.</p>
+      <a href="https://wa.me/60165581540?text=Salam%20Hazrin%2C%20saya%20ada%20soalan%20tentang%20kewangan" class="wa-cta-btn" target="_blank">
+        WhatsApp Sekarang
+      </a>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-title">Tools</div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <a href="asbf_guide.html#teknik" style="display:flex;align-items:center;gap:10px;padding:10px;border-radius:10px;background:var(--cream);text-decoration:none;color:var(--ink);font-size:13px;font-weight:500;transition:background .2s" onmouseover="this.style.background='var(--forestlt)'" onmouseout="this.style.background='var(--cream)'">&#128200; ASBF Calculator</a>
+        <a href="ifp_dashboard.html" style="display:flex;align-items:center;gap:10px;padding:10px;border-radius:10px;background:var(--cream);text-decoration:none;color:var(--ink);font-size:13px;font-weight:500;transition:background .2s" onmouseover="this.style.background='var(--forestlt)'" onmouseout="this.style.background='var(--cream)'">&#128221; IFP Dashboard</a>
+        <a href="asbf_guide.html#roi" style="display:flex;align-items:center;gap:10px;padding:10px;border-radius:10px;background:var(--cream);text-decoration:none;color:var(--ink);font-size:13px;font-weight:500;transition:background .2s" onmouseover="this.style.background='var(--forestlt)'" onmouseout="this.style.background='var(--cream)'">&#128172; ROI Calculator</a>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<!-- ARTICLE MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+  <div class="modal-box" id="modalBox">
+    <div class="modal-header">
+      <button class="modal-close" onclick="closeModal()">&#10005;</button>
+      <div class="modal-cat" id="modalCat"></div>
+      <div class="modal-title" id="modalTitle"></div>
+      <div class="modal-meta" id="modalMeta"></div>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<!-- SHARED FOOTER -->
+<footer class="sfooter">
+  <div class="sfooter-inner">
+    <div class="sfooter-top">
+      <div>
+        <div class="sfooter-brand">Hazrin <span>Hashim</span></div>
+        <div class="sfooter-tagline">Islamic Financial Planner | Iconix Financial</div>
+        <a href="https://wa.me/60165581540?text=Salam%20Hazrin%2C%20saya%20nak%20konsultasi%20percuma" class="sfooter-wa" target="_blank">WhatsApp: 016-558 1540</a>
+      </div>
+      <div class="sfooter-col">
+        <h4>Services</h4>
+        <a href="refinancing_guide.html">Home Refinancing</a>
+        <a href="asbf_guide.html">ASB Financing</a>
+        <a href="takaful_guide.html">Takaful</a>
+        <a href="pusaka_guide.html">Pusaka Islam</a>
+      </div>
+      <div class="sfooter-col">
+        <h4>Tools</h4>
+        <a href="ifp_dashboard.html">Kalkulator IFP</a>
+        <a href="credit_guide.html">Credit Guide</a>
+        <a href="asbf_guide.html#teknik">ASBF Calculator</a>
+        <a href="blog.html">Blog &amp; Artikel</a>
+      </div>
+      <div class="sfooter-col">
+        <h4>Maklumat</h4>
+        <a href="hazrin_website.html#about">Tentang Hazrin</a>
+        <a href="hazrin_website.html#process">Cara Kerja</a>
+        <a href="hazrin_website.html#faq">FAQ</a>
+        <a href="hazrin_website.html#testimonial">Testimoni</a>
+      </div>
+    </div>
+    <div class="sfooter-bottom">
+      <div class="sfooter-copy">&copy; 2025 Hazrin Hashim | Islamic Financial Planner</div>
+      <div class="sfooter-disclaimer">Semua artikel adalah untuk tujuan pendidikan sahaja dan bukan nasihat kewangan formal. Hasil sebenar mungkin berbeza.</div>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/60165581540" class="sticky-wa" target="_blank">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.087.536 4.05 1.475 5.764L0 24l6.434-1.427A11.946 11.946 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.68-.52-5.2-1.424l-.373-.22-3.822.848.862-3.734-.242-.385A9.93 9.93 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+</a>
+
+<script>
+function toggleSNav(){document.getElementById('snavMob').classList.toggle('open');}
+
+// ── ARTICLE DATA ──────────────────────────────────────────────
+const ARTICLES = [
+  {
+    id:0,
+    cat:'asbf', catLabel:'ASBF & Pelaburan', catClass:'cat-asbf', bgClass:'bg-asbf',
+    icon:'&#128200;',
+    title:'"Untung 1.6% Je?" — ROI Sebenar ASBF Yang Ramai Tak Tahu',
+    excerpt:'Ramai yang salah faham tentang keuntungan ASBF. Mereka kira dari nilai sijil, bukan dari modal sebenar.',
+    author:'Hazrin Hashim', date:'Jan 2025', readTime:'5 min',
+    featured:true, trending:true,
+    body:`
+      <p>Terjumpa satu perbualan di kedai mamak. Khamisai berkata kepada rakannya Sharul Khan: <strong>"Kau buat ASBF, interest 4.15%, dividen 5.75%. Kau untung 1.6% je bro. Baik simpan ASB biasa. Bodoh la kau ni."</strong></p>
+      <p>Ini salah faham yang paling common dalam kalangan masyarakat kita. Dan ia boleh merugikan kau berpuluh ribu ringgit dalam tempoh 5-10 tahun.</p>
+      <h3>Di mana silap Khamisai?</h3>
+      <p>Khamisai mengira keuntungan berdasarkan <strong>nilai sijil</strong> — bukan berdasarkan <strong>modal sebenar</strong> yang dikeluarkan.</p>
+      <p>ASBF 200K: Margin = 5.75% - 4.15% = 1.6%. Untung = 1.6% × 200,000 = RM3,200/tahun. Setakat ini betul.</p>
+      <p>Tapi modal kau setahun = RM857 × 12 = <strong>RM10,284</strong>. Bukan RM200,000.</p>
+      <div class="modal-highlight"><p>ROI sebenar = RM3,200 ÷ RM10,284 × 100 = <strong>31.12%</strong> setahun dari modal kau. Bukan 1.6%.</p></div>
+      <h3>Perbandingan mudah</h3>
+      <ul>
+        <li>ASB Biasa: Simpan RM10,284, dapat untung 5.75% = RM591/tahun</li>
+        <li>ASBF: Guna RM10,284 sebagai modal, dapat untung RM3,200/tahun</li>
+        <li>Perbezaan: ASBF lebih untung <strong>5.4 kali ganda</strong> dari modal yang sama</li>
+      </ul>
+      <p>Sekarang siapa yang bodoh? Bukan Sharul Khan. Bukan kau. Yang bodoh adalah kita bila tidak faham konsep asas pelaburan ini.</p>
+      <h3>Kenapa ramai yang silap?</h3>
+      <p>Otak kita secara natural bandingkan peratusan dividen vs interest. 5.75% vs 4.15% = 1.6%. Tapi ini salah konteks. Yang kita patut kira adalah ROI dari modal kita sendiri, bukan dari nilai aset yang dipinjam.</p>
+      <p>Ini sama konsep dengan property investment — kau beli rumah RM500K dengan downpayment RM50K. Kalau rumah appreciate 10% = RM50K gain. ROI kau bukan 10%, tapi 100% dari downpayment kau.</p>
+      <div class="modal-highlight"><p><strong>Kesimpulan:</strong> Sentiasa kira ROI dari modal kau sendiri, bukan dari nilai aset. Ini prinsip asas pelaburan yang ramai abaikan.</p></div>
+    `
+  },
+  {
+    id:1,
+    cat:'asbf', catLabel:'ASBF & Pelaburan', catClass:'cat-asbf', bgClass:'bg-asbf',
+    icon:'&#128181;',
+    title:'Cara Kumpul RM100K dalam Masa 4 Tahun Menggunakan ASBF',
+    excerpt:'Teknik compounding ASBF 200K boleh hasilkan lebih RM55K dalam 4 tahun untuk seorang sahaja. Buat berdua, dapat RM110K.',
+    author:'Hazrin Hashim', date:'Jan 2025', readTime:'6 min',
+    featured:false, trending:true,
+    body:`
+      <p>Nak kumpul RM100K dalam masa 4 tahun — ini bukan mimpi. Ini matematik yang boleh kau buat sekarang, dengan pendapatan yang kau ada.</p>
+      <h3>Gameplan: ASBF 200K Teknik Compounding</h3>
+      <ul>
+        <li>Apply sijil ASBF 200K</li>
+        <li>Rate 4.15%, tenure 40 tahun</li>
+        <li>Bayaran bulanan RM857</li>
+        <li>Jangan usik dividen — biarkan compound</li>
+      </ul>
+      <h3>Kiraan dividen (anggaran 5.5%)</h3>
+      <ul>
+        <li>Tahun 1: 5.5% × 200,000 = RM11,000</li>
+        <li>Tahun 2: 5.5% × 211,000 = RM11,605</li>
+        <li>Tahun 3: 5.5% × 222,605 = RM12,243</li>
+        <li>Tahun 4: 5.5% × 234,848 = RM12,916</li>
+        <li><strong>Jumlah dividen: RM47,764</strong></li>
+      </ul>
+      <div class="modal-highlight"><p>Nilai sijil selepas 4 tahun ≈ RM234,848. Baki loan ≈ RM192,000. Surrender value = RM8,000. <strong>Jumlah hasil = RM47,764 + RM8,000 = RM55,764</strong></p></div>
+      <h3>Macam mana nak jadikan RM100K?</h3>
+      <p>Mudah sahaja — buat dua sijil 200K. Sama ada kau buat dua sijil (ASB + ASB2), atau suami isteri masing-masing buat satu sijil. RM55,764 × 2 = <strong>RM111,528</strong>.</p>
+      <p>Sijil 200K sekadar contoh. Boleh bermula dengan jumlah lebih kecil ikut kemampuan masing-masing.</p>
+    `
+  },
+  {
+    id:2,
+    cat:'asbf', catLabel:'ASBF & Pelaburan', catClass:'cat-asbf', bgClass:'bg-asbf',
+    icon:'&#128260;',
+    title:'Teknik Rolling Dividen: Buat Modal RM10K Jadi RM20K dalam 4 Tahun',
+    excerpt:'Rule of 72 kata perlu 13 tahun untuk gandakan wang. Guna teknik rolling ASBF, boleh buat dalam 4 tahun sahaja.',
+    author:'Hazrin Hashim', date:'Feb 2025', readTime:'7 min',
+    featured:false, trending:true,
+    body:`
+      <p>Rule of 72 — formula mudah untuk kira berapa lama wang kau berganda. ASB biasa pada 5.5%: 72÷5.5 = 13 tahun. Tapi dengan teknik Rolling Dividen ASBF, kita boleh lakukan dalam <strong>4 tahun sahaja</strong>.</p>
+      <h3>Cara kerja teknik rolling</h3>
+      <p>Bayar modal sendiri untuk tahun pertama sahaja (12 bulan). Tahun kedua dan seterusnya, guna dividen ASB untuk bayar ansuran tahun berikutnya. Modal kau = RM857 × 12 = RM10,284 sahaja.</p>
+      <h3>Contoh ASBF 200K, 4 tahun gameplan</h3>
+      <ul>
+        <li>Tahun 1: Dividen RM11,000. Bayar RM10,284. Baki RM716 simpan.</li>
+        <li>Tahun 2: Dividen RM11,000. Bayar RM10,284. Baki RM716 simpan.</li>
+        <li>Tahun 3: Dividen RM11,000. Bayar RM10,284. Baki RM716 simpan.</li>
+        <li>Tahun 4: Dividen RM11,000 (Stop — tak bayar untuk tahun ke-5)</li>
+      </ul>
+      <div class="modal-highlight"><p>Baki dividen terkumpul: RM716×3 + RM11,000 = RM13,148. Surrender value (baki pinjaman ≈ RM192K): RM8,000. <strong>Jumlah hasil = RM21,148</strong> dari modal RM10,284.</p></div>
+      <h3>ROI yang equivalent</h3>
+      <p>Wang kau berganda dalam 4 tahun. Annual return equivalent = 72÷4 = 18% setahun. Berbanding ASB biasa yang hanya 5.75%.</p>
+    `
+  },
+  {
+    id:3,
+    cat:'kewangan', catLabel:'Kewangan Peribadi', catClass:'cat-kewangan', bgClass:'bg-kewangan',
+    icon:'&#128176;',
+    title:'Tabung Pencen RM160K untuk Suri Rumah — Dengan Modal RM5,352 Sahaja',
+    excerpt:'Suami yang bijak bukan sekadar bagi duit belanja. Dia rancang masa depan isteri dari sekarang.',
+    author:'Hazrin Hashim', date:'Feb 2025', readTime:'5 min',
+    featured:false, trending:false,
+    body:`
+      <p>Ramai suami yang sayangkan isteri — tapi berapa ramai yang betul-betul rancang masa depan isteri di hari tua? Bagi isteri suri rumah, tiada caruman KWSP bermakna tiada jaminan persaraan.</p>
+      <h3>Solusi: ASBF 100K untuk Isteri</h3>
+      <ul>
+        <li>Apply ASBF 100K atas nama isteri (suami jadi guarantor)</li>
+        <li>Guarantor tidak masuk CCRIS — tak ganggu kelayakan loan suami</li>
+        <li>Modal tahun pertama: RM446 × 12 = RM5,352</li>
+        <li>Tahun kedua dan seterusnya: dividen cover ansuran (teknik rolling)</li>
+      </ul>
+      <div class="modal-highlight"><p>Selepas 40 tahun: Sijil RM100,000 + dividen terkumpul RM57,500 + dividen tahun akhir RM5,750 = <strong>RM163,250</strong> tabung persaraan isteri.</p></div>
+      <h3>Perbandingan</h3>
+      <p>Kalau simpan RM5,352 dalam ASB biasa selama 40 tahun pada 5.75% — dapat lebih kurang RM50,000 sahaja. Bezanya hampir RM113,000. Barulah jadi suami yang kacak dan bijak.</p>
+    `
+  },
+  {
+    id:4,
+    cat:'refinancing', catLabel:'Home Refinancing', catClass:'cat-refi', bgClass:'bg-refi',
+    icon:'&#127968;',
+    title:'OPR Naik, Ansuran Naik — Bila Masa Sesuai untuk Refinance?',
+    excerpt:'Sejak 2022, OPR telah naik beberapa kali. Ramai yang tak sedar ansuran rumah mereka dah berubah. Ini masa untuk semak.',
+    author:'Hazrin Hashim', date:'Mar 2025', readTime:'6 min',
+    featured:false, trending:true,
+    body:`
+      <p>Sejak 2022, Bank Negara Malaysia telah menaikkan OPR beberapa kali untuk mengawal inflasi. Bagi pemilik rumah dengan pinjaman kadar berubah (floating rate), ini bermakna ansuran bulanan telah naik secara automatik.</p>
+      <h3>Semak rate kau sekarang</h3>
+      <p>Buka online banking kau — MAE, CIMB Clicks, AmOnline, RHB Mobile. Tengok bahagian loan/financing. Kalau rate dah melebihi 4.5%, ini masa untuk pertimbangkan refinancing.</p>
+      <h3>Bila sesuai untuk refinance?</h3>
+      <ul>
+        <li>Rate lama lebih tinggi dari rate baru yang ditawarkan</li>
+        <li>Nak tukar dari loan konvensional kepada Islamic financing</li>
+        <li>Nak cash out untuk konsolidasi hutang lain</li>
+        <li>Nak panjangkan tenure untuk kurangkan ansuran bulanan</li>
+        <li>Ansuran lama membebankan cash flow bulanan</li>
+      </ul>
+      <div class="modal-highlight"><p>Promo rate terkini: 4.15% (Islamic financing). Kalau rate lama kau 4.5% ke atas, ada potensi jimat ratusan ringgit sebulan dengan refinancing.</p></div>
+      <h3>Proses refinancing</h3>
+      <p>Tak perlu risau tentang prosesnya. Hazrin akan bantu dari A hingga Z — dari semak kelayakan, submit dokumen, hingga disburse. Biasanya ambil 2-3 bulan.</p>
+    `
+  },
+  {
+    id:5,
+    cat:'ekonomi', catLabel:'Ekonomi & Isu Semasa', catClass:'cat-ekonomi', bgClass:'bg-ekonomi',
+    icon:'&#127757;',
+    title:'Kesan Perang Tarif US-China kepada Pelabur Malaysia',
+    excerpt:'Ketegangan perdagangan antara kuasa besar dunia memberi kesan langsung kepada ringgit, pasaran saham, dan pelaburan kita.',
+    author:'Hazrin Hashim', date:'Apr 2025', readTime:'8 min',
+    featured:false, trending:false,
+    body:`
+      <p>Perang tarif antara Amerika Syarikat dan China bukan sekadar isu dua negara besar. Ia memberi kesan langsung kepada ekonomi Malaysia dan keputusan pelaburan kita.</p>
+      <h3>Kesan kepada Ringgit Malaysia</h3>
+      <p>Bila ketidaktentuan global meningkat, pelabur antarabangsa cenderung lari ke aset selamat seperti USD. Ini menekan nilai ringgit. Ringgit lemah bermakna import lebih mahal, inflasi meningkat, dan kuasa beli rakyat berkurang.</p>
+      <h3>Kesan kepada Pelaburan Tempatan</h3>
+      <ul>
+        <li>Pasaran saham lebih volatile — KLCI terkesan dengan sentimen global</li>
+        <li>Harga komoditi (sawit, getah) boleh berubah mengikut permintaan global</li>
+        <li>Kadar faedah mungkin dipengaruhi oleh dasar BNM dalam respons kepada tekanan global</li>
+      </ul>
+      <div class="modal-highlight"><p>Dalam ketidaktentuan ini, pelaburan berasaskan ASB kekal stabil kerana ia tidak terdedah secara langsung kepada pasaran antarabangsa. Dividen ASB ditentukan oleh prestasi portfolio PNB domestik.</p></div>
+      <h3>Strategi dalam persekitaran tidak menentu</h3>
+      <p>Diversifikasi adalah kunci. Jangan letak semua telur dalam satu bakul. Kombinasi ASB (stabil, kadar tetap), unit trust (potensi growth lebih tinggi), dan simpanan tunai (liquid) adalah pendekatan yang bijak.</p>
+    `
+  },
+  {
+    id:6,
+    cat:'kredit', catLabel:'Credit & CCRIS', catClass:'cat-kredit', bgClass:'bg-kredit',
+    icon:'&#128203;',
+    title:'CCRIS & CTOS: Apa Beza dan Macam Mana Nak Improve?',
+    excerpt:'Rekod kredit yang buruk boleh sekat impian kewangan kau. Faham dulu sistem ni, pastu plan untuk perbaiki.',
+    author:'Hazrin Hashim', date:'Mar 2025', readTime:'6 min',
+    featured:false, trending:false,
+    body:`
+      <p>Ramai yang confuse antara CCRIS dan CTOS. Keduanya berkaitan rekod kredit, tapi berbeza fungsi dan siapa yang menguruskannya.</p>
+      <h3>CCRIS (Central Credit Reference Information System)</h3>
+      <p>Diurus oleh Bank Negara Malaysia. Merekodkan semua pinjaman dan kemudahan kredit dari institusi kewangan berlesen. Tunjukkan sejarah pembayaran 12 bulan terkini — berapa kali lewat bayar, baki tertunggak, dan status akaun.</p>
+      <h3>CTOS (Credit Tip-Off Service)</h3>
+      <p>Syarikat swasta. Lebih komprehensif — termasuk saman mahkamah, rekod kebankrapan, dan maklumat awam lain yang tidak ada dalam CCRIS.</p>
+      <div class="modal-highlight"><p>Bank akan semak kedua-dua CCRIS dan CTOS sebelum luluskan mana-mana pembiayaan. Rekod yang baik = kelulusan lebih mudah + kadar interest lebih rendah.</p></div>
+      <h3>Tips improve rekod kredit</h3>
+      <ul>
+        <li>Bayar semua pinjaman sebelum tarikh akhir — setup autodebit</li>
+        <li>Jangan mohon terlalu banyak kad kredit atau pinjaman dalam masa singkat</li>
+        <li>Kurangkan utilization kad kredit — jangan guna lebih 30% dari limit</li>
+        <li>Settle hutang yang dah default sebelum mohon pinjaman baru</li>
+        <li>Semak CCRIS secara berkala melalui BNM atau kaunter bank</li>
+      </ul>
+    `
+  },
+  {
+    id:7,
+    cat:'pusaka', catLabel:'Pusaka Islam', catClass:'cat-pusaka', bgClass:'bg-pusaka',
+    icon:'&#128218;',
+    title:'Faraid, Hibah, dan Wasiat — Apa Beza dan Mana Perlu Untuk Kau?',
+    excerpt:'Merancang harta pusaka bukan tanda nak mati cepat. Ia tanda sayang kepada keluarga yang ditinggalkan.',
+    author:'Hazrin Hashim', date:'Apr 2025', readTime:'7 min',
+    featured:false, trending:false,
+    body:`
+      <p>Ramai orang Islam Malaysia yang tidak merancang harta pusaka mereka. Akibatnya, keluarga yang ditinggalkan terpaksa melalui proses yang panjang, mahal, dan kadang-kala menimbulkan pertelingkahan.</p>
+      <h3>Faraid — Pembahagian Wajib Mengikut Syariah</h3>
+      <p>Faraid adalah undang-undang pusaka Islam yang menentukan bahagian setiap waris secara tetap. Ia wajib dilaksanakan untuk harta yang tidak ada perancangan lain. Prosesnya melalui mahkamah dan boleh mengambil masa bertahun-tahun.</p>
+      <h3>Hibah — Pemberian Semasa Hidup</h3>
+      <p>Hibah adalah pemberian harta semasa pemilik masih hidup. Lebih cepat, lebih fleksibel, dan harta terus milik penerima tanpa perlu tunggu proses faraid. Sesuai untuk anak-anak atau pasangan yang ingin dilindungi segera.</p>
+      <h3>Wasiat — Arahan Selepas Kematian</h3>
+      <p>Wasiat hanya boleh melibatkan tidak lebih 1/3 daripada harta pusaka, dan hanya kepada bukan waris. Waris akan dapat melalui faraid, bukan wasiat.</p>
+      <div class="modal-highlight"><p>Strategi terbaik: Gabungkan ketiga-tiga. Guna hibah untuk aset utama kepada isteri/anak, wasiat untuk bukan waris yang tersayang, dan biarkan faraid urus baki harta secara automatik.</p></div>
+      <h3>Bila masa nak mula?</h3>
+      <p>Sekarang. Kematian tidak menunggu kita bersedia. Kos perancangan pusaka jauh lebih rendah berbanding kos pertelingkahan dan kerugian yang terpaksa ditanggung keluarga kemudiannya.</p>
+    `
+  },
+  {
+    id:8,
+    cat:'takaful', catLabel:'Takaful & Perlindungan', catClass:'cat-takaful', bgClass:'bg-takaful',
+    icon:'&#128737;',
+    title:'Berapa Coverage Takaful Yang Kau Sebenarnya Perlukan?',
+    excerpt:'Ramai yang underinsured tanpa sedar. Formula mudah untuk kira keperluan perlindungan kau dan keluarga.',
+    author:'Hazrin Hashim', date:'Mar 2025', readTime:'5 min',
+    featured:false, trending:false,
+    body:`
+      <p>Ramai orang ada takaful — tapi ramai juga yang tidak tahu sama ada coverage mereka mencukupi. Ada yang bayar terlalu banyak untuk coverage yang tidak relevan, ada yang tidak cukup dilindungi.</p>
+      <h3>Formula asas keperluan perlindungan jiwa</h3>
+      <p>Pendapatan tahunan × 10 = anggaran sum assured minimum. Contoh: gaji RM5,000/bulan = RM60,000/tahun × 10 = <strong>RM600,000</strong> sum assured yang diperlukan.</p>
+      <h3>Faktor lain yang perlu diambil kira</h3>
+      <ul>
+        <li>Jumlah hutang (rumah, kereta, pinjaman peribadi)</li>
+        <li>Bilangan tanggungan dan keperluan mereka</li>
+        <li>Tempoh hingga anak-anak berdikari</li>
+        <li>Keperluan pendidikan anak</li>
+        <li>Keperluan persaraan pasangan</li>
+      </ul>
+      <div class="modal-highlight"><p>Perlindungan medical adalah sama penting. Kos rawatan kanser boleh cecah RM300,000-RM500,000. Tanpa medical card yang mencukupi, satu penyakit serius boleh musnah simpanan seumur hidup.</p></div>
+      <h3>Takaful vs Insurans konvensional</h3>
+      <p>Takaful beroperasi atas prinsip tabarru' (derma) dan mudarabah (perkongsian untung) — bebas dari unsur riba, gharar (ketidakpastian berlebihan), dan maisir (perjudian). Lebih sesuai untuk Muslim yang ingin perlindungan patuh Syariah.</p>
+    `
+  },
+  {
+    id:9,
+    cat:'ekonomi', catLabel:'Ekonomi & Isu Semasa', catClass:'cat-ekonomi', bgClass:'bg-ekonomi',
+    icon:'&#128201;',
+    title:'OPR Malaysia: Apa Itu dan Kenapa Ia Penting untuk Kau?',
+    excerpt:'Setiap kali BNM umumkan keputusan OPR, ramai yang gelisah. Faham konsep asas ini supaya kau tak panik tanpa sebab.',
+    author:'Hazrin Hashim', date:'Apr 2025', readTime:'5 min',
+    featured:false, trending:false,
+    body:`
+      <p>Overnight Policy Rate (OPR) adalah kadar faedah rujukan yang ditetapkan oleh Bank Negara Malaysia (BNM). Ia mempengaruhi hampir semua aspek kewangan kau — dari ansuran rumah hingga pulangan simpanan.</p>
+      <h3>Macam mana OPR berfungsi?</h3>
+      <p>BNM naik OPR → bank naikkan Base Rate → ansuran pinjaman floating rate naik → kurangkan perbelanjaan → kawal inflasi. BNM turun OPR → ansuran turun → rakyat ada lebih duit → ekonomi aktif.</p>
+      <h3>Kesan kepada kau secara langsung</h3>
+      <ul>
+        <li>Pinjaman rumah floating rate: ansuran berubah ikut OPR</li>
+        <li>Kad kredit: kadar caj kewangan dipengaruhi OPR</li>
+        <li>Simpanan FD: kadar faedah ikut OPR</li>
+        <li>ASBF: kadar Islamic financing turut berubah</li>
+      </ul>
+      <div class="modal-highlight"><p>Tip: ASBF yang apply semasa promo rate 4.15% akan kekal pada rate tersebut selagi OPR tidak berubah. Jadi apply sekarang untuk lock in rate rendah selagi ada.</p></div>
+      <h3>Strategi dalam persekitaran OPR tinggi</h3>
+      <p>Refinance ke Islamic financing dengan rate tetap. Kurangkan hutang floating rate. Pertimbangkan FD jangka pendek untuk simpanan liquid. Fokus pada pelaburan yang tidak terkesan OPR seperti ASB.</p>
+    `
+  },
+  {
+    id:10,
+    cat:'kewangan', catLabel:'Kewangan Peribadi', catClass:'cat-kewangan', bgClass:'bg-kewangan',
+    icon:'&#128196;',
+    title:'[Akan Datang] Generasi Covid Trap: Jalan Keluar dari Tekanan Kewangan',
+    excerpt:'Panduan lengkap untuk pasangan yang hidup selesa zaman Covid tapi sekarang tersepit antara komitmen dan cash flow.',
+    author:'Hazrin Hashim', date:'Akan Datang', readTime:'10 min',
+    featured:false, trending:false, placeholder:true,
+    body:`<p>Artikel ini sedang dalam proses penulisan. WhatsApp Hazrin untuk dapatkan panduan peribadi berdasarkan situasi kau.</p>`
+  },
+  {
+    id:11,
+    cat:'refinancing', catLabel:'Home Refinancing', catClass:'cat-refi', bgClass:'bg-refi',
+    icon:'&#128196;',
+    title:'[Akan Datang] Cash Out Refinancing: Panduan Lengkap Konsolidasi Hutang',
+    excerpt:'Cara gunakan ekuiti rumah untuk settle semua hutang berbunga tinggi dan mulakan semula dengan satu ansuran sahaja.',
+    author:'Hazrin Hashim', date:'Akan Datang', readTime:'8 min',
+    featured:false, trending:false, placeholder:true,
+    body:`<p>Artikel ini sedang dalam proses penulisan. WhatsApp Hazrin untuk dapatkan panduan peribadi berdasarkan situasi kau.</p>`
+  }
+];
+
+let currentCat = 'semua';
+let searchQuery = '';
+let visibleCount = 6;
+
+// ── RENDER ────────────────────────────────────────────────────
+function getFiltered(){
+  return ARTICLES.filter(a => {
+    if(a.featured) return false;
+    const matchCat = currentCat==='semua' || a.cat===currentCat;
+    const matchSearch = !searchQuery ||
+      a.title.toLowerCase().includes(searchQuery) ||
+      a.excerpt.toLowerCase().includes(searchQuery) ||
+      a.catLabel.toLowerCase().includes(searchQuery);
+    return matchCat && matchSearch;
+  });
+}
+
+function renderGrid(){
+  const filtered = getFiltered();
+  const grid = document.getElementById('articlesGrid');
+  const shown = filtered.slice(0, visibleCount);
+
+  if(filtered.length===0){
+    grid.innerHTML=`<div class="no-results"><p>Tiada artikel dijumpai untuk carian "<strong>${searchQuery}</strong>"</p></div>`;
+    document.getElementById('loadMoreWrap').style.display='none';
+    return;
+  }
+
+  grid.innerHTML = shown.map(a => `
+    <div class="art-card ${a.placeholder?'placeholder':''}" onclick="openModal(${a.id})">
+      <div class="art-thumb ${a.bgClass}">${a.icon}</div>
+      <div class="art-body">
+        <span class="art-cat ${a.catClass}" style="margin-bottom:.5rem">${a.catLabel}</span>
+        <h3>${a.title}</h3>
+        <p>${a.excerpt}</p>
+        <div class="art-footer">
+          <div class="art-meta" style="font-size:11px">
+            <span>${a.date}</span>
+            <span class="dot"></span>
+            <span>${a.readTime}</span>
+          </div>
+          <span style="font-size:11px;color:var(--forest3);font-weight:600">${a.placeholder?'Akan Datang':'Baca →'}</span>
+        </div>
+      </div>
+    </div>`).join('');
+
+  document.getElementById('loadMoreWrap').style.display = filtered.length > visibleCount ? 'block' : 'none';
+  document.getElementById('totalArticles').textContent = ARTICLES.length;
+
+  document.querySelectorAll('.art-card').forEach(el => {
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); }});
+    },{threshold:0.1});
+    obs.observe(el);
+  });
+}
+
+function renderTrending(){
+  const trending = ARTICLES.filter(a=>a.trending).slice(0,5);
+  document.getElementById('trendingList').innerHTML = trending.map((a,i)=>`
+    <div class="trending-item" onclick="openModal(${a.id})">
+      <div class="ti-num">${i+1}</div>
+      <div><div class="ti-title">${a.title}</div><div class="ti-cat">${a.catLabel}</div></div>
+    </div>`).join('');
+}
+
+function renderCatList(){
+  const cats = [
+    {id:'semua',label:'Semua Artikel'},
+    {id:'asbf',label:'ASBF & Pelaburan'},
+    {id:'refinancing',label:'Home Refinancing'},
+    {id:'kewangan',label:'Kewangan Peribadi'},
+    {id:'ekonomi',label:'Ekonomi & Isu Semasa'},
+    {id:'takaful',label:'Takaful'},
+    {id:'pusaka',label:'Pusaka Islam'},
+    {id:'kredit',label:'Credit & CCRIS'},
+  ];
+  const counts = {};
+  ARTICLES.forEach(a=>{ counts[a.cat]=(counts[a.cat]||0)+1; });
+  const total = ARTICLES.length;
+
+  document.getElementById('catList').innerHTML = cats.map(c=>`
+    <div class="cat-list-item ${currentCat===c.id?'selected':''}" onclick="filterCatSidebar('${c.id}')">
+      <span class="cli-label">${c.label}</span>
+      <span class="cli-count">${c.id==='semua'?total:(counts[c.id]||0)}</span>
+    </div>`).join('');
+}
+
+function filterCat(cat, btn){
+  currentCat = cat;
+  visibleCount = 6;
+  document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderGrid();
+  renderCatList();
+}
+
+function filterCatSidebar(cat){
+  currentCat = cat;
+  visibleCount = 6;
+  const btn = [...document.querySelectorAll('.cat-btn')].find(b=>b.onclick.toString().includes(`'${cat}'`));
+  document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+  renderGrid();
+  renderCatList();
+  window.scrollTo({top:document.querySelector('.filter-bar').offsetTop - 80, behavior:'smooth'});
+}
+
+function filterArticles(){
+  searchQuery = document.getElementById('searchInput').value.toLowerCase();
+  visibleCount = 6;
+  renderGrid();
+}
+
+function loadMore(){
+  visibleCount += 4;
+  renderGrid();
+}
+
+// ── MODAL ─────────────────────────────────────────────────────
+function openModal(id){
+  const a = ARTICLES.find(x=>x.id===id);
+  if(!a) return;
+  document.getElementById('modalCat').textContent = a.catLabel;
+  document.getElementById('modalTitle').textContent = a.title;
+  document.getElementById('modalMeta').textContent = `${a.author} · ${a.date} · ${a.readTime} baca`;
+  document.getElementById('modalBody').innerHTML = a.body + `
+    <div class="modal-cta">
+      <p>Ada soalan atau nak tahu lebih lanjut? Hubungi Hazrin terus.</p>
+      <a href="https://wa.me/60165581540?text=Salam%20Hazrin%2C%20saya%20baca%20artikel%20'${encodeURIComponent(a.title)}'%20dan%20ada%20soalan" class="read-btn" target="_blank" style="display:inline-flex;margin:0 auto">WhatsApp Hazrin &#8594;</a>
+    </div>`;
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function closeModal(){
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+function closeModalOutside(e){
+  if(e.target===document.getElementById('modalOverlay')) closeModal();
+}
+
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeModal(); });
+
+// ── INIT ──────────────────────────────────────────────────────
+window.onload = () => {
+  renderGrid();
+  renderTrending();
+  renderCatList();
+};
+</script>
+</body>
+</html>

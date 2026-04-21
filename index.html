@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hazrin Hashim — Islamic Financial Planner</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --forest:#1B4332;--forest2:#2D6A4F;--forest3:#40916C;--forestlt:#D8F3DC;
+  --gold:#B8860B;--goldlt:#F5E6A3;--goldvlt:#FFFBEB;
+  --cream:#FAF8F3;--ink:#0D1F17;--muted:#5A7A6A;--border:#D4E6DA;--white:#FFFFFF;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 2rem;height:64px;display:flex;align-items:center;justify-content:space-between;background:rgba(250,248,243,0.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);transition:box-shadow .3s}
+nav.scrolled{box-shadow:0 2px 20px rgba(27,67,50,.08)}
+.nav-brand{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--forest);text-decoration:none}
+.nav-brand span{color:var(--gold)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-size:13px;font-weight:500;color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--forest)}
+.nav-cta{background:var(--forest);color:var(--white);font-size:13px;font-weight:600;padding:9px 20px;border-radius:50px;text-decoration:none;transition:all .2s}
+.nav-cta:hover{background:var(--forest2);transform:translateY(-1px)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
+.hamburger span{width:22px;height:2px;background:var(--forest);border-radius:2px;display:block}
+.mobile-menu{display:none;position:fixed;inset:64px 0 0 0;background:var(--cream);z-index:99;padding:2rem;flex-direction:column;gap:1.5rem;border-top:1px solid var(--border)}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-size:18px;font-weight:500;color:var(--ink);text-decoration:none;padding:.5rem 0;border-bottom:1px solid var(--border)}
+
+.hero{min-height:100vh;padding:130px 2rem 80px;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;max-width:1200px;margin:0 auto}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--goldvlt);border:1px solid var(--goldlt);border-radius:50px;padding:6px 16px;font-size:12px;font-weight:600;color:var(--gold);letter-spacing:.08em;text-transform:uppercase;margin-bottom:1.5rem}
+.hero-eyebrow::before{content:'';width:6px;height:6px;background:var(--gold);border-radius:50%}
+.hero-h1{font-family:'Playfair Display',serif;font-size:clamp(36px,5vw,60px);font-weight:900;color:var(--ink);line-height:1.1;letter-spacing:-.02em;margin-bottom:1.5rem}
+.hero-h1 em{color:var(--forest3);font-style:normal}
+.hero-p{font-size:17px;line-height:1.7;color:var(--muted);max-width:480px;margin-bottom:2.5rem}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--forest);color:var(--white);font-size:14px;font-weight:600;padding:14px 28px;border-radius:50px;text-decoration:none;transition:all .2s}
+.btn-primary:hover{background:var(--forest2);transform:translateY(-2px);box-shadow:0 8px 24px rgba(27,67,50,.25)}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--forest);font-size:14px;font-weight:600;padding:14px 28px;border-radius:50px;text-decoration:none;border:1.5px solid var(--forest3);transition:all .2s}
+.btn-secondary:hover{background:var(--forestlt)}
+.hero-stats{display:flex;gap:2rem;margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border)}
+.stat .num{font-family:'Playfair Display',serif;font-size:32px;font-weight:700;color:var(--forest)}
+.stat .lbl{font-size:12px;color:var(--muted);margin-top:2px}
+.hero-visual{position:relative;display:flex;align-items:center;justify-content:center}
+.photo-frame{width:400px;height:500px;border-radius:24px;background:linear-gradient(145deg,var(--forestlt) 0%,var(--border) 100%);position:relative;overflow:hidden;border:3px solid var(--white);box-shadow:0 24px 64px rgba(27,67,50,.15);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem}
+.avatar-circle{width:100px;height:100px;border-radius:50%;background:var(--forest);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:36px;font-weight:700;color:var(--gold)}
+.floating-card{position:absolute;background:var(--white);border-radius:14px;padding:14px 18px;box-shadow:0 8px 32px rgba(27,67,50,.12);border:1px solid var(--border)}
+.fc-1{bottom:-16px;left:-24px;animation:float1 4s ease-in-out infinite}
+.fc-2{top:40px;right:-24px;animation:float2 5s ease-in-out infinite}
+.fc-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+.fc-value{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--forest)}
+.fc-sub{font-size:11px;color:var(--forest3);margin-top:2px}
+@keyframes float1{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes float2{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
+
+section{padding:80px 2rem}
+.container{max-width:1100px;margin:0 auto}
+.section-eyebrow{display:inline-block;font-size:11px;font-weight:600;color:var(--forest3);text-transform:uppercase;letter-spacing:.15em;margin-bottom:.75rem}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,44px);font-weight:700;color:var(--ink);line-height:1.15;letter-spacing:-.02em;margin-bottom:1rem}
+.section-sub{font-size:16px;color:var(--muted);line-height:1.7;max-width:600px}
+
+.pain-section{background:var(--forest);color:var(--white);position:relative;overflow:hidden}
+.pain-section::before{content:'';position:absolute;top:-100px;right:-100px;width:400px;height:400px;border-radius:50%;background:rgba(64,145,108,.15);pointer-events:none}
+.pain-section .section-eyebrow{color:var(--goldlt)}
+.pain-section .section-title{color:var(--white)}
+.pain-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;margin-top:3rem}
+.pain-text p{font-size:16px;line-height:1.8;color:rgba(255,255,255,.8);margin-bottom:1rem}
+.pain-text p strong{color:var(--goldlt)}
+.pain-cards{display:flex;flex-direction:column;gap:10px}
+.pain-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:16px 20px;display:flex;gap:14px;align-items:flex-start;transition:background .2s}
+.pain-card:hover{background:rgba(255,255,255,.11)}
+.pain-icon{width:36px;height:36px;border-radius:10px;background:rgba(201,168,76,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px}
+.pain-card-title{font-size:13px;font-weight:600;color:var(--white);margin-bottom:3px}
+.pain-card-desc{font-size:12px;color:rgba(255,255,255,.6);line-height:1.5}
+.pain-cta-strip{margin-top:3rem;padding:2rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+.pain-cta-text{font-size:17px;font-weight:600;color:var(--white)}
+.pain-cta-text span{color:var(--goldlt)}
+.btn-gold{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--white);font-size:13px;font-weight:600;padding:12px 24px;border-radius:50px;text-decoration:none;white-space:nowrap;transition:all .2s}
+.btn-gold:hover{background:#9A6F0A;transform:translateY(-2px)}
+
+.services-section{background:var(--white)}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:3rem}
+.service-card{border:1px solid var(--border);border-radius:20px;padding:28px;background:var(--cream);transition:all .25s;position:relative;overflow:hidden}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--forest),var(--forest3));transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.service-card:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(27,67,50,.1);border-color:var(--forest3)}
+.service-card:hover::before{transform:scaleX(1)}
+.service-icon{width:48px;height:48px;border-radius:14px;background:var(--forestlt);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:1rem}
+.service-title{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:var(--ink);margin-bottom:.5rem}
+.service-desc{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:1rem}
+.service-tag{display:inline-block;font-size:10px;font-weight:600;background:var(--forestlt);color:var(--forest2);padding:3px 10px;border-radius:50px;letter-spacing:.06em;text-transform:uppercase}
+
+.about-section{background:var(--cream)}
+.about-grid{display:grid;grid-template-columns:5fr 7fr;gap:5rem;align-items:center;margin-top:3rem}
+.about-photo-box{width:100%;aspect-ratio:3/4;border-radius:24px;background:linear-gradient(145deg,var(--forestlt),var(--border));display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;border:3px solid var(--white);box-shadow:0 16px 48px rgba(27,67,50,.1)}
+.credentials{display:flex;flex-direction:column;gap:8px;margin-top:1.5rem}
+.cred-item{display:flex;align-items:center;gap:10px;background:var(--white);border:1px solid var(--border);border-radius:10px;padding:10px 14px}
+.cred-dot{width:8px;height:8px;border-radius:50%;background:var(--forest3);flex-shrink:0}
+.cred-text{font-size:13px;font-weight:500;color:var(--ink)}
+.about-content p{font-size:15px;line-height:1.8;color:var(--muted);margin-bottom:1rem}
+.about-content p strong{color:var(--ink)}
+.values-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:1.5rem}
+.value-item{display:flex;gap:10px;align-items:flex-start;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:14px}
+.value-num{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--forest3);line-height:1;flex-shrink:0}
+.vt{font-size:12px;font-weight:600;color:var(--ink);margin-bottom:2px}
+.vs{font-size:11px;color:var(--muted)}
+
+.process-section{background:var(--forest);color:var(--white)}
+.process-section .section-eyebrow{color:var(--goldlt)}
+.process-section .section-title{color:var(--white)}
+.process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:3rem;position:relative}
+.process-steps::before{content:'';position:absolute;top:28px;left:12%;right:12%;height:1px;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.2),rgba(255,255,255,0))}
+.step{text-align:center;padding:0 1rem}
+.step-num{width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--goldlt);margin:0 auto 1.25rem;position:relative;z-index:1}
+.step-title{font-size:14px;font-weight:600;color:var(--white);margin-bottom:.5rem}
+.step-desc{font-size:12px;color:rgba(255,255,255,.6);line-height:1.6}
+
+.testi-section{background:var(--white)}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:3rem}
+.testi-card{background:var(--cream);border:1px solid var(--border);border-radius:20px;padding:28px;position:relative}
+.testi-card::before{content:'\201C';position:absolute;top:16px;right:24px;font-family:'Playfair Display',serif;font-size:64px;line-height:1;color:var(--forestlt);font-weight:700}
+.testi-text{font-size:14px;line-height:1.7;color:var(--muted);margin-bottom:1.25rem;font-style:italic}
+.testi-author{display:flex;align-items:center;gap:10px}
+.testi-avatar{width:36px;height:36px;border-radius:50%;background:var(--forestlt);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:var(--forest)}
+.testi-name{font-size:13px;font-weight:600;color:var(--ink)}
+.testi-role{font-size:11px;color:var(--muted)}
+.testi-stars{color:var(--gold);font-size:12px;margin-bottom:.75rem;letter-spacing:2px}
+
+.faq-section{background:var(--cream)}
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:3rem;align-items:start}
+.faq-intro p{font-size:15px;line-height:1.7;color:var(--muted);margin-bottom:1.5rem}
+.faq-list{display:flex;flex-direction:column;gap:8px}
+.faq-item{border:1px solid var(--border);border-radius:14px;overflow:hidden;background:var(--white)}
+.faq-q{width:100%;padding:16px 20px;background:none;border:none;display:flex;align-items:center;justify-content:space-between;font-size:14px;font-weight:600;color:var(--ink);cursor:pointer;text-align:left;font-family:'Outfit',sans-serif;gap:1rem}
+.faq-icon{width:24px;height:24px;border-radius:50%;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--muted);flex-shrink:0;transition:all .3s}
+.faq-item.open .faq-icon{background:var(--forest);color:var(--white);border-color:var(--forest);transform:rotate(45deg)}
+.faq-a{display:none;padding:0 20px 16px;font-size:13px;color:var(--muted);line-height:1.7}
+.faq-item.open .faq-a{display:block}
+
+.cta-section{background:linear-gradient(135deg,var(--forest) 0%,var(--forest2) 100%);text-align:center;padding:100px 2rem;position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(64,145,108,.3) 0%,transparent 60%),radial-gradient(ellipse at 70% 50%,rgba(184,134,11,.1) 0%,transparent 60%)}
+.cta-inner{position:relative;z-index:1;max-width:640px;margin:0 auto}
+.cta-eyebrow{display:inline-block;font-size:11px;font-weight:600;color:var(--goldlt);text-transform:uppercase;letter-spacing:.15em;margin-bottom:1rem}
+.cta-title{font-family:'Playfair Display',serif;font-size:clamp(28px,5vw,48px);font-weight:700;color:var(--white);line-height:1.15;margin-bottom:1rem}
+.cta-sub{font-size:16px;color:rgba(255,255,255,.75);line-height:1.6;margin-bottom:2.5rem}
+.cta-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-wa{display:inline-flex;align-items:center;gap:10px;background:#25D366;color:var(--white);font-size:14px;font-weight:700;padding:16px 32px;border-radius:50px;text-decoration:none;transition:all .2s;box-shadow:0 4px 20px rgba(37,211,102,.4)}
+.btn-wa:hover{background:#1DAE55;transform:translateY(-2px)}
+.btn-outline-white{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--white);font-size:14px;font-weight:600;padding:16px 32px;border-radius:50px;text-decoration:none;border:1.5px solid rgba(255,255,255,.4);transition:all .2s}
+.btn-outline-white:hover{background:rgba(255,255,255,.1)}
+
+footer{background:var(--ink);padding:48px 2rem 24px}
+.footer-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:2rem}
+.footer-brand{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--white)}
+.footer-brand span{color:var(--gold)}
+.footer-tagline{font-size:12px;color:rgba(255,255,255,.4);margin-top:4px}
+.footer-links{display:flex;gap:1.5rem;flex-wrap:wrap}
+.footer-links a{font-size:12px;color:rgba(255,255,255,.5);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--white)}
+.footer-copy{max-width:1100px;margin:2rem auto 0;padding-top:2rem;border-top:1px solid rgba(255,255,255,.08);font-size:11px;color:rgba(255,255,255,.3);text-align:center}
+
+.sticky-wa{position:fixed;bottom:28px;right:28px;z-index:200;width:56px;height:56px;border-radius:50%;background:#25D366;color:var(--white);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(37,211,102,.5);text-decoration:none;animation:pulseWA 2.5s ease-in-out infinite;transition:transform .2s}
+.sticky-wa:hover{transform:scale(1.1)}
+@keyframes pulseWA{0%,100%{box-shadow:0 4px 24px rgba(37,211,102,.5)}50%{box-shadow:0 4px 36px rgba(37,211,102,.8)}}
+
+.fade-up{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.stagger-1{transition-delay:.1s}.stagger-2{transition-delay:.2s}.stagger-3{transition-delay:.3s}
+
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;gap:3rem;padding:100px 1.5rem 60px}
+  .hero-visual{order:-1}
+  .photo-frame{width:260px;height:340px}
+  .pain-grid,.about-grid,.faq-grid{grid-template-columns:1fr}
+  .services-grid{grid-template-columns:1fr 1fr}
+  .process-steps{grid-template-columns:1fr 1fr;gap:2rem}
+  .process-steps::before{display:none}
+  .testi-grid{grid-template-columns:1fr}
+  .nav-links,.nav-cta{display:none}
+  .hamburger{display:flex}
+  .values-grid{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .services-grid,.process-steps{grid-template-columns:1fr}
+  .hero-stats{gap:1.5rem}
+  .pain-cta-strip{flex-direction:column;text-align:center}
+}
+
+/* ── SHARED NAV ─────────────────────────────────────── */
+.snav{position:fixed;top:0;left:0;right:0;z-index:200;height:60px;background:rgba(27,67,50,.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.08);display:flex;align-items:center;padding:0 1.5rem;gap:1rem}
+.snav-brand{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:#fff;text-decoration:none;white-space:nowrap;flex-shrink:0}
+.snav-brand span{color:#C9A84C}
+.snav-links{display:flex;gap:2px;flex:1;justify-content:center;flex-wrap:nowrap;overflow:hidden}
+.snav-links a{font-size:12px;font-weight:500;color:rgba(255,255,255,.65);text-decoration:none;padding:6px 10px;border-radius:8px;transition:all .2s;white-space:nowrap}
+.snav-links a:hover,.snav-links a.active{background:rgba(255,255,255,.1);color:#fff}
+.snav-links a.active{color:#C9A84C}
+.snav-wa{background:#25D366;color:#fff;font-size:12px;font-weight:700;padding:7px 16px;border-radius:50px;text-decoration:none;white-space:nowrap;flex-shrink:0;transition:all .2s}
+.snav-wa:hover{background:#1DAE55}
+.snav-ham{display:none;flex-direction:column;gap:4px;cursor:pointer;padding:6px;background:none;border:none;flex-shrink:0}
+.snav-ham span{width:20px;height:2px;background:rgba(255,255,255,.8);border-radius:2px;display:block}
+.snav-mob{display:none;position:fixed;inset:60px 0 0 0;background:rgba(27,67,50,.98);z-index:199;flex-direction:column;padding:1.5rem;gap:.5rem;overflow-y:auto}
+.snav-mob.open{display:flex}
+.snav-mob a{font-size:15px;font-weight:500;color:rgba(255,255,255,.8);text-decoration:none;padding:12px 16px;border-radius:10px;border-bottom:1px solid rgba(255,255,255,.06);transition:background .2s}
+.snav-mob a:hover,.snav-mob a.active{background:rgba(255,255,255,.08);color:#C9A84C}
+.snav-mob-wa{margin-top:.5rem;display:flex;align-items:center;justify-content:center;gap:8px;background:#25D366;color:#fff;font-size:14px;font-weight:700;padding:13px;border-radius:12px;text-decoration:none}
+@media(max-width:820px){.snav-links{display:none}.snav-ham{display:flex}}
+@media(max-width:480px){.snav-wa{display:none}}
+/* ── SHARED FOOTER ───────────────────────────────────── */
+.sfooter{background:#0D1F17;padding:48px 1.5rem 24px}
+.sfooter-inner{max-width:1100px;margin:0 auto}
+.sfooter-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem;margin-bottom:2rem}
+.sfooter-brand{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#fff;margin-bottom:.5rem}
+.sfooter-brand span{color:#C9A84C}
+.sfooter-tagline{font-size:12px;color:rgba(255,255,255,.4);margin-bottom:1rem}
+.sfooter-wa{display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#fff;font-size:12px;font-weight:700;padding:9px 18px;border-radius:50px;text-decoration:none;transition:all .2s}
+.sfooter-wa:hover{background:#1DAE55}
+.sfooter-col h4{font-size:11px;font-weight:600;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.75rem}
+.sfooter-col a{display:block;font-size:13px;color:rgba(255,255,255,.55);text-decoration:none;margin-bottom:.4rem;transition:color .2s}
+.sfooter-col a:hover{color:#C9A84C}
+.sfooter-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.sfooter-copy{font-size:11px;color:rgba(255,255,255,.25)}
+.sfooter-disclaimer{font-size:10px;color:rgba(255,255,255,.2);max-width:600px;line-height:1.5}
+@media(max-width:768px){.sfooter-top{grid-template-columns:1fr 1fr}.sfooter-bottom{flex-direction:column;text-align:center}}
+@media(max-width:480px){.sfooter-top{grid-template-columns:1fr}}
+
+</style>
+</head>
+<body>
+<!-- SHARED NAV -->
+<nav class="snav" id="snav">
+  <a href="hazrin_website.html" class="snav-brand">Hazrin <span>Hashim</span></a>
+  <div class="snav-links">
+    <a href="hazrin_website.html">Laman Utama</a>
+    <a href="asbf_guide.html">ASBF Guide</a>
+    <a href="refinancing_guide.html">Refinancing</a>
+    <a href="takaful_guide.html">Takaful</a>
+    <a href="pusaka_guide.html">Pusaka Islam</a>
+    <a href="credit_guide.html">Credit Guide</a>
+    <a href="blog.html">Blog</a>
+    <a href="ifp_dashboard.html">Kalkulator</a>
+  </div>
+  <a href="https://wa.me/60165581540?text=Salam%20Hazrin%2C%20saya%20nak%20konsultasi%20percuma" class="snav-wa" target="_blank">WhatsApp</a>
+  <button class="snav-ham" onclick="toggleSNav()" id="snavHam"><span></span><span></span><span></span></button>
+</nav>
+<div class="snav-mob" id="snavMob">
+  <a href="hazrin_website.html">Laman Utama</a>
+  <a href="asbf_guide.html">ASBF Guide</a>
+  <a href="refinancing_guide.html">Home Refinancing</a>
+  <a href="takaful_guide.html">Takaful &amp; Perlindungan</a>
+  <a href="pusaka_guide.html">Pusaka Islam</a>
+  <a href="credit_guide.html">Credit &amp; CCRIS Guide</a>
+  <a href="blog.html">Blog &amp; Artikel</a>
+  <a href="ifp_dashboard.html">Kalkulator IFP</a>
+  <a href="https://wa.me/60165581540?text=Salam%20Hazrin%2C%20saya%20nak%20konsultasi" class="snav-mob-wa" target="_blank">WhatsApp Hazrin Sekarang</a>
+</div>
+
+<nav id="navbar">
+  <a href="#" class="nav-brand">Hazrin <span>Hashim</span></a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">Tentang Saya</a></li>
+    <li><a href="#process">Proses</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <a href="https://wa.me/60165581540?text=Salam%20Hazrin%2C%20saya%20nak%20tahu%20lebih%20lanjut" class="nav-cta" target="_blank">Konsultasi Percuma</a>
+  <button class="hamburger" onclick="toggleMenu()" id="hamburger">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services" onclick="toggleMenu()">Services</a>
+  <a href="#about" onclick="toggleMenu()">Tentang Saya</a>
+  <a href="#process" onclick="toggleMenu()">Proses</a>
+  <a href="#faq" onclick="toggleMenu()">FAQ</a>
+  <a href="https://wa.me/60165581540" target="_blank" style="color:var(--forest);font-weight:700">WhatsApp Saya &rarr;</a>
+</div>
+
+<!-- HERO -->
+<section style="padding:0">
+  <div class="hero">
+    <div>
+      <div class="hero-eyebrow">Islamic Financial Planner &amp; Perunding Kewangan</div>
+      <h1 class="hero-h1">Hidup Selesa.<br>Duit <em>Teratur.</em><br>Masa Depan Terjamin.</h1>
+      <p class="hero-p">Ramai yang pernah rasa gah zaman Covid — tapi bila moratorium habis dan OPR naik, cash flow jadi paras hidung. Hazrin bantu susun semula melalui <strong>home refinancing</strong> &amp; perancangan kewangan Islam yang holistik.</p>
+      <div class="hero-actions">
+        <a href="https://wa.me/60165581540?text=Salam%20Hazrin%2C%20saya%20nak%20konsultasi%20percuma" class="btn-primary" target="_blank">WhatsApp Sekarang &rarr;</a>
+        <a href="#services" class="btn-secondary">Lihat Services</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><div class="num">500+</div><div class="lbl">Kes berjaya</div></div>
+        <div class="stat"><div class="num">8+</div><div class="lbl">Tahun pengalaman</div></div>
+        <div class="stat"><div class="num">IFP</div><div class="lbl">Certified Planner</div></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="photo-frame">
+        <div class="avatar-circle">HH</div>
+        <div style="font-size:13px;color:var(--muted)">Foto akan dimasukkan</div>
+      </div>
+      <div class="floating-card fc-1">
+        <div class="fc-label">Cash flow dipulihkan</div>
+        <div class="fc-value">RM 1,200</div>
+        <div class="fc-sub">&#8593; savings bulanan</div>
+      </div>
+      <div class="floating-card fc-2">
+        <div class="fc-label">ASBF stacking</div>
+        <div class="fc-value">4 sijil</div>
+        <div class="fc-sub">Self-funding strategy</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAIN POINT -->
+<section class="pain-section" id="painpoint">
+  <div class="container">
+    <div class="section-eyebrow">Kenali Situasi Kau</div>
+    <h2 class="section-title" style="max-width:560px">"Dulu okay je. Sekarang tak tau duit pergi mana."</h2>
+    <div class="pain-grid">
+      <div class="pain-text fade-up">
+        <p>Zaman Covid, ramai yang rasa <strong>lapang kewangan</strong> — moratorium pinjaman, OPR rendah, income stabil atau naik. Hidup pun upgrade sikit.</p>
+        <p>Tapi sekarang, <strong>moratorium habis</strong>, OPR naik beberapa kali, ansuran naik, commitment bertambah — tapi gaji masih sama. Cash flow jadi <strong>negatif atau hampir kosong</strong> tiap bulan.</p>
+        <p>Ini bukan keputusan bodoh. Ini situasi yang boleh diselesaikan — <strong>kalau ada strategi yang betul.</strong></p>
+      </div>
+      <div class="pain-cards fade-up stagger-2">
+        <div class="pain-card">
+          <div class="pain-icon">&#128184;</div>
+          <div><div class="pain-card-title">Ansuran rumah makin berat</div><div class="pain-card-desc">OPR naik = ansuran naik. Refinancing boleh kurangkan beban bulanan dengan kadar dan tenure yang lebih baik.</div></div>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">&#128202;</div>
+          <div><div class="pain-card-title">Hutang tersebar merata</div><div class="pain-card-desc">Kad kredit, personal loan, kereta — boleh konsolidasikan dan cash out untuk settle semua sekaligus.</div></div>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">&#128201;</div>
+          <div><div class="pain-card-title">Tiada simpanan atau pelaburan</div><div class="pain-card-desc">Gaji keluar, masuk, habis. Belum ada emergency fund, takaful, atau plan persaraan yang konkrit.</div></div>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">&#128260;</div>
+          <div><div class="pain-card-title">Malu nak tanya orang lain</div><div class="pain-card-desc">Tak apa. Di sini tiada penghakiman. Kita tengok situasi kau secara jujur dan cari jalan keluar bersama.</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="pain-cta-strip fade-up">
+      <div class="pain-cta-text">Buang malu. <span>Ada jalan keluar.</span> Kita start dengan konsultasi percuma.</div>
+      <a href="https://wa.me/60165581540?text=Salam%20Hazrin%2C%20saya%20nak%20konsultasi%20percuma" class="btn-gold" target="_blank">Mulakan Sekarang &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services-section" id="services">
+  <div class="container">
+    <div class="section-eyebrow">Apa Yang Saya Tawarkan</div>
+    <h2 class="section-title">Penyelesaian Kewangan<br>Yang Komprehensif</h2>
+    <p class="section-sub">Setiap kes adalah unik. Saya kenalpasti solution terbaik berdasarkan situasi dan matlamat kewangan kau.</p>
+    <div class="services-grid">
+      <div class="service-card fade-up">
+        <div class="service-icon">&#127968;</div>
+        <div class="service-title">Home Refinancing</div>
+        <p class="service-desc">Susun semula pinjaman rumah sedia ada — kadar lebih rendah, ansuran lebih ringan, atau cash out untuk konsolidasi hutang dan keperluan lain.</p>
+        <span class="service-tag">Paling popular</span>
+      </div>
+      <div class="service-card fade-up stagger-1">
+        <div class="service-icon">&#128200;</div>
+        <div class="service-title">ASBF — ASB Financing</div>
+        <p class="service-desc">Strategi stacking sijil ASB menggunakan financing Islamik. Dividen sijil pertama cover ansuran sijil berikutnya — kekayaan tumbuh, poket tak terbeban.</p>
+        <span class="service-tag">Strategy unik</span>
+      </div>
+      <div class="service-card fade-up stagger-2">
+        <div class="service-icon">&#128737;</div>
+        <div class="service-title">Takaful</div>
+        <p class="service-desc">Perlindungan jiwa, medical, dan pendapatan melalui produk Takaful Islamik. Pastikan keluarga terlindung tanpa terbebani hutang jika berlaku musibah.</p>
+        <span class="service-tag">Perlindungan Syariah</span>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon">&#128331;</div>
+        <div class="service-title">Perancangan Kewangan Islam</div>
+        <p class="service-desc">Analisis holistik — cash flow, DSR, hutang, simpanan, hingga pelan persaraan. Semua berdasarkan prinsip Syariah yang patuh dan realistik.</p>
+        <span class="service-tag">IFP Certified</span>
+      </div>
+      <div class="service-card fade-up stagger-1">
+        <div class="service-icon">&#128188;</div>
+        <div class="service-title">Unit Trust &amp; Pelaburan</div>
+        <p class="service-desc">Diversifikasi melalui unit trust dan Dana Islamik yang sesuai dengan profil risiko, tempoh pelaburan, dan matlamat kewangan kau.</p>
+        <span class="service-tag">Patuh Syariah</span>
+      </div>
+      <div class="service-card fade-up stagger-2">
+        <div class="service-icon">&#128203;</div>
+        <div class="service-title">Private Mandate &amp; Corporate</div>
+        <p class="service-desc">Pengurusan aset eksklusif untuk individu high net worth dan syarikat. Strategi pelaburan aktif dengan laporan dan review berkala.</p>
+        <span class="service-tag">Premium</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div>
+        <div class="about-photo-box fade-up">
+          <div class="avatar-circle" style="width:80px;height:80px;font-size:28px">HH</div>
+          <div style="font-size:13px;color:var(--muted)">Foto akan dimasukkan</div>
+        </div>
+        <div class="credentials fade-up stagger-1">
+          <div class="cred-item"><div class="cred-dot"></div><div class="cred-text">Islamic Financial Planner (IFP)</div></div>
+          <div class="cred-item"><div class="cred-dot"></div><div class="cred-text">Certified Financial Planner (CFP)</div></div>
+          <div class="cred-item"><div class="cred-dot"></div><div class="cred-text">Afiliasi Iconix Financial</div></div>
+          <div class="cred-item"><div class="cred-dot"></div><div class="cred-text">8+ Tahun Pengalaman</div></div>
+        </div>
+      </div>
+      <div class="about-content fade-up stagger-2">
+        <div class="section-eyebrow">Tentang Saya</div>
+        <h2 class="section-title">Bukan Sekadar Agent.<br>Rakan Kewangan Kau.</h2>
+        <p>Saya faham perasaan bila tengok bank statement dan rasa <strong>semak</strong> — duit masuk, duit keluar, tapi simpanan tak bergerak. Bukan sebab kau boros. Tapi sebab tiada sistem.</p>
+        <p>Sebagai <strong>Islamic Financial Planner</strong>, saya bantu orang macam kau untuk tengok gambar besar — bukan sekadar jual produk. Kita duduk, kita analisa, kita bina <strong>pelan yang realistik</strong> untuk situasi kau.</p>
+        <p>Khusus dalam <strong>home refinancing, ASBF stacking, dan perancangan kewangan holistik</strong> — saya dah bantu ramai keluarga Malaysia keluar dari tekanan cash flow dan mula bina kekayaan secara sistematik.</p>
+        <div class="values-grid">
+          <div class="value-item"><div class="value-num">01</div><div><div class="vt">Jujur &amp; Telus</div><div class="vs">Tiada hidden agenda. Kita cakap apa yang betul untuk kau.</div></div></div>
+          <div class="value-item"><div class="value-num">02</div><div><div class="vt">Patuh Syariah</div><div class="vs">Semua cadangan mengikut prinsip Islamik yang benar.</div></div></div>
+          <div class="value-item"><div class="value-num">03</div><div><div class="vt">Realiti Dulu</div><div class="vs">Analisa situasi sebenar, bukan jual mimpi semata.</div></div></div>
+          <div class="value-item"><div class="value-num">04</div><div><div class="vt">Jangka Panjang</div><div class="vs">Bina kekayaan generasi, bukan quick fix sahaja.</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process-section" id="process">
+  <div class="container">
+    <div class="section-eyebrow">Macam Mana Nak Mula</div>
+    <h2 class="section-title">4 Langkah Mudah<br>Untuk Bermula</h2>
+    <p class="section-sub" style="color:rgba(255,255,255,.7)">Proses yang simple, tanpa kerumitan. Satu langkah pada satu masa.</p>
+    <div class="process-steps">
+      <div class="step fade-up"><div class="step-num">1</div><div class="step-title">WhatsApp Saya</div><div class="step-desc">Hantarkan mesej ringkas tentang situasi kewangan kau. Tiada commitment diperlukan.</div></div>
+      <div class="step fade-up stagger-1"><div class="step-num">2</div><div class="step-title">Sesi Analisa</div><div class="step-desc">Kita review income, commitment, dan matlamat kau secara confidential dan tanpa penghakiman.</div></div>
+      <div class="step fade-up stagger-2"><div class="step-num">3</div><div class="step-title">Cadangan Pelan</div><div class="step-desc">Saya presentkan beberapa pilihan strategi yang sesuai dengan situasi dan kemampuan kau.</div></div>
+      <div class="step fade-up stagger-3"><div class="step-num">4</div><div class="step-title">Laksana &amp; Monitor</div><div class="step-desc">Kita execute bersama dan saya pantau perkembangan kewangan kau secara berkala.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="testi-section" id="testimonial">
+  <div class="container">
+    <div class="section-eyebrow">Apa Kata Mereka</div>
+    <h2 class="section-title">Hasil Yang Nyata,<br>Bukan Sekadar Janji</h2>
+    <div class="testi-grid">
+      <div class="testi-card fade-up">
+        <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="testi-text">"Dulu ansuran rumah RM1,800. Selepas refinancing dengan Hazrin, turun jadi RM1,200. Cash flow naik RM600 sebulan. Anak dah boleh masuk tadika pilihan."</p>
+        <div class="testi-author"><div class="testi-avatar">AN</div><div><div class="testi-name">Ahmad N.</div><div class="testi-role">Jurutera, Selangor</div></div></div>
+      </div>
+      <div class="testi-card fade-up stagger-1">
+        <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="testi-text">"Hazrin explain ASBF stacking strategy dengan sangat jelas. Sekarang kami ada 3 sijil ASB dan dividen sijil pertama dah cover ansuran sijil kedua. Rasa macam magic tapi real."</p>
+        <div class="testi-author"><div class="testi-avatar">SR</div><div><div class="testi-name">Siti R.</div><div class="testi-role">Guru, Pulau Pinang</div></div></div>
+      </div>
+      <div class="testi-card fade-up stagger-2">
+        <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="testi-text">"Tak sangka boleh dapat cash out RM80k untuk settle semua hutang. Sekarang tinggal satu ansuran je — rumah. Lega gila. Terima kasih Hazrin!"</p>
+        <div class="testi-author"><div class="testi-avatar">MF</div><div><div class="testi-name">Mohd F.</div><div class="testi-role">Usahawan, Kedah</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+  <div class="container">
+    <div class="faq-grid">
+      <div class="faq-intro fade-up">
+        <div class="section-eyebrow">Soal Jawab</div>
+        <h2 class="section-title">Soalan Yang<br>Selalu Ditanya</h2>
+        <p>Ada soalan lain? Jangan segan untuk WhatsApp terus. Saya akan jawab dengan jujur walaupun jawapannya bukan "proceed".</p>
+        <a href="https://wa.me/60165581540?text=Salam%20Hazrin%2C%20saya%20ada%20soalan" class="btn-primary" target="_blank" style="margin-top:1.5rem">Tanya Terus &rarr;</a>
+      </div>
+      <div class="faq-list fade-up stagger-1">
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFAQ(this)">Refinancing tu selamat ke? Takut buat salah keputusan.<span class="faq-icon">+</span></button>
+          <div class="faq-a">Refinancing adalah keputusan kewangan yang perlu dianalisa dengan teliti. Saya akan tunjukkan perbandingan sebelum dan selepas — termasuk kos, saving, dan break-even point. Kau yang decide, bukan saya. Tiada pressure.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFAQ(this)">CCRIS/CTOS saya tak perfect. Boleh lagi ke?<span class="faq-icon">+</span></button>
+          <div class="faq-a">Bergantung kepada severity. Ada kes yang masih boleh proceed, ada yang perlu remediation dulu. Saya akan analisa CCRIS kau dan bagi pandangan jujur tentang kelayakan semasa dan langkah seterusnya.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFAQ(this)">Berapa lama proses refinancing ambil masa?<span class="faq-icon">+</span></button>
+          <div class="faq-a">Biasanya 2-3 bulan dari submission hingga disbursement. Bergantung kepada bank, penilaian hartanah, dan kelengkapan dokumen. Saya akan guide kau step-by-step sepanjang proses.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFAQ(this)">ASBF stacking — adakah ini halal?<span class="faq-icon">+</span></button>
+          <div class="faq-a">Ya. ASBF menggunakan produk financing Islamik (Tawarruq atau Murabahah) dari bank Islamik yang diluluskan BNM. ASB sendiri telah diluluskan oleh Majlis Penasihat Syariah. Semua struktur adalah patuh Syariah.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFAQ(this)">Adakah konsultasi pertama percuma?<span class="faq-icon">+</span></button>
+          <div class="faq-a">Ya, konsultasi pertama adalah percuma dan tanpa sebarang obligasi. Kita tengok situasi kau, saya bagi pandangan, dan kau decide nak proceed atau tidak. Tiada tekanan langsung.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <div class="cta-eyebrow">Jangan Tunggu Lagi</div>
+    <h2 class="cta-title">Satu Langkah Kecil.<br>Perubahan Besar.</h2>
+    <p class="cta-sub">Cash flow negatif, hutang bertimbun, atau sekadar nak optimize kewangan — mari kita tengok bersama. Percuma, konfidensial, tanpa tekanan.</p>
+    <div class="cta-actions">
+      <a href="https://wa.me/60165581540?text=Salam%20Hazrin%2C%20saya%20nak%20konsultasi%20percuma" class="btn-wa" target="_blank">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.087.536 4.05 1.475 5.764L0 24l6.434-1.427A11.946 11.946 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.68-.52-5.2-1.424l-.373-.22-3.822.848.862-3.734-.242-.385A9.93 9.93 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+        WhatsApp Sekarang
+      </a>
+      <a href="#services" class="btn-outline-white">Lihat Services</a>
+    </div>
+  </div>
+</section>
+
+<!-- SHARED FOOTER -->
+<footer class="sfooter">
+  <div class="sfooter-inner">
+    <div class="sfooter-top">
+      <div>
+        <div class="sfooter-brand">Hazrin <span>Hashim</span></div>
+        <div class="sfooter-tagline">Islamic Financial Planner | Iconix Financial</div>
+        <a href="https://wa.me/60165581540?text=Salam%20Hazrin%2C%20saya%20nak%20konsultasi%20percuma" class="sfooter-wa" target="_blank">WhatsApp: 016-558 1540</a>
+      </div>
+      <div class="sfooter-col">
+        <h4>Services</h4>
+        <a href="refinancing_guide.html">Home Refinancing</a>
+        <a href="asbf_guide.html">ASB Financing</a>
+        <a href="takaful_guide.html">Takaful</a>
+        <a href="pusaka_guide.html">Pusaka Islam</a>
+      </div>
+      <div class="sfooter-col">
+        <h4>Tools</h4>
+        <a href="blog.html">Blog &amp; Artikel</a>
+  <a href="ifp_dashboard.html">Kalkulator IFP</a>
+        <a href="credit_guide.html">Credit Guide</a>
+        <a href="asbf_guide.html#teknik">ASBF Calculator</a>
+        <a href="asbf_guide.html#roi">ROI Calculator</a>
+      </div>
+      <div class="sfooter-col">
+        <h4>Maklumat</h4>
+        <a href="hazrin_website.html#about">Tentang Hazrin</a>
+        <a href="hazrin_website.html#process">Cara Kerja</a>
+        <a href="hazrin_website.html#faq">FAQ</a>
+        <a href="hazrin_website.html#testimonial">Testimoni</a>
+      </div>
+    </div>
+    <div class="sfooter-bottom">
+      <div class="sfooter-copy">&copy; 2025 Hazrin Hashim | Islamic Financial Planner</div>
+      <div class="sfooter-disclaimer">Semua maklumat adalah untuk tujuan pendidikan sahaja dan bukan nasihat kewangan formal. Hasil sebenar mungkin berbeza. Sila dapatkan nasihat profesional sebelum membuat keputusan pelaburan.</div>
+    </div>
+  </div>
+</footer>
+
+<!-- STICKY WA -->
+<a href="https://wa.me/60165581540?text=Salam%20Hazrin" class="sticky-wa" target="_blank" title="WhatsApp Hazrin">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.087.536 4.05 1.475 5.764L0 24l6.434-1.427A11.946 11.946 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.68-.52-5.2-1.424l-.373-.22-3.822.848.862-3.734-.242-.385A9.93 9.93 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+</a>
+
+<script>
+window.addEventListener('scroll',()=>{
+  document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>20);
+});
+
+function toggleMenu(){
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+
+function toggleFAQ(btn){
+  const item=btn.closest('.faq-item');
+  const isOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
+  if(!isOpen) item.classList.add('open');
+}
+
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting) e.target.classList.add('visible');});
+},{threshold:0.1});
+document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
+
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
+  });
+});
+</script>
+<script>
+function toggleSNav(){document.getElementById('snavMob').classList.toggle('open');}
+(function(){
+  const path=window.location.pathname.split('/').pop()||'hazrin_website.html';
+  document.querySelectorAll('.snav-links a,.snav-mob a').forEach(a=>{
+    if(a.getAttribute('href')===path)a.classList.add('active');
+  });
+})();
+</script>
+</body>
+</html>
