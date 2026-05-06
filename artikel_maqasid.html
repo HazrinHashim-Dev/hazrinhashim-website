@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maqasid Shariah & Hifz al-Mal: Kenapa Islam Suruh Kita Jaga Harta | Hazrin Hashim</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --forest:#1B4332;--forest2:#2D6A4F;--forest3:#40916C;--forestlt:#D8F3DC;
+  --gold:#B8860B;--goldlt:#F5E6A3;--goldvlt:#FFFBEB;
+  --cream:#FAF8F3;--ink:#0D1F17;--muted:#5A7A6A;--border:#D4E6DA;--white:#FFFFFF;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden;line-height:1.7}
+
+/* ARTICLE HERO */
+.article-hero{background:linear-gradient(160deg,var(--forest) 0%,#0f2d1d 60%,#0a1f13 100%);padding:140px 2rem 80px;position:relative;overflow:hidden}
+.article-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 30% 40%,rgba(64,145,108,.2),transparent 65%),radial-gradient(ellipse 40% 40% at 80% 60%,rgba(184,134,11,.1),transparent 55%);pointer-events:none}
+.article-hero-inner{max-width:800px;margin:0 auto;position:relative;z-index:1}
+.article-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(184,134,11,.15);border:1px solid rgba(184,134,11,.35);color:var(--goldlt);padding:6px 16px;border-radius:50px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;margin-bottom:1.5rem}
+.article-hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:900;color:#fff;line-height:1.15;letter-spacing:-.02em;margin-bottom:1.25rem}
+.article-hero h1 em{color:#6dcf93;font-style:normal}
+.article-meta{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.12)}
+.meta-author{display:flex;align-items:center;gap:10px}
+.meta-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#9a6f0a);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:#fff}
+.meta-name{font-size:13px;font-weight:600;color:#fff}
+.meta-role{font-size:11px;color:rgba(255,255,255,.5)}
+.meta-info{display:flex;gap:1rem;font-size:12px;color:rgba(255,255,255,.5)}
+.meta-divider{color:rgba(255,255,255,.2)}
+
+/* ARTICLE BODY */
+.article-body{max-width:800px;margin:0 auto;padding:4rem 2rem}
+
+/* TYPOGRAPHY */
+.article-body p{font-size:17px;color:#2a3d32;line-height:1.85;margin-bottom:1.5rem}
+.article-body p strong{color:var(--ink);font-weight:600}
+.lead{font-size:19px!important;color:var(--forest2)!important;font-weight:500;border-left:4px solid var(--forest3);padding-left:1.25rem;margin-bottom:2rem!important}
+h2{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw,2rem);font-weight:700;color:var(--ink);margin:3rem 0 1rem;line-height:1.2}
+h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--forest);margin:2rem 0 .75rem}
+
+/* CALLOUT BOXES */
+.callout{border-radius:14px;padding:1.5rem 1.75rem;margin:2rem 0}
+.callout-gold{background:var(--goldvlt);border:1px solid var(--goldlt);border-left:4px solid var(--gold)}
+.callout-gold .callout-label{font-size:11px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.5rem}
+.callout-gold p{color:#5a4500;margin-bottom:0;font-size:15px}
+.callout-green{background:var(--forestlt);border:1px solid var(--border);border-left:4px solid var(--forest3)}
+.callout-green .callout-label{font-size:11px;font-weight:700;color:var(--forest2);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.5rem}
+.callout-green p{color:var(--forest);margin-bottom:0;font-size:15px}
+
+/* MAQASID 5 PILLARS */
+.pillars-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:.75rem;margin:2rem 0}
+.pillar{border-radius:12px;padding:1.25rem 1rem;text-align:center;border:1.5px solid var(--border);background:var(--white);transition:all .25s;position:relative}
+.pillar.active{background:var(--forest);border-color:var(--forest);transform:translateY(-4px);box-shadow:0 12px 32px rgba(27,67,50,.2)}
+.pillar-num{font-family:'Playfair Display',serif;font-size:.75rem;font-weight:700;color:var(--muted);margin-bottom:.5rem}
+.pillar.active .pillar-num{color:var(--goldlt)}
+.pillar-icon{font-size:1.75rem;margin-bottom:.5rem}
+.pillar-name{font-size:.75rem;font-weight:700;color:var(--ink);line-height:1.3}
+.pillar.active .pillar-name{color:#fff}
+.pillar-arabic{font-size:.65rem;color:var(--muted);margin-top:.25rem}
+.pillar.active .pillar-arabic{color:rgba(255,255,255,.6)}
+.pillar-badge{position:absolute;top:-8px;left:50%;transform:translateX(-50%);background:var(--gold);color:#fff;font-size:.55rem;font-weight:700;padding:2px 8px;border-radius:10px;white-space:nowrap;text-transform:uppercase;letter-spacing:.05em}
+
+/* HIFZ AL-MAL BREAKDOWN */
+.hifz-section{background:var(--forest);border-radius:20px;padding:2.5rem;margin:2.5rem 0;color:#fff}
+.hifz-title{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--goldlt);margin-bottom:.5rem}
+.hifz-sub{font-size:14px;color:rgba(255,255,255,.6);margin-bottom:2rem}
+.hifz-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.hifz-item{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:1.25rem}
+.hifz-item-icon{font-size:1.5rem;margin-bottom:.5rem}
+.hifz-item-title{font-size:.9rem;font-weight:700;color:var(--goldlt);margin-bottom:.4rem}
+.hifz-item-desc{font-size:.82rem;color:rgba(255,255,255,.65);line-height:1.6}
+
+/* STORY BLOCK */
+.story-block{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:2rem;margin:2.5rem 0;position:relative;overflow:hidden}
+.story-block::before{content:'\201C';position:absolute;top:-10px;right:20px;font-family:'Playfair Display',serif;font-size:100px;color:var(--forestlt);line-height:1;font-weight:700;pointer-events:none}
+.story-label{font-size:11px;font-weight:700;color:var(--forest3);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.75rem}
+.story-block p{font-size:15px;color:var(--muted);margin-bottom:.75rem;position:relative;z-index:1}
+.story-block p:last-child{margin-bottom:0}
+.story-block strong{color:var(--ink)}
+
+/* REALITI BOX */
+.realiti-list{list-style:none;margin:1.5rem 0}
+.realiti-list li{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--border);font-size:15px;color:#2a3d32}
+.realiti-list li:last-child{border-bottom:none}
+.realiti-list li .ri{font-size:1.1rem;flex-shrink:0;margin-top:2px}
+
+/* APPLICATION CARDS */
+.app-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0}
+.app-card{background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:1.5rem;transition:all .25s}
+.app-card:hover{border-color:var(--forest3);box-shadow:0 8px 24px rgba(27,67,50,.08);transform:translateY(-2px)}
+.app-card-icon{width:44px;height:44px;border-radius:12px;background:var(--forestlt);display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:1rem}
+.app-card-title{font-size:.95rem;font-weight:700;color:var(--ink);margin-bottom:.4rem}
+.app-card-desc{font-size:.83rem;color:var(--muted);line-height:1.6}
+.app-card-link{display:inline-block;margin-top:.75rem;font-size:.78rem;font-weight:600;color:var(--forest3);text-decoration:none}
+.app-card-link:hover{color:var(--forest)}
+
+/* KESIMPULAN */
+.kesimpulan{background:linear-gradient(135deg,var(--forest),var(--forest2));border-radius:20px;padding:2.5rem;margin:2.5rem 0;text-align:center}
+.kesimpulan p{color:rgba(255,255,255,.8);font-size:16px;max-width:560px;margin:0 auto 1.5rem}
+.kesimpulan .ayat{font-family:'Playfair Display',serif;font-size:1.1rem;font-style:italic;color:var(--goldlt);margin-bottom:.5rem}
+.kesimpulan .ayat-ref{font-size:12px;color:rgba(255,255,255,.4)}
+
+/* CTA INLINE */
+.cta-inline{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:2rem}
+.btn-wa{display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#fff;font-size:14px;font-weight:700;padding:14px 28px;border-radius:50px;text-decoration:none;transition:all .2s}
+.btn-wa:hover{background:#1DAE55;transform:translateY(-2px)}
+.btn-back{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.15);color:#fff;font-size:14px;font-weight:600;padding:14px 28px;border-radius:50px;text-decoration:none;border:1.5px solid rgba(255,255,255,.3);transition:all .2s}
+.btn-back:hover{background:rgba(255,255,255,.25)}
+
+/* RELATED */
+.related{max-width:800px;margin:0 auto;padding:0 2rem 4rem}
+.related-title{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;color:var(--ink);margin-bottom:1.25rem}
+.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.related-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.25rem;text-decoration:none;transition:all .25s}
+.related-card:hover{border-color:var(--forest3);transform:translateY(-2px);box-shadow:0 8px 24px rgba(27,67,50,.08)}
+.rc-tag{font-size:10px;font-weight:600;color:var(--forest3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem}
+.rc-title{font-size:.88rem;font-weight:700;color:var(--ink);line-height:1.4}
+
+@media(max-width:768px){
+  .pillars-grid{grid-template-columns:repeat(3,1fr)}
+  .hifz-grid{grid-template-columns:1fr}
+  .app-grid{grid-template-columns:1fr}
+  .related-grid{grid-template-columns:1fr}
+}
+@media(max-width:480px){
+  .pillars-grid{grid-template-columns:repeat(2,1fr)}
+  .article-body p{font-size:16px}
+}
+
+
+/* ── SHARED NAV + FOOTER ── */
+.snav{position:fixed;top:0;left:0;right:0;z-index:200;height:60px;background:rgba(27,67,50,.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.08);display:flex;align-items:center;padding:0 1.5rem;gap:1rem}
+.snav-brand{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:#fff;text-decoration:none;white-space:nowrap;flex-shrink:0}
+.snav-brand span{color:#C9A84C}
+.snav-links{display:flex;gap:2px;flex:1;justify-content:center;overflow:hidden}
+.snav-links a{font-size:12px;font-weight:500;color:rgba(255,255,255,.65);text-decoration:none;padding:6px 10px;border-radius:8px;transition:all .2s;white-space:nowrap}
+.snav-links a:hover,.snav-links a.active{background:rgba(255,255,255,.1);color:#C9A84C}
+.snav-wa{background:#25D366;color:#fff;font-size:12px;font-weight:700;padding:7px 16px;border-radius:50px;text-decoration:none;white-space:nowrap;flex-shrink:0;transition:all .2s}
+.snav-wa:hover{background:#1DAE55}
+.snav-ham{display:none;flex-direction:column;gap:4px;cursor:pointer;padding:6px;background:none;border:none;flex-shrink:0}
+.snav-ham span{width:20px;height:2px;background:rgba(255,255,255,.8);border-radius:2px;display:block}
+.snav-mob{display:none;position:fixed;inset:60px 0 0 0;background:rgba(27,67,50,.98);z-index:199;flex-direction:column;padding:1.5rem;gap:.5rem;overflow-y:auto}
+.snav-mob.open{display:flex}
+.snav-mob a{font-size:15px;font-weight:500;color:rgba(255,255,255,.8);text-decoration:none;padding:12px 16px;border-radius:10px;border-bottom:1px solid rgba(255,255,255,.06)}
+.snav-mob a:hover,.snav-mob a.active{background:rgba(255,255,255,.08);color:#C9A84C}
+.snav-mob-wa{margin-top:.5rem;display:flex;align-items:center;justify-content:center;background:#25D366;color:#fff;font-size:14px;font-weight:700;padding:13px;border-radius:12px;text-decoration:none}
+@media(max-width:820px){.snav-links{display:none}.snav-ham{display:flex}}
+@media(max-width:480px){.snav-wa{display:none}}
+
+/* SHARED FOOTER */
+.sfooter{background:#0D1F17;padding:48px 1.5rem 24px}
+.sfooter-inner{max-width:1100px;margin:0 auto}
+.sfooter-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem;margin-bottom:2rem}
+.sfooter-brand{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#fff;margin-bottom:.5rem}
+.sfooter-brand span{color:#C9A84C}
+.sfooter-tagline{font-size:12px;color:rgba(255,255,255,.4);margin-bottom:1rem}
+.sfooter-wa{display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#fff;font-size:12px;font-weight:700;padding:9px 18px;border-radius:50px;text-decoration:none}
+.sfooter-col h4{font-size:11px;font-weight:600;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.75rem}
+.sfooter-col a{display:block;font-size:13px;color:rgba(255,255,255,.55);text-decoration:none;margin-bottom:.4rem;transition:color .2s}
+.sfooter-col a:hover{color:#C9A84C}
+.sfooter-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.sfooter-copy{font-size:11px;color:rgba(255,255,255,.25)}
+.sfooter-disclaimer{font-size:10px;color:rgba(255,255,255,.2);max-width:600px;line-height:1.5}
+@media(max-width:768px){.sfooter-top{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.sfooter-top{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<!-- SHARED NAV -->
+<nav class="snav" id="snav">
+  <a href="index.html" class="snav-brand">Hazrin <span>Hashim</span></a>
+  <div class="snav-links">
+    <a href="index.html">Laman Utama</a>
+    <a href="ASB.html">ASB</a>
+    <a href="Home_Refinancing.html">Home Refinancing</a>
+    <a href="Takaful.html">Takaful</a>
+    <a href="Pentadbiran_Harta.html">Islamic Estate Planner</a>
+    <a href="credit_guide.html">Credit Guide</a>
+    <a href="blog.html">Blog</a>
+    <a href="Interactive_Calculator.html">Interactive Calculator</a>
+  </div>
+  <a href="https://wa.me/60165581540?text=Salam%20Hazrin%2C%20saya%20nak%20konsultasi%20percuma" class="snav-wa" target="_blank">WhatsApp</a>
+  <button class="snav-ham" onclick="toggleSNav()" id="snavHam"><span></span><span></span><span></span></button>
+</nav>
+<div class="snav-mob" id="snavMob">
+  <a href="index.html">Laman Utama</a>
+  <a href="ASB.html">ASB</a>
+  <a href="Home_Refinancing.html">Home Refinancing</a>
+  <a href="Takaful.html">Takaful</a>
+  <a href="Pentadbiran_Harta.html">Islamic Estate Planner</a>
+  <a href="credit_guide.html">Credit Guide</a>
+  <a href="blog.html" class="active">Blog &amp; Artikel</a>
+  <a href="Interactive_Calculator.html">Interactive Calculator</a>
+  <a href="https://wa.me/60165581540?text=Salam%20Hazrin%2C%20saya%20nak%20konsultasi" class="snav-mob-wa" target="_blank">WhatsApp Hazrin Sekarang</a>
+</div>
+
+
+<!-- ARTICLE HERO -->
+<div class="article-hero">
+  <div class="article-hero-inner">
+    <div class="article-tag">📚 Artikel · Ilmu Kewangan Islam</div>
+    <h1>Maqasid Shariah &amp; <em>Hifz al-Mal</em>:<br>Kenapa Islam Suruh Kita Jaga Harta</h1>
+    <div class="article-meta">
+      <div class="meta-author">
+        <div class="meta-avatar">H</div>
+        <div>
+          <div class="meta-name">Hazrin Hashim</div>
+          <div class="meta-role">IFP · Iconix Group · as-Salihin</div>
+        </div>
+      </div>
+      <div class="meta-info">
+        <span>April 2026</span>
+        <span class="meta-divider">·</span>
+        <span>8 minit baca</span>
+        <span class="meta-divider">·</span>
+        <span>Maqasid Shariah</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ARTICLE BODY -->
+<div class="article-body">
+
+  <p class="lead">Ramai yang tanya kenapa perancangan kewangan itu penting dalam Islam. Jawapannya bukan sekadar "supaya kaya" atau "supaya selamat." Jawapannya ada dalam satu konsep yang lebih besar — <strong>Maqasid Shariah</strong>.</p>
+
+  <p>Maqasid Shariah bermaksud <strong>"Tujuan dan Objektif Syariat Islam."</strong> Ia adalah kerangka besar yang menjelaskan kenapa setiap hukum dalam Islam diturunkan — bukan sekadar suruhan dan larangan tanpa sebab, tetapi setiap satu ada tujuan yang jelas untuk memelihara kesejahteraan manusia di dunia dan akhirat.</p>
+
+  <div class="callout callout-gold">
+    <div class="callout-label">📖 Definisi Ulama</div>
+    <p>Imam al-Ghazali dalam <em>al-Mustasfa</em> mendefinisikan Maqasid Shariah sebagai pemeliharaan lima perkara asas yang menjadi teras kehidupan manusia — dan setiap hukum Islam bertujuan untuk memelihara atau mengukuhkan salah satu daripadanya.</p>
+  </div>
+
+  <h2>5 Elemen Utama Maqasid Shariah</h2>
+
+  <p>Para ulama usul fiqh telah mengklasifikasikan Maqasid Shariah kepada lima perkara yang wajib dipelihara. Kelima-limanya saling berkait — gagal memelihara satu akan memberi kesan kepada yang lain.</p>
+
+  <div class="pillars-grid">
+    <div class="pillar">
+      <div class="pillar-num">1</div>
+      <div class="pillar-icon">🧠</div>
+      <div class="pillar-name">Memelihara Agama</div>
+      <div class="pillar-arabic">Hifz al-Din</div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num">2</div>
+      <div class="pillar-icon">❤️</div>
+      <div class="pillar-name">Memelihara Jiwa</div>
+      <div class="pillar-arabic">Hifz al-Nafs</div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num">3</div>
+      <div class="pillar-icon">💡</div>
+      <div class="pillar-name">Memelihara Akal</div>
+      <div class="pillar-arabic">Hifz al-'Aql</div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num">4</div>
+      <div class="pillar-icon">👨‍👩‍👧</div>
+      <div class="pillar-name">Memelihara Keturunan</div>
+      <div class="pillar-arabic">Hifz al-Nasl</div>
+    </div>
+    <div class="pillar active">
+      <div class="pillar-badge">Fokus Artikel</div>
+      <div class="pillar-num">5</div>
+      <div class="pillar-icon">💰</div>
+      <div class="pillar-name">Memelihara Harta</div>
+      <div class="pillar-arabic">Hifz al-Mal</div>
+    </div>
+  </div>
+
+  <p>Kelima-lima elemen ini bukan pilihan — ia adalah <strong>kewajipan kolektif</strong> yang mesti dijaga oleh individu, keluarga, dan masyarakat. Artikel ini akan menumpukan kepada elemen kelima: <strong>Hifz al-Mal — Memelihara Harta.</strong></p>
+
+  <h2>Hifz al-Mal: Lebih Dalam Dari Sekadar "Jangan Membazir"</h2>
+
+  <p>Kebanyakan orang memahami "jaga harta" sebagai nasihat jimat cermat — jangan membazir, jangan boros. Betul, tapi itu hanya permukaan. Hifz al-Mal dalam konteks Maqasid Shariah adalah jauh lebih komprehensif.</p>
+
+  <div class="story-block">
+    <div class="story-label">📖 Kisah Nyata</div>
+    <p>Seorang bapa meninggal dunia secara mengejut. Dia seorang yang rajin, bekerja keras selama 25 tahun. Ada rumah, ada ASB, ada simpanan. Tapi tiada wasiat. Tiada hibah. Tiada apa-apa dokumen perancangan.</p>
+    <p>Anak-anaknya tunggu <strong>empat tahun</strong> sebelum boleh menyentuh sebarang harta. Rumah hampir dilelong kerana bayaran ansuran terhenti. Adik-beradik bergaduh tentang siapa dapat apa. Wang ASB terkunci. Seorang anak angkat — yang dibesarkan sejak kecil — tidak dapat apa-apa langsung.</p>
+    <p>Adakah bapa ini gagal jaga harta? Dari segi dunia, tidak. Dia ada harta. Tapi dari perspektif <strong>Hifz al-Mal</strong>, dia gagal memastikan harta itu boleh sampai kepada yang berhak dengan cara yang betul dan tepat pada masa.</p>
+  </div>
+
+  <h2>4 Dimensi Hifz al-Mal yang Ramai Tidak Sedar</h2>
+
+  <div class="hifz-section">
+    <div class="hifz-title">Memelihara Harta (Hifz al-Mal)</div>
+    <div class="hifz-sub">Islam tidak sekadar larang kita membazir — ia menetapkan sistem lengkap untuk harta diurus, dikembangkan, dilindungi, dan diagihkan dengan adil.</div>
+    <div class="hifz-grid">
+      <div class="hifz-item">
+        <div class="hifz-item-icon">🛡️</div>
+        <div class="hifz-item-title">1. Melindungi Harta</div>
+        <div class="hifz-item-desc">Dari kerugian, penipuan, rampasan, dan pengagihan yang tidak adil. Ini termasuk takaful, hibah, wasiat, dan struktur pemilikan yang sah.</div>
+      </div>
+      <div class="hifz-item">
+        <div class="hifz-item-icon">📈</div>
+        <div class="hifz-item-title">2. Mengembangkan Harta</div>
+        <div class="hifz-item-desc">Melalui cara yang halal dan bebas riba. Pelaburan yang patuh Syariah bukan sekadar pilihan — ia adalah kewajipan untuk memastikan harta tidak statik dan tidak terhakis inflasi.</div>
+      </div>
+      <div class="hifz-item">
+        <div class="hifz-item-icon">⚖️</div>
+        <div class="hifz-item-title">3. Mengagihkan Harta Dengan Adil</div>
+        <div class="hifz-item-desc">Faraid bukan sekadar hukum pengagihan — ia adalah sistem keadilan Ilahi yang memastikan setiap waris mendapat hak mereka. Wasiat pula membolehkan kita jaga mereka yang tidak dilindungi faraid.</div>
+      </div>
+      <div class="hifz-item">
+        <div class="hifz-item-icon">🚫</div>
+        <div class="hifz-item-title">4. Mengelak Kerosakan Harta</div>
+        <div class="hifz-item-desc">Islam melarang pembaziran (israf), penumpukan tanpa manfaat (ihtikar), dan transaksi yang membawa mudarat. Harta mesti beredar dan memberi manfaat kepada ummah.</div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Realiti Harta Orang Islam di Malaysia Hari Ini</h2>
+
+  <p>Kalau Hifz al-Mal adalah antara kewajipan tertinggi dalam Islam, kenapa keadaan harta pusaka orang Islam di Malaysia masih begini?</p>
+
+  <ul class="realiti-list">
+    <li><span class="ri">⚠️</span><span><strong>RM78 bilion</strong> harta pusaka orang Islam terbeku dan belum dituntut di Malaysia — rekod yang memalukan bagi umat yang diajar untuk jaga harta.</span></li>
+    <li><span class="ri">⚠️</span><span>Lebih <strong>1 juta kes</strong> tuntutan tanah pusaka masih dalam proses — sebahagiannya sudah berlangsung lebih 50 tahun.</span></li>
+    <li><span class="ri">⚠️</span><span>Majoriti orang Islam Malaysia <strong>tiada wasiat</strong> — bermakna harta mereka akan melalui proses birokrasi yang panjang dan menyusahkan waris.</span></li>
+    <li><span class="ri">⚠️</span><span>Ramai yang <strong>menanggung hutang faedah tinggi</strong> — kad kredit, pinjaman peribadi — sedangkan ada instrumen Islam yang boleh meringankan beban ini.</span></li>
+    <li><span class="ri">⚠️</span><span>Simpanan dalam ASB dan bank <strong>tidak dioptimumkan</strong> — duit "tidur" sedangkan inflasi terus menghakis nilainya.</span></li>
+  </ul>
+
+  <div class="callout callout-green">
+    <div class="callout-label">💡 Renungan</div>
+    <p>Ini bukan sekadar masalah kewangan. Ini adalah kegagalan kolektif dalam melaksanakan Hifz al-Mal — salah satu daripada lima kewajipan teras Maqasid Shariah. Perancangan kewangan Islam bukan kemewahan, ia adalah tanggungjawab agama.</p>
+  </div>
+
+  <h2>Bagaimana Hifz al-Mal Diterjemahkan Dalam Kehidupan Kita</h2>
+
+  <p>Maqasid Shariah bukan hanya teori akademik. Ia ada aplikasi praktikalnya dalam setiap keputusan kewangan yang kita buat setiap hari. Berikut adalah empat bidang utama:</p>
+
+  <div class="app-grid">
+    <div class="app-card">
+      <div class="app-card-icon">📜</div>
+      <div class="app-card-title">Perancangan Harta Pusaka</div>
+      <div class="app-card-desc">Wasiat, hibah, dan faraid bukan sekadar urusan orang tua. Ia adalah cara kita melaksanakan Hifz al-Mal — memastikan harta sampai kepada yang berhak tanpa konflik dan tanpa pembaziran masa.</div>
+      <a href="Pentadbiran_Harta.html" class="app-card-link">Belajar lebih →</a>
+    </div>
+    <div class="app-card">
+      <div class="app-card-icon">🏦</div>
+      <div class="app-card-title">Pelaburan Patuh Syariah</div>
+      <div class="app-card-desc">ASB Financing, unit trust Islam, dan instrumen patuh Syariah adalah cara mengembangkan harta tanpa melanggar prinsip Hifz al-Mal. Duit mesti bekerja — bukan tidur.</div>
+      <a href="ASB.html" class="app-card-link">Tengok strategi ASB →</a>
+    </div>
+    <div class="app-card">
+      <div class="app-card-icon">🏠</div>
+      <div class="app-card-title">Restruktur Hutang Islam</div>
+      <div class="app-card-desc">Menanggung hutang faedah tinggi adalah berlawanan dengan Hifz al-Mal. Home refinancing Islam membolehkan kita keluar dari beban riba dan susun semula kewangan dengan cara yang halal.</div>
+      <a href="Home_Refinancing.html" class="app-card-link">Kira cash flow →</a>
+    </div>
+    <div class="app-card">
+      <div class="app-card-icon">🛡️</div>
+      <div class="app-card-title">Perlindungan Takaful</div>
+      <div class="app-card-desc">Melindungi harta dan pendapatan dari risiko adalah sebahagian dari Hifz al-Mal. Takaful bukan sekadar insurans — ia adalah sistem perlindungan berasaskan tolong-menolong yang diluluskan Syariah.</div>
+      <a href="Takaful.html" class="app-card-link">Faham takaful →</a>
+    </div>
+  </div>
+
+  <h2>Mengapa Ini Penting Untuk Anda Hari Ini</h2>
+
+  <p>Islam tidak pernah memisahkan urusan agama daripada urusan harta. Dalam al-Quran, terdapat lebih banyak ayat tentang muamalat (urusan harta dan perniagaan) berbanding solat — bukan kerana solat kurang penting, tetapi kerana Islam sedar bahawa kerosakan harta membawa kepada kerosakan jiwa, keluarga, dan masyarakat.</p>
+
+  <p>Setiap kali kita gagal merancang harta kita — setiap kali kita tangguh buat wasiat, setiap kali kita biarkan hutang faedah tinggi berkumpul, setiap kali kita biarkan simpanan kita tidak dioptimumkan — kita sebenarnya sedang mengabaikan salah satu daripada lima kewajipan teras dalam Maqasid Shariah.</p>
+
+  <div class="callout callout-gold">
+    <div class="callout-label">📌 Ingat ini</div>
+    <p>Hifz al-Mal bukan tentang jadi kaya. Ia tentang memastikan harta yang Allah titipkan kepada kita diuruskan, dikembangkan, dilindungi, dan diagihkan dengan cara yang bertanggungjawab — untuk manfaat kita, keluarga kita, dan ummah kita.</p>
+  </div>
+
+  <div class="kesimpulan">
+    <div class="ayat">"Dan janganlah kamu serahkan kepada orang yang belum sempurna akalnya akan harta kamu yang Allah jadikan sebagai pokok penghidupan kamu."</div>
+    <div class="ayat-ref">Al-Quran, Surah an-Nisa' (4:5)</div>
+    <p style="margin-top:1.5rem">Ayat ini bukan sekadar tentang anak-anak kecil. Ia adalah prinsip — harta mesti diuruskan oleh mereka yang mampu mengurusnya dengan bertanggungjawab. Tugas kita adalah menjadi pengurus harta yang amanah.</p>
+    <div class="cta-inline">
+      <a href="https://wa.me/60165581540?text=Salam%20Hazrin%2C%20saya%20baca%20artikel%20Maqasid%20Shariah%20dan%20nak%20tahu%20lebih%20tentang%20perancangan%20kewangan%20Islam." class="btn-wa" target="_blank">
+        💬 Bincang Dengan Hazrin
+      </a>
+      <a href="blog.html" class="btn-back">← Kembali ke Blog</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- RELATED ARTICLES -->
+<div class="related">
+  <div class="related-title">Artikel Berkaitan</div>
+  <div class="related-grid">
+    <a href="Pentadbiran_Harta.html" class="related-card">
+      <div class="rc-tag">Harta Pusaka</div>
+      <div class="rc-title">Panduan Lengkap Wasiat, Hibah & Faraid untuk Orang Islam Malaysia</div>
+    </a>
+    <a href="ASB.html" class="related-card">
+      <div class="rc-tag">Pelaburan Islam</div>
+      <div class="rc-title">ASB Financing: Strategi Compounding, Rolling & Hybrid yang Ramai Tidak Tahu</div>
+    </a>
+    <a href="Home_Refinancing.html" class="related-card">
+      <div class="rc-tag">Hutang & Kewangan</div>
+      <div class="rc-title">Home Refinancing Islam: Dari Tersepit ke Tersusun Semula</div>
+    </a>
+  </div>
+</div>
+
+
+<!-- SHARED FOOTER -->
+<footer class="sfooter">
+  <div class="sfooter-inner">
+    <div class="sfooter-top">
+      <div>
+        <div class="sfooter-brand">Hazrin <span>Hashim</span></div>
+        <div class="sfooter-tagline">IFP | Iconix GROUP</div>
+        <a href="https://wa.me/60165581540?text=Salam%20Hazrin%2C%20saya%20nak%20konsultasi%20percuma" class="sfooter-wa" target="_blank">WhatsApp: 016-558 1540</a>
+      </div>
+      <div class="sfooter-col">
+        <h4>Services</h4>
+        <a href="Home_Refinancing.html">Home Refinancing</a>
+        <a href="ASB.html">ASB</a>
+        <a href="Takaful.html">Takaful</a>
+        <a href="Pentadbiran_Harta.html">Islamic Estate Planner</a>
+      </div>
+      <div class="sfooter-col">
+        <h4>Tools</h4>
+        <a href="blog.html">Blog &amp; Artikel</a>
+        <a href="Interactive_Calculator.html">Interactive Calculator</a>
+        <a href="credit_guide.html">Credit Guide</a>
+        <a href="ASB.html#teknik">ASB Calculator</a>
+      </div>
+      <div class="sfooter-col">
+        <h4>Maklumat</h4>
+        <a href="index.html#about">Tentang Hazrin</a>
+        <a href="index.html#process">Cara Kerja</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="index.html#testimonial">Testimoni</a>
+      </div>
+    </div>
+    <div class="sfooter-bottom">
+      <div class="sfooter-copy">&copy; 2026 Hazrin Hashim | Islamic Financial Planner</div>
+      <div class="sfooter-disclaimer">Semua maklumat adalah untuk tujuan pendidikan sahaja dan bukan nasihat kewangan formal. Hasil sebenar mungkin berbeza. Sila dapatkan nasihat profesional sebelum membuat keputusan.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggleSNav(){
+  document.getElementById('snavMob').classList.toggle('open');
+}
+</script>
+</body>
+</html>

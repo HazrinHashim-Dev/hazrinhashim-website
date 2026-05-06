@@ -92,6 +92,7 @@ body{font-family:'Outfit',sans-serif;background:var(--cream);color:var(--ink);ov
 .featured-body{padding:2rem}
 .art-cat{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;padding:4px 10px;border-radius:50px;margin-bottom:.75rem}
 .cat-asbf{background:var(--forestlt);color:var(--forest2)}
+.cat-ilmu{background:#FEF9E7;color:#7a5c00}
 .cat-refi{background:var(--bluelt);color:var(--blue)}
 .cat-kewangan{background:var(--goldvlt);color:var(--amber)}
 .cat-takaful{background:#F0FDF4;color:#166534}
@@ -112,6 +113,7 @@ body{font-family:'Outfit',sans-serif;background:var(--cream);color:var(--ink);ov
 .art-card:hover{transform:translateY(-3px);box-shadow:0 10px 32px rgba(27,67,50,.09);border-color:var(--forest3)}
 .art-thumb{height:140px;display:flex;align-items:center;justify-content:center;font-size:40px;position:relative;overflow:hidden}
 .art-thumb.bg-asbf{background:linear-gradient(135deg,#1B4332,#40916C)}
+.art-thumb.bg-ilmu{background:linear-gradient(135deg,#7a5c00,#b8860b)}
 .art-thumb.bg-refi{background:linear-gradient(135deg,#1e3a8a,#3b82f6)}
 .art-thumb.bg-kewangan{background:linear-gradient(135deg,#78350f,#f59e0b)}
 .art-thumb.bg-takaful{background:linear-gradient(135deg,#14532d,#22c55e)}
@@ -201,27 +203,27 @@ body{font-family:'Outfit',sans-serif;background:var(--cream);color:var(--ink);ov
   <a href="index.html" class="snav-brand">Hazrin <span>Hashim</span></a>
   <div class="snav-links">
     <a href="index.html">Laman Utama</a>
-    <a href="asbf_guide.html">ASBF Guide</a>
-    <a href="refinancing_guide.html">Refinancing</a>
-    <a href="takaful_guide.html">Takaful</a>
-    <a href="pusaka_guide.html">Pusaka Islam</a>
+    <a href="ASB.html">ASB</a>
+    <a href="Home_Refinancing.html">Home Refinancing</a>
+    <a href="Takaful.html">Takaful</a>
+    <a href="Pentadbiran_Harta.html">Islamic Estate Planner</a>
     <a href="credit_guide.html">Credit Guide</a>
     <a href="blog.html" class="active">Blog</a>
-    <a href="ifp_dashboard.html">Kalkulator</a>
+    <a href="Interactive_Calculator.html">Interactive Calculator</a>
   </div>
   <a href="https://wa.me/60165581540?text=Salam%20Hazrin%2C%20saya%20nak%20konsultasi%20percuma" class="snav-wa" target="_blank">WhatsApp</a>
-  <button class="snav-ham" onclick="toggleSNav()"><span></span><span></span><span></span></button>
+  <button class="snav-ham" onclick="toggleSNav()" id="snavHam"><span></span><span></span><span></span></button>
 </nav>
 <div class="snav-mob" id="snavMob">
   <a href="index.html">Laman Utama</a>
-  <a href="asbf_guide.html">ASBF Guide</a>
-  <a href="refinancing_guide.html">Home Refinancing</a>
-  <a href="takaful_guide.html">Takaful &amp; Perlindungan</a>
-  <a href="pusaka_guide.html">Pusaka Islam</a>
-  <a href="credit_guide.html">Credit &amp; CCRIS Guide</a>
-  <a href="blog.html">Blog &amp; Artikel</a>
-  <a href="ifp_dashboard.html">Kalkulator IFP</a>
-  <a href="https://wa.me/60165581540" class="snav-mob-wa" target="_blank">WhatsApp Hazrin Sekarang</a>
+  <a href="ASB.html">ASB</a>
+  <a href="Home_Refinancing.html">Home Refinancing</a>
+  <a href="Takaful.html">Takaful</a>
+  <a href="Pentadbiran_Harta.html">Islamic Estate Planner</a>
+  <a href="credit_guide.html">Credit Guide</a>
+  <a href="blog.html" class="active">Blog &amp; Artikel</a>
+  <a href="Interactive_Calculator.html">Interactive Calculator</a>
+  <a href="https://wa.me/60165581540?text=Salam%20Hazrin%2C%20saya%20nak%20konsultasi" class="snav-mob-wa" target="_blank">WhatsApp Hazrin Sekarang</a>
 </div>
 
 <!-- HERO -->
@@ -254,6 +256,7 @@ body{font-family:'Outfit',sans-serif;background:var(--cream);color:var(--ink);ov
       <button class="cat-btn" onclick="filterCat('takaful',this)">Takaful</button>
       <button class="cat-btn" onclick="filterCat('pusaka',this)">Pusaka</button>
       <button class="cat-btn" onclick="filterCat('kredit',this)">Kredit</button>
+      <button class="cat-btn" onclick="filterCat('ilmu',this)">Ilmu Islam</button>
     </div>
   </div>
 </div>
@@ -312,9 +315,9 @@ body{font-family:'Outfit',sans-serif;background:var(--cream);color:var(--ink);ov
     <div class="sidebar-card">
       <div class="sidebar-title">Tools</div>
       <div style="display:flex;flex-direction:column;gap:8px">
-        <a href="asbf_guide.html#teknik" style="display:flex;align-items:center;gap:10px;padding:10px;border-radius:10px;background:var(--cream);text-decoration:none;color:var(--ink);font-size:13px;font-weight:500;transition:background .2s" onmouseover="this.style.background='var(--forestlt)'" onmouseout="this.style.background='var(--cream)'">&#128200; ASBF Calculator</a>
-        <a href="ifp_dashboard.html" style="display:flex;align-items:center;gap:10px;padding:10px;border-radius:10px;background:var(--cream);text-decoration:none;color:var(--ink);font-size:13px;font-weight:500;transition:background .2s" onmouseover="this.style.background='var(--forestlt)'" onmouseout="this.style.background='var(--cream)'">&#128221; IFP Dashboard</a>
-        <a href="asbf_guide.html#roi" style="display:flex;align-items:center;gap:10px;padding:10px;border-radius:10px;background:var(--cream);text-decoration:none;color:var(--ink);font-size:13px;font-weight:500;transition:background .2s" onmouseover="this.style.background='var(--forestlt)'" onmouseout="this.style.background='var(--cream)'">&#128172; ROI Calculator</a>
+        <a href="ASB.html#teknik" style="display:flex;align-items:center;gap:10px;padding:10px;border-radius:10px;background:var(--cream);text-decoration:none;color:var(--ink);font-size:13px;font-weight:500;transition:background .2s" onmouseover="this.style.background='var(--forestlt)'" onmouseout="this.style.background='var(--cream)'">&#128200; ASBF Calculator</a>
+        <a href="Interactive_Calculator.html" style="display:flex;align-items:center;gap:10px;padding:10px;border-radius:10px;background:var(--cream);text-decoration:none;color:var(--ink);font-size:13px;font-weight:500;transition:background .2s" onmouseover="this.style.background='var(--forestlt)'" onmouseout="this.style.background='var(--cream)'">&#128221; IFP Dashboard</a>
+        <a href="ASB.html#roi" style="display:flex;align-items:center;gap:10px;padding:10px;border-radius:10px;background:var(--cream);text-decoration:none;color:var(--ink);font-size:13px;font-weight:500;transition:background .2s" onmouseover="this.style.background='var(--forestlt)'" onmouseout="this.style.background='var(--cream)'">&#128172; ROI Calculator</a>
       </div>
     </div>
   </aside>
@@ -339,22 +342,22 @@ body{font-family:'Outfit',sans-serif;background:var(--cream);color:var(--ink);ov
     <div class="sfooter-top">
       <div>
         <div class="sfooter-brand">Hazrin <span>Hashim</span></div>
-        <div class="sfooter-tagline">Islamic Financial Planner | Iconix Financial</div>
+        <div class="sfooter-tagline">IFP | Iconix GROUP</div>
         <a href="https://wa.me/60165581540?text=Salam%20Hazrin%2C%20saya%20nak%20konsultasi%20percuma" class="sfooter-wa" target="_blank">WhatsApp: 016-558 1540</a>
       </div>
       <div class="sfooter-col">
         <h4>Services</h4>
-        <a href="refinancing_guide.html">Home Refinancing</a>
-        <a href="asbf_guide.html">ASB Financing</a>
-        <a href="takaful_guide.html">Takaful</a>
-        <a href="pusaka_guide.html">Pusaka Islam</a>
+        <a href="Home_Refinancing.html">Home Refinancing</a>
+        <a href="ASB.html">ASB</a>
+        <a href="Takaful.html">Takaful</a>
+        <a href="Pentadbiran_Harta.html">Islamic Estate Planner</a>
       </div>
       <div class="sfooter-col">
         <h4>Tools</h4>
-        <a href="ifp_dashboard.html">Kalkulator IFP</a>
-        <a href="credit_guide.html">Credit Guide</a>
-        <a href="asbf_guide.html#teknik">ASBF Calculator</a>
         <a href="blog.html">Blog &amp; Artikel</a>
+        <a href="Interactive_Calculator.html">Interactive Calculator</a>
+        <a href="credit_guide.html">Credit Guide</a>
+        <a href="ASB.html#teknik">ASB Calculator</a>
       </div>
       <div class="sfooter-col">
         <h4>Maklumat</h4>
@@ -365,8 +368,8 @@ body{font-family:'Outfit',sans-serif;background:var(--cream);color:var(--ink);ov
       </div>
     </div>
     <div class="sfooter-bottom">
-      <div class="sfooter-copy">&copy; 2025 Hazrin Hashim | Islamic Financial Planner</div>
-      <div class="sfooter-disclaimer">Semua artikel adalah untuk tujuan pendidikan sahaja dan bukan nasihat kewangan formal. Hasil sebenar mungkin berbeza.</div>
+      <div class="sfooter-copy">&copy; 2026 Hazrin Hashim | Islamic Financial Planner</div>
+      <div class="sfooter-disclaimer">Semua maklumat adalah untuk tujuan pendidikan sahaja dan bukan nasihat kewangan formal. Hasil sebenar mungkin berbeza. Sila dapatkan nasihat profesional sebelum membuat keputusan pelaburan.</div>
     </div>
   </div>
 </footer>
@@ -648,6 +651,46 @@ const ARTICLES = [
     author:'Hazrin Hashim', date:'Akan Datang', readTime:'8 min',
     featured:false, trending:false, placeholder:true,
     body:`<p>Artikel ini sedang dalam proses penulisan. WhatsApp Hazrin untuk dapatkan panduan peribadi berdasarkan situasi kau.</p>`
+  },
+  {
+    id:12,
+    cat:'ilmu', catLabel:'Ilmu Kewangan Islam', catClass:'cat-ilmu', bgClass:'bg-ilmu',
+    icon:'&#9755;',
+    title:'Maqasid Shariah & Hifz al-Mal: Kenapa Islam Suruh Kita Jaga Harta',
+    excerpt:'RM78 bilion harta pusaka orang Islam terbeku di Malaysia. Ini bukan sekadar masalah kewangan — ini kegagalan melaksanakan Hifz al-Mal, salah satu daripada lima kewajipan teras Maqasid Shariah.',
+    author:'Hazrin Hashim', date:'Apr 2026', readTime:'8 min',
+    featured:true, trending:false,
+    body:`
+      <p>Ramai yang tanya kenapa perancangan kewangan itu penting dalam Islam. Jawapannya bukan sekadar "supaya kaya" — jawapannya ada dalam <strong>Maqasid Shariah</strong>.</p>
+      <p>Maqasid Shariah bermaksud <strong>"Tujuan dan Objektif Syariat Islam."</strong> Setiap hukum dalam Islam ada tujuan yang jelas untuk memelihara kesejahteraan manusia di dunia dan akhirat.</p>
+      <div class="modal-highlight"><p>Imam al-Ghazali dalam <em>al-Mustasfa</em>: Maqasid Shariah adalah pemeliharaan lima perkara asas yang menjadi teras kehidupan manusia.</p></div>
+      <h3>5 Elemen Utama Maqasid Shariah</h3>
+      <ul>
+        <li><strong>Hifz al-Din</strong> — Memelihara Agama</li>
+        <li><strong>Hifz al-Nafs</strong> — Memelihara Jiwa</li>
+        <li><strong>Hifz al-Aql</strong> — Memelihara Akal</li>
+        <li><strong>Hifz al-Nasl</strong> — Memelihara Keturunan</li>
+        <li><strong>Hifz al-Mal</strong> — Memelihara Harta ← <em>Fokus artikel ini</em></li>
+      </ul>
+      <h3>Hifz al-Mal: Lebih Dalam Dari Sekadar "Jangan Membazir"</h3>
+      <div class="modal-highlight"><p><strong>Kisah Nyata:</strong> Seorang bapa meninggal dunia secara mengejut. Ada rumah, ASB, simpanan — tapi tiada wasiat. Anak-anaknya tunggu <strong>empat tahun</strong> sebelum boleh menyentuh sebarang harta. Rumah hampir dilelong. Anak angkat tidak dapat apa-apa. Ini bukan kegagalan kewangan — ini kegagalan Hifz al-Mal.</p></div>
+      <h3>4 Dimensi Hifz al-Mal</h3>
+      <ul>
+        <li><strong>Melindungi Harta</strong> — takaful, hibah, wasiat, struktur pemilikan yang sah</li>
+        <li><strong>Mengembangkan Harta</strong> — pelaburan halal bebas riba, duit mesti bekerja</li>
+        <li><strong>Mengagihkan Dengan Adil</strong> — faraid + wasiat pastikan setiap waris dapat hak mereka</li>
+        <li><strong>Mengelak Kerosakan</strong> — Islam larang israf (pembaziran) dan ihtikar (penumpukan)</li>
+      </ul>
+      <h3>Realiti Malaysia</h3>
+      <ul>
+        <li><strong>RM78 bilion</strong> harta pusaka orang Islam terbeku dan belum dituntut</li>
+        <li>Lebih <strong>1 juta kes</strong> tuntutan tanah pusaka masih dalam proses</li>
+        <li>Majoriti orang Islam Malaysia <strong>tiada wasiat</strong></li>
+        <li>Ramai menanggung <strong>hutang faedah tinggi</strong> sedangkan ada instrumen Islam yang boleh membantu</li>
+      </ul>
+      <div class="modal-highlight"><p><strong>Ingat:</strong> Hifz al-Mal bukan tentang jadi kaya. Ia tentang memastikan harta yang Allah titipkan diuruskan, dikembangkan, dilindungi, dan diagihkan dengan bertanggungjawab — untuk manfaat kita, keluarga kita, dan ummah kita.</p></div>
+      <p style="text-align:center;font-style:italic;color:var(--forest2);margin-top:1rem">"Dan janganlah kamu serahkan kepada orang yang belum sempurna akalnya akan harta kamu yang Allah jadikan sebagai pokok penghidupan kamu." — al-Nisa (4:5)</p>
+      <p>Hubungi Hazrin untuk konsultasi percuma tentang perancangan kewangan Islam kau.</p>`
   }
 ];
 
@@ -658,7 +701,7 @@ let visibleCount = 6;
 // ── RENDER ────────────────────────────────────────────────────
 function getFiltered(){
   return ARTICLES.filter(a => {
-    if(a.featured) return false;
+    if(a.placeholder) return false;
     const matchCat = currentCat==='semua' || a.cat===currentCat;
     const matchSearch = !searchQuery ||
       a.title.toLowerCase().includes(searchQuery) ||
