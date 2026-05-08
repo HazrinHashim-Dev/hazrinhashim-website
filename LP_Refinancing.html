@@ -783,6 +783,34 @@ body{font-family:"DM Sans",sans-serif;background:var(--cream);color:var(--ink);o
             <input type="text" name="komitmen" placeholder="cth: 4,500">
           </div>
         </div>
+        <div class="fg-row">
+          <div class="fg">
+            <label>Negeri *</label>
+            <select name="negeri" required>
+              <option value="" disabled selected>Pilih negeri...</option>
+              <option value="Johor">Johor</option>
+              <option value="Kedah">Kedah</option>
+              <option value="Kelantan">Kelantan</option>
+              <option value="Melaka">Melaka</option>
+              <option value="Negeri Sembilan">Negeri Sembilan</option>
+              <option value="Pahang">Pahang</option>
+              <option value="Perak">Perak</option>
+              <option value="Perlis">Perlis</option>
+              <option value="Pulau Pinang">Pulau Pinang</option>
+              <option value="Sabah">Sabah</option>
+              <option value="Sarawak">Sarawak</option>
+              <option value="Selangor">Selangor</option>
+              <option value="Terengganu">Terengganu</option>
+              <option value="Kuala Lumpur">Kuala Lumpur</option>
+              <option value="Labuan">Labuan</option>
+              <option value="Putrajaya">Putrajaya</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label>Bandar / Kawasan</label>
+            <input type="text" name="bandar" placeholder="cth: Subang Jaya, Butterworth">
+          </div>
+        </div>
         <div class="fg">
           <label>Nak cerita sikit? Hazrin baca sendiri sebelum call kau</label>
           <textarea name="cerita" placeholder="Cerita apa yang paling buat kau risau sekarang..."></textarea>
@@ -899,6 +927,8 @@ function handleSubmit(e) {
   var sit    = document.querySelector("#leadForm [name=situasi]").value || "";
   var baki   = document.querySelector("#leadForm [name=baki]").value || "-";
   var kom    = document.querySelector("#leadForm [name=komitmen]").value || "-";
+  var negeri = document.querySelector("#leadForm [name=negeri]").value || "-";
+  var bandar = document.querySelector("#leadForm [name=bandar]").value || "-";
   var cerita = document.querySelector("#leadForm [name=cerita]").value || "";
 
   if (typeof fbq !== "undefined") { fbq("track", "Lead"); }
@@ -909,6 +939,7 @@ function handleSubmit(e) {
   var msg = "Salam Hazrin, saya isi borang refinancing.%0A%0A"
     + "Nama: " + encodeURIComponent(nama) + "%0A"
     + "No. Tel: " + encodeURIComponent(tel) + "%0A"
+    + "Lokasi: " + encodeURIComponent(bandar) + ", " + encodeURIComponent(negeri) + "%0A"
     + "Situasi: " + encodeURIComponent(sit) + "%0A"
     + "Baki loan: RM " + encodeURIComponent(baki) + "%0A"
     + "Komitmen/bln: RM " + encodeURIComponent(kom);
