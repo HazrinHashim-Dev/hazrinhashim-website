@@ -950,9 +950,10 @@ function handleSubmit(e) {
   document.getElementById("leadForm").style.display = "none";
   document.getElementById("formSuccess").style.display = "block";
 
+  // Wait 1.5s for Pixel to flush before redirect
   setTimeout(function() {
     window.location.href = "https://wa.me/60165581540?text=" + msg;
-  }, 800);
+  }, 1500);
 
   return false;
 }
