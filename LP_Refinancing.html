@@ -1147,13 +1147,27 @@ function handleModalSubmit(e) {
     + "Situasi: " + encodeURIComponent(sit);
   if (cerita) msg += "%0A%0ACerita: " + encodeURIComponent(cerita);
 
+  // Send to Google Sheet + Telegram
+  var payload = {
+    nama: nama, telefon: tel, situasi: sit,
+    negeri: negeri, bandar: bandar, cerita: cerita,
+    sumber: "LP_Refinancing"
+  };
+
+  fetch("https://script.google.com/macros/s/AKfycbzkcgGPO_mgEPIJMEAs7VTUpvlmvrHScM0vzCklXphKRUMBuOv1HUFwzrjeGotY1rLxzA/exec", {
+    method: "POST",
+    mode: "no-cors",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(payload)
+  }).catch(function(err) { console.log("Sheet error:", err); });
+
   document.getElementById("modalFormWrap").style.display = "none";
   document.getElementById("modalSuccess").style.display = "block";
 
   setTimeout(function() {
     closeModal();
     window.location.href = "https://wa.me/60165581540?text=" + msg;
-  }, 1200);
+  }, 1500);
 
   return false;
 }
@@ -1307,6 +1321,20 @@ function handleSubmit(e) {
   if (cerita) {
     msg += "%0A%0ACerita: " + encodeURIComponent(cerita);
   }
+
+  // Send to Google Sheet + Telegram
+  var payload2 = {
+    nama: nama, telefon: tel, situasi: sit,
+    negeri: negeri, bandar: bandar, cerita: cerita,
+    sumber: "LP_Refinancing_MainForm"
+  };
+
+  fetch("https://script.google.com/macros/s/AKfycbzkcgGPO_mgEPIJMEAs7VTUpvlmvrHScM0vzCklXphKRUMBuOv1HUFwzrjeGotY1rLxzA/exec", {
+    method: "POST",
+    mode: "no-cors",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(payload2)
+  }).catch(function(err) { console.log("Sheet error:", err); });
 
   document.getElementById("leadForm").style.display = "none";
   document.getElementById("formSuccess").style.display = "block";
