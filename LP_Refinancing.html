@@ -1166,7 +1166,6 @@ function handleModalSubmit(e) {
 
   setTimeout(function() {
     closeModal();
-    window.location.href = "https://wa.me/60165581540?text=" + msg;
   }, 1500);
 
   return false;
@@ -1340,7 +1339,7 @@ function handleSubmit(e) {
   document.getElementById("formSuccess").style.display = "block";
 
   setTimeout(function() {
-    window.location.href = "https://wa.me/60165581540?text=" + msg;
+    // form submitted successfully
   }, 800);
 
   return false;
