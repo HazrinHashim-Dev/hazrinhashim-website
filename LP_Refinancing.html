@@ -70,6 +70,79 @@
 </script>
 
 <!-- FACEBOOK PIXEL — Replace 1527483168711873 with actual ID -->
+<!-- POPUP MODAL FORM -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+  <div class="modal-box" id="modalBox">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+
+    <div id="modalFormWrap">
+      <div class="modal-h">15 Minit Dengan Hazrin.</div>
+      <p class="modal-sub">
+        Isi borang ni — <strong>Hazrin akan WhatsApp dalam 1–2 jam.</strong>
+        Tiada kos. Tiada tekanan.
+      </p>
+
+      <form id="modalForm" onsubmit="return handleModalSubmit(event);" action="javascript:void(0)">
+        <div class="mfg-row">
+          <div class="mfg">
+            <label>Nama *</label>
+            <input type="text" name="m_nama" placeholder="Nama penuh" required>
+          </div>
+          <div class="mfg">
+            <label>No. WhatsApp *</label>
+            <input type="tel" name="m_tel" placeholder="01X-XXX XXXX" required>
+          </div>
+        </div>
+        <div class="mfg">
+          <label>Situasi Kau *</label>
+          <select name="m_sit" required>
+            <option value="" disabled selected>Yang paling kena...</option>
+            <option value="gaji-habis">Gaji masuk, terus habis bayar hutang</option>
+            <option value="ansuran-berat">Ansuran rumah terlalu berat</option>
+            <option value="banyak-komitmen">Banyak komitmen, nak jadi satu je</option>
+            <option value="cash-out">Nak guna ekuiti rumah untuk settle hutang</option>
+            <option value="tukar-islamic">Nak tukar dari konvensional ke Pembiayaan Islamik</option>
+            <option value="tak-sure">Tak sure, nak tanya Hazrin dulu</option>
+          </select>
+        </div>
+        <div class="mfg-row">
+          <div class="mfg">
+            <label>Negeri</label>
+            <select name="m_negeri">
+              <option value="" disabled selected>Pilih...</option>
+              <option>Johor</option><option>Kedah</option><option>Kelantan</option>
+              <option>Melaka</option><option>Negeri Sembilan</option><option>Pahang</option>
+              <option>Perak</option><option>Perlis</option><option>Pulau Pinang</option>
+              <option>Sabah</option><option>Sarawak</option><option>Selangor</option>
+              <option>Terengganu</option><option>Kuala Lumpur</option>
+              <option>Labuan</option><option>Putrajaya</option>
+            </select>
+          </div>
+          <div class="mfg">
+            <label>Bandar</label>
+            <input type="text" name="m_bandar" placeholder="cth: Subang Jaya">
+          </div>
+        </div>
+        <div class="mfg">
+          <label>Cerita sikit (optional)</label>
+          <textarea name="m_cerita" placeholder="Apa yang paling buat kau risau sekarang..."></textarea>
+        </div>
+        <p class="modal-privacy">🔒 Info kau selamat. Tak dikongsi dengan sesiapa.</p>
+        <button type="submit" class="modal-submit">
+          Hantar — Hazrin Will WhatsApp Kau
+        </button>
+      </form>
+    </div>
+
+    <div class="modal-success" id="modalSuccess">
+      <div class="ms-icon">✅</div>
+      <h3>Terima Kasih!</h3>
+      <p>Hazrin akan WhatsApp kau dalam <strong>1–2 jam waktu bekerja.</strong><br>
+      Kalau urgent, dia boleh reach out lebih cepat.</p>
+    </div>
+  </div>
+</div>
+
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '1527483168711873');
@@ -98,7 +171,7 @@ gtag('config', 'AW-CONVERSION_ID');
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:"DM Sans",sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden;line-height:1.7}
+body{font-family:"DM Sans",sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden;line-height:1.7;padding-bottom:70px}
 
 /* NAV */
 .nav{position:fixed;top:0;left:0;right:0;z-index:100;height:52px;
@@ -383,11 +456,11 @@ body{font-family:"DM Sans",sans-serif;background:var(--cream);color:var(--ink);o
 .footer a{color:rgba(255,255,255,.32);text-decoration:none}
 
 /* STICKY */
-.sticky{position:fixed;bottom:22px;right:22px;z-index:200;
-  width:52px;height:52px;border-radius:50%;background:#25D366;color:#fff;
+.sticky{position:fixed;bottom:22px;right:16px;z-index:200;
+  width:48px;height:48px;border-radius:50%;background:#25D366;color:#fff;
   display:flex;align-items:center;justify-content:center;
   box-shadow:0 4px 20px rgba(37,211,102,.5);text-decoration:none;
-  animation:pulse 2.5s ease-in-out infinite}
+  animation:pulse 2.5s ease-in-out infinite;transition:bottom .35s ease}
 @keyframes pulse{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,.5)}50%{box-shadow:0 4px 34px rgba(37,211,102,.8)}}
 
 @media(max-width:880px){
@@ -408,6 +481,67 @@ body{font-family:"DM Sans",sans-serif;background:var(--cream);color:var(--ink);o
   .fcard{padding:1.4rem}
   .tc-grid{grid-template-columns:1fr}
 }
+
+/* ── POPUP MODAL ── */
+.modal-overlay{
+  position:fixed;inset:0;z-index:500;
+  background:rgba(0,0,0,.65);backdrop-filter:blur(4px);
+  display:flex;align-items:flex-end;justify-content:center;
+  opacity:0;pointer-events:none;transition:opacity .3s ease;
+}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal-box{
+  background:#fff;width:100%;max-width:520px;
+  border-radius:24px 24px 0 0;padding:2rem 1.75rem 2.5rem;
+  transform:translateY(100%);transition:transform .35s ease;
+  max-height:90vh;overflow-y:auto;
+}
+.modal-overlay.open .modal-box{transform:translateY(0)}
+.modal-close{
+  position:absolute;top:1rem;right:1rem;
+  width:32px;height:32px;border-radius:50%;
+  background:var(--cream2);border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1rem;color:var(--muted);
+}
+.modal-close:hover{background:var(--border)}
+.modal-h{
+  font-family:"Playfair Display",serif;
+  font-size:1.35rem;font-weight:700;color:var(--ink);
+  margin-bottom:.3rem;
+}
+.modal-sub{font-size:.8rem;color:var(--muted);margin-bottom:1.5rem;line-height:1.6}
+.modal-sub strong{color:var(--forest)}
+.mfg{margin-bottom:.9rem}
+.mfg label{display:block;font-size:.67rem;font-weight:600;
+  color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.35rem}
+.mfg input,.mfg select,.mfg textarea{
+  width:100%;background:var(--cream);
+  border:1.5px solid var(--border);border-radius:10px;
+  padding:10px 13px;font-size:.9rem;color:var(--ink);
+  font-family:"DM Sans",sans-serif;outline:none;transition:border-color .2s;
+}
+.mfg input:focus,.mfg select:focus,.mfg textarea:focus{
+  border-color:var(--forest3);background:#fff}
+.mfg textarea{resize:vertical;min-height:70px}
+.mfg-row{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.modal-privacy{font-size:.68rem;color:var(--muted);margin-bottom:1.1rem;line-height:1.5}
+.modal-submit{
+  width:100%;background:#25D366;color:#fff;border:none;
+  border-radius:50px;padding:14px;font-size:.92rem;font-weight:700;
+  cursor:pointer;font-family:"DM Sans",sans-serif;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  transition:all .25s;
+}
+.modal-submit:hover{background:#1DAE55;transform:translateY(-1px)}
+.modal-success{display:none;text-align:center;padding:1.5rem 0}
+.modal-success .ms-icon{font-size:2.5rem;margin-bottom:.75rem}
+.modal-success h3{font-family:"Playfair Display",serif;font-size:1.3rem;color:var(--ink);margin-bottom:.4rem}
+.modal-success p{font-size:.85rem;color:var(--muted);line-height:1.7}
+@media(min-width:520px){
+  .modal-box{border-radius:24px;margin:auto;margin-bottom:2rem}
+}
+@media(max-width:400px){.mfg-row{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -415,7 +549,7 @@ body{font-family:"DM Sans",sans-serif;background:var(--cream);color:var(--ink);o
 <!-- NAV -->
 <nav class="nav">
   <a href="index.html" class="nav-brand">Hazrin <span>Hashim</span></a>
-  <a href="#form" class="nav-cta">📋 Semak Kelayakan</a>
+  <a href="#form" class="nav-cta" onclick="openModal();return false;">📋 Semak Kelayakan</a>
 </nav>
 
 <!-- HERO -->
@@ -435,7 +569,7 @@ body{font-family:"DM Sans",sans-serif;background:var(--cream);color:var(--ink);o
       Hazrin bantu kau susun semula melalui refinancing rumah dengan
       <strong>Pembiayaan Patuh Syariah</strong> dan penyatuan hutang.
     </p>
-    <a href="#form" class="hero-cta">📋 Ceritakan Kat Hazrin — Percuma</a>
+    <a href="#form" class="hero-cta" onclick="openModal();return false;">📋 Ceritakan Kat Hazrin — Percuma</a>
     <p class="hero-note">Tiada judgment. Tiada upfront fee. Hazrin baca sendiri.</p>
     <div style="display:inline-flex;align-items:center;gap:8px;margin-top:.75rem;
       background:rgba(37,211,102,.12);border:1px solid rgba(37,211,102,.25);
@@ -471,7 +605,7 @@ body{font-family:"DM Sans",sans-serif;background:var(--cream);color:var(--ink);o
 </div>
 
 <!-- LIVE SIMULATED SOCIAL PROOF NOTIFICATION -->
-<div id="liveNotif" style="position:fixed;bottom:80px;left:16px;z-index:198;
+<div id="liveNotif" style="position:fixed;bottom:90px;left:16px;z-index:198;
   max-width:320px;background:#fff;border-radius:14px;
   box-shadow:0 8px 32px rgba(0,0,0,.15);border:1px solid var(--border);
   padding:12px 16px;display:none;align-items:center;gap:12px;
@@ -943,15 +1077,15 @@ body{font-family:"DM Sans",sans-serif;background:var(--cream);color:var(--ink);o
 <div id="stickyBar" style="position:fixed;bottom:0;left:0;right:0;z-index:199;
   background:linear-gradient(135deg,var(--forest),var(--forest2));
   padding:.75rem 1.5rem;display:flex;align-items:center;justify-content:space-between;
-  box-shadow:0 -4px 24px rgba(0,0,0,.25);transform:translateY(100%);
-  transition:transform .35s ease;gap:1rem;flex-wrap:wrap">
+  box-shadow:0 -4px 24px rgba(0,0,0,.25);
+  transition:transform .35s ease;gap:1rem;flex-wrap:wrap;transform:translateY(100%)">
   <div style="flex:1;min-width:0">
     <div style="font-size:.72rem;color:rgba(255,255,255,.6);margin-bottom:1px">Hazrin Hashim · IFP</div>
     <div style="font-size:.88rem;font-weight:700;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
       Semak kelayakan refinancing — percuma
     </div>
   </div>
-  <a href="#form" onclick="stickyClick()" style="display:inline-flex;align-items:center;gap:7px;
+  <a href="#form" onclick="openModal();stickyClick();return false;" style="display:inline-flex;align-items:center;gap:7px;
     background:#25D366;color:#fff;font-size:.85rem;font-weight:700;
     padding:10px 22px;border-radius:50px;text-decoration:none;white-space:nowrap;
     flex-shrink:0;transition:all .2s">
@@ -959,37 +1093,104 @@ body{font-family:"DM Sans",sans-serif;background:var(--cream);color:var(--ink);o
   </a>
 </div>
 
-<a href="#form" class="sticky">
+<a href="#form" class="sticky" onclick="openModal();return false;" id="stickyWa">
   <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.087.536 4.05 1.475 5.764L0 24l6.434-1.427A11.946 11.946 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.68-.52-5.2-1.424l-.373-.22-3.822.848.862-3.734-.242-.385A9.93 9.93 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
 </a>
 
 <script>
 // Sticky bar — show after scroll past hero
-window.addEventListener("scroll", function() {
-  var bar = document.getElementById("stickyBar");
-  if (!bar) return;
-  if (window.scrollY > 500) {
-    bar.style.transform = "translateY(0)";
-  } else {
-    bar.style.transform = "translateY(100%)";
+// ── MODAL FUNCTIONS ──
+function openModal() {
+  document.getElementById("modalOverlay").classList.add("open");
+  document.body.style.overflow = "hidden";
+}
+function closeModal() {
+  document.getElementById("modalOverlay").classList.remove("open");
+  document.body.style.overflow = "";
+}
+function closeModalOutside(e) {
+  if (e.target === document.getElementById("modalOverlay")) closeModal();
+}
+
+// Auto-open if came from FB Ads (UTM detected)
+window.addEventListener("load", function() {
+  var urlParams = new URLSearchParams(window.location.search);
+  var utmSource = urlParams.get("utm_source") || "";
+  var utmMedium = urlParams.get("utm_medium") || "";
+  var fbclid = urlParams.get("fbclid") || "";
+  if (utmSource.indexOf("facebook") !== -1 || utmSource.indexOf("fb") !== -1
+    || utmMedium.indexOf("paid") !== -1 || fbclid !== "") {
+    setTimeout(openModal, 2500);
   }
 });
 
-// Hide sticky bar when form is visible
-function stickyClick() {
-  document.getElementById("stickyBar").style.transform = "translateY(100%)";
+// Modal form submit
+function handleModalSubmit(e) {
+  if (e) { e.preventDefault(); e.stopPropagation(); }
+
+  var nama   = document.querySelector("#modalForm [name=m_nama]").value || "";
+  var tel    = document.querySelector("#modalForm [name=m_tel]").value || "";
+  var sit    = document.querySelector("#modalForm [name=m_sit]").value || "";
+  var negeri = document.querySelector("#modalForm [name=m_negeri]").value || "-";
+  var bandar = document.querySelector("#modalForm [name=m_bandar]").value || "-";
+  var cerita = document.querySelector("#modalForm [name=m_cerita]").value || "";
+
+  if (typeof fbq !== "undefined") { fbq("track", "Lead"); }
+  if (typeof gtag !== "undefined") {
+    gtag("event", "conversion", {"send_to": "AW-CONVERSION_ID/CONVERSION_LABEL"});
+  }
+
+  var msg = "Salam Hazrin, saya isi borang refinancing.%0A%0A"
+    + "Nama: " + encodeURIComponent(nama) + "%0A"
+    + "No. Tel: " + encodeURIComponent(tel) + "%0A"
+    + "Lokasi: " + encodeURIComponent(bandar) + ", " + encodeURIComponent(negeri) + "%0A"
+    + "Situasi: " + encodeURIComponent(sit);
+  if (cerita) msg += "%0A%0ACerita: " + encodeURIComponent(cerita);
+
+  document.getElementById("modalFormWrap").style.display = "none";
+  document.getElementById("modalSuccess").style.display = "block";
+
+  setTimeout(function() {
+    closeModal();
+    window.location.href = "https://wa.me/60165581540?text=" + msg;
+  }, 1200);
+
+  return false;
 }
 
-// Hide sticky when form section in view
-var formObs = new IntersectionObserver(function(entries) {
+function showStickyBar() {
   var bar = document.getElementById("stickyBar");
+  var wa = document.querySelector(".sticky");
   if (!bar) return;
+  bar.style.transform = "translateY(0)";
+  if (wa) wa.style.bottom = "80px";
+}
+function hideStickyBar() {
+  var bar = document.getElementById("stickyBar");
+  var wa = document.querySelector(".sticky");
+  if (!bar) return;
+  bar.style.transform = "translateY(100%)";
+  if (wa) wa.style.bottom = "22px";
+}
+
+window.addEventListener("scroll", function() {
+  if (window.scrollY > 400) {
+    showStickyBar();
+  } else {
+    hideStickyBar();
+  }
+});
+
+function stickyClick() {
+  hideStickyBar();
+}
+
+var formObs = new IntersectionObserver(function(entries) {
   entries.forEach(function(e) {
-    if (e.isIntersecting) {
-      bar.style.transform = "translateY(100%)";
-    }
+    if (e.isIntersecting) { hideStickyBar(); }
+    else if (window.scrollY > 400) { showStickyBar(); }
   });
-}, {threshold: 0.3});
+}, {threshold: 0.2});
 var formEl = document.getElementById("form");
 if (formEl) formObs.observe(formEl);
 
@@ -1035,10 +1236,10 @@ function showNotif(person) {
   tm.textContent = mins + " minit lepas";
 
   el.style.display = "flex";
-  setTimeout(function() { el.style.transform = "translateX(0)"; }, 50);
+  setTimeout(function() { el.style.transform = "translateY(0)"; el.style.opacity = "1"; }, 50);
 
   setTimeout(function() {
-    el.style.transform = "translateX(-120%)";
+    el.style.transform = "translateY(20px)"; el.style.opacity = "0";
     setTimeout(function() {
       el.style.display = "none";
       notifShowing = false;
