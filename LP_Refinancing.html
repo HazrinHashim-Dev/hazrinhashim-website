@@ -76,22 +76,20 @@
     <button class="modal-close" onclick="closeModal()">✕</button>
 
     <div id="modalFormWrap">
-      <div class="modal-h">15 Minit Dengan Hazrin.</div>
+      <div class="modal-h">Semak Kelayakan Percuma</div>
       <p class="modal-sub">
-        Isi borang ni — <strong>Hazrin akan WhatsApp dalam 1–2 jam.</strong>
+        30 saat je — <strong>Hazrin akan WhatsApp kau dalam 1–2 jam.</strong>
         Tiada kos. Tiada tekanan.
       </p>
 
       <form id="modalForm" onsubmit="return handleModalSubmit(event);" action="javascript:void(0)">
-        <div class="mfg-row">
-          <div class="mfg">
-            <label>Nama *</label>
-            <input type="text" name="m_nama" placeholder="Nama penuh" required>
-          </div>
-          <div class="mfg">
-            <label>No. WhatsApp *</label>
-            <input type="tel" name="m_tel" placeholder="01X-XXX XXXX" required>
-          </div>
+        <div class="mfg">
+          <label>Nama *</label>
+          <input type="text" name="m_nama" placeholder="Nama penuh" required>
+        </div>
+        <div class="mfg">
+          <label>No. WhatsApp *</label>
+          <input type="tel" name="m_tel" placeholder="01X-XXX XXXX" required>
         </div>
         <div class="mfg">
           <label>Situasi Kau *</label>
@@ -105,31 +103,9 @@
             <option value="tak-sure">Tak sure, nak tanya Hazrin dulu</option>
           </select>
         </div>
-        <div class="mfg-row">
-          <div class="mfg">
-            <label>Negeri</label>
-            <select name="m_negeri">
-              <option value="" disabled selected>Pilih...</option>
-              <option>Johor</option><option>Kedah</option><option>Kelantan</option>
-              <option>Melaka</option><option>Negeri Sembilan</option><option>Pahang</option>
-              <option>Perak</option><option>Perlis</option><option>Pulau Pinang</option>
-              <option>Sabah</option><option>Sarawak</option><option>Selangor</option>
-              <option>Terengganu</option><option>Kuala Lumpur</option>
-              <option>Labuan</option><option>Putrajaya</option>
-            </select>
-          </div>
-          <div class="mfg">
-            <label>Bandar</label>
-            <input type="text" name="m_bandar" placeholder="cth: Subang Jaya">
-          </div>
-        </div>
-        <div class="mfg">
-          <label>Cerita sikit (optional)</label>
-          <textarea name="m_cerita" placeholder="Apa yang paling buat kau risau sekarang..."></textarea>
-        </div>
         <p class="modal-privacy">🔒 Info kau selamat. Tak dikongsi dengan sesiapa.</p>
         <button type="submit" class="modal-submit">
-          Hantar — Hazrin Will WhatsApp Kau
+          Semak Kelayakan — Percuma ✓
         </button>
       </form>
     </div>
@@ -935,15 +911,13 @@ body{font-family:"DM Sans",sans-serif;background:var(--cream);color:var(--ink);o
     </p>
     <div class="fcard">
       <form id="leadForm" onsubmit="return handleSubmit(event);" action="javascript:void(0)">
-        <div class="fg-row">
-          <div class="fg">
-            <label>Nama Kau *</label>
-            <input type="text" name="nama" placeholder="Nama penuh" required>
-          </div>
-          <div class="fg">
-            <label>No. WhatsApp *</label>
-            <input type="tel" name="telefon" placeholder="01X-XXX XXXX" required>
-          </div>
+        <div class="fg">
+          <label>Nama Kau *</label>
+          <input type="text" name="nama" placeholder="Nama penuh" required>
+        </div>
+        <div class="fg">
+          <label>No. WhatsApp *</label>
+          <input type="tel" name="telefon" placeholder="01X-XXX XXXX" required>
         </div>
         <div class="fg">
           <label>Situasi Kau Sekarang *</label>
@@ -957,42 +931,9 @@ body{font-family:"DM Sans",sans-serif;background:var(--cream);color:var(--ink);o
             <option value="tak-sure">Tak sure lagi, nak tanya Hazrin dulu</option>
           </select>
         </div>
-
-        <div class="fg-row">
-          <div class="fg">
-            <label>Negeri *</label>
-            <select name="negeri" required>
-              <option value="" disabled selected>Pilih negeri...</option>
-              <option value="Johor">Johor</option>
-              <option value="Kedah">Kedah</option>
-              <option value="Kelantan">Kelantan</option>
-              <option value="Melaka">Melaka</option>
-              <option value="Negeri Sembilan">Negeri Sembilan</option>
-              <option value="Pahang">Pahang</option>
-              <option value="Perak">Perak</option>
-              <option value="Perlis">Perlis</option>
-              <option value="Pulau Pinang">Pulau Pinang</option>
-              <option value="Sabah">Sabah</option>
-              <option value="Sarawak">Sarawak</option>
-              <option value="Selangor">Selangor</option>
-              <option value="Terengganu">Terengganu</option>
-              <option value="Kuala Lumpur">Kuala Lumpur</option>
-              <option value="Labuan">Labuan</option>
-              <option value="Putrajaya">Putrajaya</option>
-            </select>
-          </div>
-          <div class="fg">
-            <label>Bandar / Kawasan</label>
-            <input type="text" name="bandar" placeholder="cth: Subang Jaya, Butterworth">
-          </div>
-        </div>
-        <div class="fg">
-          <label>Nak cerita sikit? Hazrin baca sendiri sebelum call kau</label>
-          <textarea name="cerita" placeholder="Cerita apa yang paling buat kau risau sekarang..."></textarea>
-        </div>
         <p class="fprivacy">🔒 Info kau selamat. Tak dikongsi dengan sesiapa.</p>
         <button type="submit" class="btn-submit">
-          Hantar — Hazrin Will WhatsApp Kau
+          Semak Kelayakan — Percuma ✓
         </button>
       </form>
       <div class="form-success" id="formSuccess">
@@ -1131,35 +1072,24 @@ function handleModalSubmit(e) {
   var nama   = document.querySelector("#modalForm [name=m_nama]").value || "";
   var tel    = document.querySelector("#modalForm [name=m_tel]").value || "";
   var sit    = document.querySelector("#modalForm [name=m_sit]").value || "";
-  var negeri = document.querySelector("#modalForm [name=m_negeri]").value || "-";
-  var bandar = document.querySelector("#modalForm [name=m_bandar]").value || "-";
-  var cerita = document.querySelector("#modalForm [name=m_cerita]").value || "";
 
   if (typeof fbq !== "undefined") { fbq("track", "Lead"); }
   if (typeof gtag !== "undefined") {
     gtag("event", "conversion", {"send_to": "AW-CONVERSION_ID/CONVERSION_LABEL"});
   }
 
-  var msg = "Salam Hazrin, saya isi borang refinancing.%0A%0A"
-    + "Nama: " + encodeURIComponent(nama) + "%0A"
-    + "No. Tel: " + encodeURIComponent(tel) + "%0A"
-    + "Lokasi: " + encodeURIComponent(bandar) + ", " + encodeURIComponent(negeri) + "%0A"
-    + "Situasi: " + encodeURIComponent(sit);
-  if (cerita) msg += "%0A%0ACerita: " + encodeURIComponent(cerita);
-
-  // Send to Google Sheet + Telegram
-  var payload = {
-    nama: nama, telefon: tel, situasi: sit,
-    negeri: negeri, bandar: bandar, cerita: cerita,
-    sumber: "LP_Refinancing"
-  };
-
   fetch("https://script.google.com/macros/s/AKfycbzkcgGPO_mgEPIJMEAs7VTUpvlmvrHScM0vzCklXphKRUMBuOv1HUFwzrjeGotY1rLxzA/exec", {
     method: "POST",
-    mode: "no-cors",
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify(payload)
-  }).catch(function(err) { console.log("Sheet error:", err); });
+    body: JSON.stringify({
+      nama: nama,
+      telefon: tel.replace(/\D/g, ""),
+      situasi: sit,
+      negeri: "-",
+      bandar: "-",
+      cerita: "",
+      sumber: "LP_Refinancing"
+    })
+  }).catch(function(){});
 
   document.getElementById("modalFormWrap").style.display = "none";
   document.getElementById("modalSuccess").style.display = "block";
@@ -1303,44 +1233,27 @@ function handleSubmit(e) {
   var nama   = document.querySelector("#leadForm [name=nama]").value || "";
   var tel    = document.querySelector("#leadForm [name=telefon]").value || "";
   var sit    = document.querySelector("#leadForm [name=situasi]").value || "";
-  var negeri = document.querySelector("#leadForm [name=negeri]").value || "-";
-  var bandar = document.querySelector("#leadForm [name=bandar]").value || "-";
-  var cerita = document.querySelector("#leadForm [name=cerita]").value || "";
 
   if (typeof fbq !== "undefined") { fbq("track", "Lead"); }
   if (typeof gtag !== "undefined") {
     gtag("event", "conversion", {"send_to": "AW-CONVERSION_ID/CONVERSION_LABEL"});
   }
 
-  var msg = "Salam Hazrin, saya isi borang refinancing.%0A%0A"
-    + "Nama: " + encodeURIComponent(nama) + "%0A"
-    + "No. Tel: " + encodeURIComponent(tel) + "%0A"
-    + "Lokasi: " + encodeURIComponent(bandar) + ", " + encodeURIComponent(negeri) + "%0A"
-    + "Situasi: " + encodeURIComponent(sit);
-  if (cerita) {
-    msg += "%0A%0ACerita: " + encodeURIComponent(cerita);
-  }
-
-  // Send to Google Sheet + Telegram
-  var payload2 = {
-    nama: nama, telefon: tel, situasi: sit,
-    negeri: negeri, bandar: bandar, cerita: cerita,
-    sumber: "LP_Refinancing_MainForm"
-  };
-
   fetch("https://script.google.com/macros/s/AKfycbzkcgGPO_mgEPIJMEAs7VTUpvlmvrHScM0vzCklXphKRUMBuOv1HUFwzrjeGotY1rLxzA/exec", {
     method: "POST",
-    mode: "no-cors",
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify(payload2)
-  }).catch(function(err) { console.log("Sheet error:", err); });
+    body: JSON.stringify({
+      nama: nama,
+      telefon: tel.replace(/\D/g, ""),
+      situasi: sit,
+      negeri: "-",
+      bandar: "-",
+      cerita: "",
+      sumber: "LP_Refinancing"
+    })
+  }).catch(function(){});
 
   document.getElementById("leadForm").style.display = "none";
   document.getElementById("formSuccess").style.display = "block";
-
-  setTimeout(function() {
-    // form submitted successfully
-  }, 800);
 
   return false;
 }
