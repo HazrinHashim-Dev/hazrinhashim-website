@@ -12,70 +12,68 @@ body{background:var(--bg);color:var(--t);font-family:'DM Sans',sans-serif;min-he
 body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(var(--b) 1px,transparent 1px),linear-gradient(90deg,var(--b) 1px,transparent 1px);background-size:40px 40px;opacity:.2;z-index:0;pointer-events:none;}
 .z{position:relative;z-index:1;}
 .container{max-width:1080px;margin:0 auto;padding:0 18px;}
-
-/* LOGIN SCREEN */
-#login-screen{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:50;}
+#login-screen{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:50;overflow-y:auto;}
 #login-screen::before{content:'';position:fixed;inset:0;background-image:linear-gradient(var(--b) 1px,transparent 1px),linear-gradient(90deg,var(--b) 1px,transparent 1px);background-size:40px 40px;opacity:.2;}
-.login-box{background:var(--s);border:1px solid var(--b);border-radius:20px;padding:36px 32px;width:90%;max-width:400px;position:relative;z-index:1;}
-.login-box h1{font-family:'Syne',sans-serif;font-size:28px;font-weight:800;background:linear-gradient(135deg,var(--a),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:6px;}
-.login-box p{color:var(--tm);font-size:13px;margin-bottom:28px;}
-.login-box label{font-size:11px;font-family:'DM Mono',monospace;color:var(--tm);text-transform:uppercase;letter-spacing:.5px;display:block;margin-bottom:5px;}
-.login-box input{width:100%;background:var(--s2);border:1px solid var(--b);border-radius:8px;color:var(--t);font-family:'DM Sans',sans-serif;font-size:14px;padding:11px 14px;outline:none;margin-bottom:14px;}
-.login-box input:focus{border-color:var(--a);}
-.login-error{color:var(--r);font-size:12px;margin-top:-8px;margin-bottom:10px;display:none;}
-
-/* HEADER */
-header{padding:22px 0 0;border-bottom:1px solid var(--b);margin-bottom:26px;}
-.header-inner{display:flex;align-items:flex-end;justify-content:space-between;padding-bottom:14px;gap:12px;flex-wrap:wrap;}
-.logo h1{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;background:linear-gradient(135deg,var(--a),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.logo p{color:var(--tm);font-size:11px;font-family:'DM Mono',monospace;margin-top:2px;}
-.agent-pill{background:var(--s2);border:1px solid var(--b);border-radius:20px;padding:6px 14px;font-size:12px;display:flex;align-items:center;gap:8px;}
-.agent-pill span{color:var(--tm);}
-.agent-pill strong{color:var(--g);}
+.login-box{background:var(--s);border:1px solid var(--b);border-radius:20px;padding:32px 28px;width:90%;max-width:420px;position:relative;z-index:1;margin:20px 0;}
+.login-box h1{font-family:'Syne',sans-serif;font-size:26px;font-weight:800;background:linear-gradient(135deg,var(--a),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px;}
+.login-box .sub{color:var(--tm);font-size:12px;margin-bottom:22px;}
+.login-tabs{display:flex;gap:0;margin-bottom:20px;border-bottom:1px solid var(--b);}
+.ltab{flex:1;padding:9px;background:none;border:none;border-bottom:2px solid transparent;color:var(--tm);font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:all .2s;position:relative;bottom:-1px;}
+.ltab.active{color:var(--a);border-bottom-color:var(--a);}
+.login-panel{display:none;}.login-panel.active{display:block;}
+.fl{display:flex;flex-direction:column;gap:4px;margin-bottom:12px;}
+.fl label{font-size:10px;font-family:'DM Mono',monospace;color:var(--tm);text-transform:uppercase;letter-spacing:.5px;}
+.fl input{background:var(--s2);border:1px solid var(--b);border-radius:7px;color:var(--t);font-family:'DM Sans',sans-serif;font-size:13px;padding:9px 12px;outline:none;}
+.fl input:focus{border-color:var(--a);}
+.lerr{color:var(--r);font-size:12px;margin-bottom:10px;display:none;padding:8px 12px;background:rgba(255,85,85,.1);border-radius:6px;border:1px solid rgba(255,85,85,.2);}
+.lsuc{color:var(--g);font-size:12px;margin-bottom:10px;display:none;padding:8px 12px;background:rgba(62,207,142,.1);border-radius:6px;border:1px solid rgba(62,207,142,.2);}
+.linfo{color:var(--y);font-size:12px;margin-bottom:12px;display:none;padding:8px 12px;background:rgba(245,197,66,.1);border-radius:6px;border:1px solid rgba(245,197,66,.2);}
+header{padding:20px 0 0;border-bottom:1px solid var(--b);margin-bottom:24px;}
+.header-inner{display:flex;align-items:flex-end;justify-content:space-between;padding-bottom:12px;gap:12px;flex-wrap:wrap;}
+.logo h1{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;background:linear-gradient(135deg,var(--a),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.logo p{color:var(--tm);font-size:10px;font-family:'DM Mono',monospace;margin-top:2px;}
+.agent-pill{background:var(--s2);border:1px solid var(--b);border-radius:20px;padding:5px 12px;font-size:12px;display:flex;align-items:center;gap:8px;}
+.agent-pill span{color:var(--tm);}.agent-pill strong{color:var(--g);}
 .agent-pill button{background:none;border:1px solid var(--b);border-radius:4px;color:var(--tm);font-size:10px;padding:2px 7px;cursor:pointer;font-family:'DM Mono',monospace;}
 .agent-pill button:hover{border-color:var(--r);color:var(--r);}
-.header-stats{display:flex;gap:8px;flex-wrap:wrap;}
-.stat-chip{background:var(--s2);border:1px solid var(--b);border-radius:7px;padding:6px 12px;text-align:center;}
-.stat-chip .num{font-family:'Syne',sans-serif;font-size:17px;font-weight:800;color:var(--a);}
-.stat-chip .lbl{font-size:9px;color:var(--tm);font-family:'DM Mono',monospace;}
+.hstats{display:flex;gap:7px;flex-wrap:wrap;}
+.sc{background:var(--s2);border:1px solid var(--b);border-radius:7px;padding:5px 11px;text-align:center;}
+.sc .num{font-family:'Syne',sans-serif;font-size:16px;font-weight:800;color:var(--a);}
+.sc .lbl{font-size:9px;color:var(--tm);font-family:'DM Mono',monospace;}
 .nav-tabs{display:flex;overflow-x:auto;}
-.tab-btn{padding:10px 15px;background:none;border:none;border-bottom:2px solid transparent;color:var(--tm);font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;white-space:nowrap;transition:all .2s;position:relative;bottom:-1px;}
-.tab-btn:hover{color:var(--t);}
-.tab-btn.active{color:var(--a);border-bottom-color:var(--a);}
-
-/* MAIN */
-.main{padding:22px 0 60px;display:flex;flex-direction:column;gap:16px;}
-.tab-content{display:none;flex-direction:column;gap:16px;}
-.tab-content.active{display:flex;}
+.tab-btn{padding:10px 14px;background:none;border:none;border-bottom:2px solid transparent;color:var(--tm);font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;white-space:nowrap;transition:all .2s;position:relative;bottom:-1px;}
+.tab-btn:hover{color:var(--t);}.tab-btn.active{color:var(--a);border-bottom-color:var(--a);}
+.main{padding:20px 0 60px;display:flex;flex-direction:column;gap:15px;}
+.tab-content{display:none;flex-direction:column;gap:15px;}.tab-content.active{display:flex;}
 .panel{background:var(--s);border:1px solid var(--b);border-radius:12px;overflow:hidden;}
-.ph{padding:12px 18px;border-bottom:1px solid var(--b);display:flex;align-items:center;justify-content:space-between;gap:10px;}
+.ph{padding:12px 16px;border-bottom:1px solid var(--b);display:flex;align-items:center;justify-content:space-between;gap:10px;}
 .pt{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;}
-.pb{padding:18px;}
-.fg{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-.fg.g3{grid-template-columns:1fr 1fr 1fr;}
+.pb{padding:16px;}
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:11px;}
 .fg.g1{grid-template-columns:1fr;}
 .fgr{display:flex;flex-direction:column;gap:4px;}
 .fgr label{font-size:10px;font-family:'DM Mono',monospace;color:var(--tm);text-transform:uppercase;letter-spacing:.5px;}
 input,select,textarea{background:var(--s2);border:1px solid var(--b);border-radius:7px;color:var(--t);font-family:'DM Sans',sans-serif;font-size:13px;padding:8px 11px;outline:none;transition:border-color .2s;width:100%;-webkit-appearance:none;}
 input:focus,select:focus,textarea:focus{border-color:var(--a);}
 select option{background:var(--s2);}
-.state-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(105px,1fr));gap:6px;}
-.sb{padding:6px 9px;background:var(--s2);border:1px solid var(--b);border-radius:7px;color:var(--tm);font-size:12px;cursor:pointer;transition:all .15s;text-align:center;font-family:'DM Sans',sans-serif;}
-.sb:hover{border-color:var(--a);color:var(--t);}
-.sb.sel{background:rgba(124,111,247,.15);border-color:var(--a);color:var(--a);font-weight:500;}
-.slider-wrap{display:flex;align-items:center;gap:12px;}
+textarea{resize:vertical;line-height:1.5;}
+.state-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(102px,1fr));gap:5px;}
+.sb{padding:6px 8px;background:var(--s2);border:1px solid var(--b);border-radius:6px;color:var(--tm);font-size:12px;cursor:pointer;transition:all .15s;text-align:center;font-family:'DM Sans',sans-serif;}
+.sb:hover{border-color:var(--a);color:var(--t);}.sb.sel{background:rgba(124,111,247,.15);border-color:var(--a);color:var(--a);font-weight:500;}
+.slider-wrap{display:flex;align-items:center;gap:11px;}
 input[type="range"]{flex:1;height:4px;-webkit-appearance:none;background:var(--b);border-radius:4px;border:none;padding:0;}
 input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;background:var(--a);cursor:pointer;box-shadow:0 0 0 4px rgba(124,111,247,.2);}
-.sv{font-family:'Syne',sans-serif;font-size:24px;font-weight:800;color:var(--a);min-width:32px;text-align:right;}
-.btn{padding:9px 18px;border-radius:8px;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;cursor:pointer;border:none;transition:all .2s;}
+.sv{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:var(--a);min-width:30px;text-align:right;}
+.btn{padding:9px 17px;border-radius:8px;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;cursor:pointer;border:none;transition:all .2s;}
 .btn-p{background:var(--a);color:#fff;}
-.btn-p:hover{background:#9088ff;transform:translateY(-1px);box-shadow:0 6px 16px rgba(124,111,247,.3);}
+.btn-p:hover{background:#9088ff;transform:translateY(-1px);box-shadow:0 5px 14px rgba(124,111,247,.3);}
 .btn-p:disabled{background:var(--b);color:var(--tm);cursor:not-allowed;transform:none;box-shadow:none;}
 .btn-o{background:transparent;border:1px solid var(--b);color:var(--tm);}
 .btn-o:hover{border-color:var(--a);color:var(--a);}
-.btn-g{background:var(--g);color:#0a0a0f;}
-.btn-sm{padding:5px 11px;font-size:11px;border-radius:6px;}
-.btn-row{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap;}
+.btn-g{background:var(--g);color:#0a0a0f;font-weight:700;}
+.btn-r{background:var(--r);color:#fff;}
+.btn-sm{padding:5px 10px;font-size:11px;border-radius:6px;}
+.btn-row{display:flex;gap:7px;justify-content:flex-end;flex-wrap:wrap;}
 .badge{display:inline-flex;align-items:center;padding:2px 8px;border-radius:20px;font-size:10px;font-family:'DM Mono',monospace;}
 .bg{background:rgba(62,207,142,.15);color:var(--g);}
 .by{background:rgba(245,197,66,.15);color:var(--y);}
@@ -90,71 +88,86 @@ tbody td{padding:9px 10px;border-bottom:1px solid var(--b);vertical-align:middle
 tbody tr:hover{background:rgba(124,111,247,.04);}
 tbody tr:last-child td{border-bottom:none;}
 .pc{font-family:'DM Mono',monospace;color:var(--g);font-size:11px;}
-.nc{font-weight:500;}
-.notif{position:fixed;bottom:16px;right:16px;padding:10px 16px;border-radius:9px;font-size:13px;font-weight:500;z-index:999;transform:translateY(70px);opacity:0;transition:all .3s cubic-bezier(.34,1.56,.64,1);max-width:280px;pointer-events:none;}
+.notif{position:fixed;bottom:16px;right:16px;padding:10px 15px;border-radius:8px;font-size:13px;font-weight:500;z-index:999;transform:translateY(70px);opacity:0;transition:all .3s cubic-bezier(.34,1.56,.64,1);max-width:280px;pointer-events:none;}
 .notif.show{transform:translateY(0);opacity:1;}
-.ns{background:var(--g);color:#0a0a0f;}
-.ne{background:var(--r);color:#fff;}
-.ni{background:var(--a);color:#fff;}
+.ns{background:var(--g);color:#0a0a0f;}.ne{background:var(--r);color:#fff;}.ni{background:var(--a);color:#fff;}
 .loading{display:flex;align-items:center;gap:8px;color:var(--tm);font-size:13px;padding:32px;justify-content:center;}
 .spin{width:14px;height:14px;border:2px solid var(--b);border-top-color:var(--a);border-radius:50%;animation:spin .7s linear infinite;flex-shrink:0;}
 @keyframes spin{to{transform:rotate(360deg);}}
-.empty{text-align:center;padding:40px 16px;color:var(--tm);}
-.empty .ic{font-size:30px;margin-bottom:8px;}
-.empty p{font-size:13px;}
+.empty{text-align:center;padding:36px 16px;color:var(--tm);}
+.empty .ic{font-size:28px;margin-bottom:8px;}.empty p{font-size:13px;}
 .cdot{width:7px;height:7px;border-radius:50%;display:inline-block;margin-right:4px;}
-.cok{background:var(--g);box-shadow:0 0 5px var(--g);}
-.cer{background:var(--r);}
+.cok{background:var(--g);box-shadow:0 0 5px var(--g);}.cer{background:var(--r);}
 .cld{background:var(--y);animation:pulse 1s infinite;}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
 #res-section{display:none;}
 code{background:var(--s2);padding:2px 6px;border-radius:4px;font-family:'DM Mono',monospace;font-size:11px;}
 .div{height:1px;background:var(--b);margin:10px 0;}
-.info-row{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px;}
-.info-chip{background:var(--s2);border:1px solid var(--b);border-radius:6px;padding:3px 9px;font-size:11px;color:var(--tm);}
-.info-chip span{color:var(--t);font-weight:500;}
-
-/* Lead card in result */
-.lead-card{background:var(--s2);border:1px solid var(--b);border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;}
-.lead-card-header{display:flex;align-items:center;justify-content:space-between;gap:8px;}
+.lead-card{background:var(--s2);border:1px solid var(--b);border-radius:9px;padding:13px 14px;display:flex;flex-direction:column;gap:7px;}
+.lead-card-header{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;}
 .lead-num{font-family:'DM Mono',monospace;font-size:11px;color:var(--tm);}
 .lead-name{font-weight:600;font-size:14px;}
 .lead-phone{font-family:'DM Mono',monospace;color:var(--g);font-size:13px;font-weight:500;}
-.lead-details{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:6px;}
-.lead-detail{font-size:12px;}
-.lead-detail .lbl{color:var(--tm);font-size:10px;font-family:'DM Mono',monospace;text-transform:uppercase;}
-.lead-detail .val{color:var(--t);}
-
-/* Call history */
-.call-history{display:flex;gap:6px;flex-wrap:wrap;}
-.call-chip{padding:4px 10px;border-radius:6px;font-size:11px;font-family:'DM Mono',monospace;border:1px solid var(--b);}
-
-@media(max-width:600px){.fg{grid-template-columns:1fr;}.header-inner{flex-direction:column;align-items:flex-start;}.state-grid{grid-template-columns:repeat(auto-fill,minmax(90px,1fr));}.fg.g3{grid-template-columns:1fr 1fr;}}
+.lead-details{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:6px;}
+.ld .lbl{color:var(--tm);font-size:10px;font-family:'DM Mono',monospace;text-transform:uppercase;}
+.ld .val{color:var(--t);font-size:13px;}
+.pending-card{background:var(--s2);border:1px solid rgba(245,197,66,.3);border-radius:9px;padding:13px 14px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+.pending-info .name{font-weight:600;font-size:13px;}
+.pending-info .meta{font-size:11px;color:var(--tm);font-family:'DM Mono',monospace;margin-top:3px;}
+@media(max-width:600px){.fg{grid-template-columns:1fr;}.header-inner{flex-direction:column;align-items:flex-start;}.state-grid{grid-template-columns:repeat(auto-fill,minmax(88px,1fr));}}
 </style>
 </head>
 <body>
 
-<!-- LOGIN SCREEN -->
+<!-- LOGIN -->
 <div id="login-screen">
   <div class="login-box">
     <h1>⚡ LeadFlow</h1>
-    <p>Masuk kod agent anda untuk akses sistem</p>
-    <label>Kod Agent</label>
-    <input type="text" id="login-code" placeholder="cth: AGT-001" onkeydown="if(event.key==='Enter')doLogin()" />
-    <div class="login-error" id="login-error"></div>
-    <button class="btn btn-p" style="width:100%;padding:11px;" id="login-btn" onclick="doLogin()">Masuk →</button>
-    <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--b);">
-      <button class="btn btn-o btn-sm" onclick="showAdminLogin()" style="width:100%;">⚙️ Admin Login</button>
+    <p class="sub">Platform Pengurusan Leads</p>
+
+    <div class="login-tabs">
+      <button class="ltab active" onclick="switchLTab('login',this)">Login</button>
+      <button class="ltab" onclick="switchLTab('register',this)">Daftar</button>
+      <button class="ltab" onclick="switchLTab('admin',this)">Admin</button>
     </div>
-    <div id="admin-login-section" style="display:none;margin-top:12px;">
-      <label>Admin Password</label>
-      <input type="password" id="admin-pw" placeholder="••••••••" onkeydown="if(event.key==='Enter')doAdminLogin()" />
-      <button class="btn btn-p btn-sm" style="width:100%;margin-top:8px;" onclick="doAdminLogin()">Masuk sebagai Admin</button>
+
+    <!-- LOGIN PANEL -->
+    <div class="login-panel active" id="lp-login">
+      <div id="lerr-login" class="lerr"></div>
+      <div id="linfo-login" class="linfo" style="display:block;">First time? Pergi tab Daftar untuk buat akaun.</div>
+      <div class="fl"><label>Kod Agent</label><input type="text" id="login-code" placeholder="cth: MUHA7890" onkeydown="if(event.key==='Enter')doLogin()"/></div>
+      <button class="btn btn-p" style="width:100%;padding:11px;" onclick="doLogin()">Masuk →</button>
+    </div>
+
+    <!-- REGISTER PANEL -->
+    <div class="login-panel" id="lp-register">
+      <div id="lerr-reg" class="lerr"></div>
+      <div id="lsuc-reg" class="lsuc"></div>
+      <div class="fg">
+        <div class="fl" style="grid-column:1/-1"><label>Nama Penuh</label><input type="text" id="reg-name" placeholder="Nama penuh seperti IC"/></div>
+        <div class="fl"><label>No. Phone</label><input type="text" id="reg-phone" placeholder="0123456789"/></div>
+        <div class="fl"><label>Email</label><input type="email" id="reg-email" placeholder="email@example.com"/></div>
+        <div class="fl" style="grid-column:1/-1"><label>No. IC (tanpa dash)</label><input type="text" id="reg-ic" placeholder="901234567890" maxlength="12"/></div>
+      </div>
+      <div style="background:rgba(124,111,247,.08);border:1px solid rgba(124,111,247,.2);border-radius:7px;padding:10px 12px;margin-bottom:12px;font-size:12px;color:var(--tm);">
+        Kod agent anda akan dijana automatik:<br>
+        <span style="color:var(--a);font-family:'DM Mono',monospace;font-size:13px;" id="code-preview">XXXX0000</span>
+        <span style="margin-left:6px;">(4 huruf nama + 4 digit last IC)</span>
+      </div>
+      <button class="btn btn-p" style="width:100%;padding:11px;" onclick="doRegister()">Hantar Pendaftaran</button>
+      <p style="text-align:center;font-size:11px;color:var(--tm);margin-top:10px;">Pendaftaran perlu kelulusan admin sebelum boleh login</p>
+    </div>
+
+    <!-- ADMIN PANEL -->
+    <div class="login-panel" id="lp-admin">
+      <div id="lerr-admin" class="lerr"></div>
+      <div class="fl"><label>Admin Password</label><input type="password" id="admin-pw" placeholder="••••••••" onkeydown="if(event.key==='Enter')doAdminLogin()"/></div>
+      <button class="btn btn-p" style="width:100%;padding:11px;" onclick="doAdminLogin()">Masuk sebagai Admin</button>
     </div>
   </div>
 </div>
 
-<!-- MAIN APP -->
+<!-- APP -->
 <div id="app" style="display:none;">
 <header class="z">
   <div class="container">
@@ -163,16 +176,16 @@ code{background:var(--s2);padding:2px 6px;border-radius:4px;font-family:'DM Mono
         <h1>⚡ LeadFlow</h1>
         <p><span id="conn-status"><span class="cdot cld"></span>Connecting...</span></p>
       </div>
-      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
         <div class="agent-pill">
           <span>Agent:</span><strong id="agent-display">—</strong>
           <button onclick="logout()">Keluar</button>
         </div>
-        <div class="header-stats">
-          <div class="stat-chip"><div class="num" id="st-total">—</div><div class="lbl">Total</div></div>
-          <div class="stat-chip"><div class="num" id="st-avail" style="color:var(--g)">—</div><div class="lbl">Available</div></div>
-          <div class="stat-chip"><div class="num" id="st-assign" style="color:var(--a2)">—</div><div class="lbl">Assigned</div></div>
-          <div class="stat-chip"><div class="num" id="st-won" style="color:var(--g)">—</div><div class="lbl">Won</div></div>
+        <div class="hstats">
+          <div class="sc"><div class="num" id="st-total">—</div><div class="lbl">Total</div></div>
+          <div class="sc"><div class="num" id="st-avail" style="color:var(--g)">—</div><div class="lbl">Available</div></div>
+          <div class="sc"><div class="num" id="st-assign" style="color:var(--a2)">—</div><div class="lbl">Assigned</div></div>
+          <div class="sc"><div class="num" id="st-won" style="color:var(--g)">—</div><div class="lbl">Won</div></div>
         </div>
       </div>
     </div>
@@ -180,7 +193,7 @@ code{background:var(--s2);padding:2px 6px;border-radius:4px;font-family:'DM Mono
       <button class="tab-btn active" onclick="switchTab('request',this)">📋 Request Leads</button>
       <button class="tab-btn" onclick="switchTab('my-leads',this)">📞 My Leads</button>
       <button class="tab-btn" onclick="switchTab('status',this)">📊 Update Status</button>
-      <button class="tab-btn admin-only" onclick="switchTab('admin',this)" style="display:none;">⚙️ Admin</button>
+      <button class="tab-btn" id="admin-tab" style="display:none;" onclick="switchTab('admin',this)">⚙️ Admin</button>
     </div>
   </div>
 </header>
@@ -203,11 +216,11 @@ code{background:var(--s2);padding:2px 6px;border-radius:4px;font-family:'DM Mono
         <input type="range" id="lc" min="1" max="30" value="10" oninput="document.getElementById('sv').textContent=this.value"/>
         <div class="sv" id="sv">10</div>
       </div>
-      <div style="display:flex;justify-content:space-between;margin-top:8px;font-size:11px;color:var(--tm);font-family:'DM Mono',monospace;"><span>Min: 1</span><span>Max: 30 per request</span></div>
+      <div style="display:flex;justify-content:space-between;margin-top:7px;font-size:11px;color:var(--tm);font-family:'DM Mono',monospace;"><span>Min: 1</span><span>Max: 30 per request</span></div>
     </div>
   </div>
   <div class="panel">
-    <div class="ph"><span class="pt">Filter Tambahan</span><span class="badge bo">Optional</span></div>
+    <div class="ph"><span class="pt">Filter</span><span class="badge bo">Optional</span></div>
     <div class="pb">
       <div class="fg">
         <div class="fgr"><label>Kempen</label><select id="camp-sel"><option value="">— Semua kempen —</option></select></div>
@@ -219,19 +232,17 @@ code{background:var(--s2);padding:2px 6px;border-radius:4px;font-family:'DM Mono
     <button class="btn btn-o" onclick="resetForm()">Reset</button>
     <button class="btn btn-p" id="sub-btn" onclick="submitRequest()">🚀 Hantar Request</button>
   </div>
-
-  <!-- Result -->
   <div id="res-section">
     <div class="panel">
       <div class="ph">
         <span class="pt">✅ Leads Diperuntukkan</span>
-        <div style="display:flex;gap:7px;align-items:center;">
+        <div style="display:flex;gap:6px;align-items:center;">
           <span class="badge bg" id="res-badge">0 leads</span>
           <button class="btn btn-o btn-sm" onclick="copyLeads()">📋 Copy</button>
           <button class="btn btn-o btn-sm" onclick="exportLeads()">⬇️ CSV</button>
         </div>
       </div>
-      <div class="pb" id="res-body" style="display:flex;flex-direction:column;gap:10px;"></div>
+      <div class="pb" id="res-body" style="display:flex;flex-direction:column;gap:9px;"></div>
     </div>
   </div>
 </div>
@@ -256,20 +267,20 @@ code{background:var(--s2);padding:2px 6px;border-radius:4px;font-family:'DM Mono
         <div class="fgr"><label>No. Phone Lead</label><input type="text" id="st-phone" placeholder="cth: 0123456789"/></div>
         <div class="fgr"><label>Status Call</label>
           <select id="st-status">
-            <optgroup label="— Positif —">
+            <optgroup label="Positif">
               <option value="called_interested">✅ Berminat</option>
-              <option value="appointment">🗓️ Appointment Ditetapkan</option>
-              <option value="closed_won">🏆 Closed Won (Dah Beli)</option>
+              <option value="appointment">🗓️ Appointment</option>
+              <option value="closed_won">🏆 Closed Won</option>
             </optgroup>
-            <optgroup label="— Follow Up —">
+            <optgroup label="Follow Up">
               <option value="no_answer">📵 Tak Angkat</option>
               <option value="no_answer_3x">🚫 Tak Angkat 3x</option>
               <option value="callback">🔄 Minta Callback</option>
-              <option value="not_interested_now">⏳ Belum Masa (Serah Balik)</option>
+              <option value="not_interested_now">⏳ Serah Balik</option>
             </optgroup>
-            <optgroup label="— Negatif —">
+            <optgroup label="Negatif">
               <option value="called_not_interested">❌ Tidak Berminat</option>
-              <option value="not_interested_final">🔒 Tidak Berminat (Final)</option>
+              <option value="not_interested_final">🔒 Tak Berminat Final</option>
               <option value="wrong_number">⚠️ Nombor Salah</option>
               <option value="blacklist">🚫 Blacklist</option>
             </optgroup>
@@ -277,7 +288,7 @@ code{background:var(--s2);padding:2px 6px;border-radius:4px;font-family:'DM Mono
         </div>
         <div class="fgr" style="grid-column:1/-1"><label>Catatan</label><input type="text" id="st-notes" placeholder="Tambah catatan..."/></div>
       </div>
-      <div style="margin-top:12px;" class="btn-row">
+      <div style="margin-top:11px;" class="btn-row">
         <button class="btn btn-p" id="upd-btn" onclick="submitStatus()">💾 Update ke Sheet</button>
       </div>
     </div>
@@ -286,30 +297,31 @@ code{background:var(--s2);padding:2px 6px;border-radius:4px;font-family:'DM Mono
     <div class="ph"><span class="pt">Log Terkini (Session)</span></div>
     <div class="tw"><table>
       <thead><tr><th>Masa</th><th>Phone</th><th>Status</th><th>Catatan</th></tr></thead>
-      <tbody id="slog"></tbody>
+      <tbody id="slog"><tr><td colspan="4"><div class="empty" style="padding:20px;"><p>Tiada update lagi</p></div></td></tr></tbody>
     </table></div>
   </div>
 </div>
 
 <!-- ADMIN -->
 <div class="tab-content" id="tab-admin">
+
+  <!-- Pending Approvals -->
   <div class="panel">
-    <div class="ph"><span class="pt">🔗 Apps Script URL</span><span id="conn-badge" class="badge bp">—</span></div>
-    <div class="pb">
-      <div class="fgr" style="margin-bottom:12px;">
-        <label>Web App URL</label>
-        <input type="text" id="script-url" placeholder="https://script.google.com/macros/s/xxxx/exec"/>
+    <div class="ph">
+      <span class="pt">🔔 Kelulusan Pendaftaran</span>
+      <div style="display:flex;gap:7px;align-items:center;">
+        <span class="badge by" id="pending-badge">0 pending</span>
+        <button class="btn btn-o btn-sm" onclick="loadPending()">🔄 Refresh</button>
       </div>
-      <div style="display:flex;gap:8px;flex-wrap:wrap;">
-        <button class="btn btn-p" onclick="saveConfig()">💾 Simpan & Connect</button>
-        <button class="btn btn-o" onclick="refreshStats()">🔄 Refresh</button>
-        <button class="btn btn-o" onclick="syncDrive()">☁️ Sync dari Drive</button>
-      </div>
+    </div>
+    <div id="pending-body" style="padding:14px;display:flex;flex-direction:column;gap:9px;">
+      <div class="empty"><div class="ic">✅</div><p>Tiada pendaftaran baru</p></div>
     </div>
   </div>
 
+  <!-- System Settings -->
   <div class="panel">
-    <div class="ph"><span class="pt">⚙️ System Settings</span><span style="font-size:11px;color:var(--tm)">Ubah terus dalam Google Sheet → Config</span></div>
+    <div class="ph"><span class="pt">⚙️ System Settings</span></div>
     <div class="pb">
       <div class="fg">
         <div class="fgr"><label>Max Pass Count</label><input type="number" id="cfg-pass" placeholder="10" min="1" max="50"/></div>
@@ -317,141 +329,77 @@ code{background:var(--s2);padding:2px 6px;border-radius:4px;font-family:'DM Mono
         <div class="fgr"><label>Max Agent per Lead</label><input type="number" id="cfg-agents" placeholder="3" min="1" max="5"/></div>
         <div class="fgr"><label>Max Calls per Agent</label><input type="number" id="cfg-calls" placeholder="5" min="1" max="10"/></div>
       </div>
-      <div style="margin-top:12px;" class="btn-row">
+      <div style="margin-top:11px;" class="btn-row">
         <button class="btn btn-p" onclick="saveSettings()">💾 Simpan Settings</button>
       </div>
-      <p style="font-size:11px;color:var(--tm);margin-top:10px;">Settings ni juga boleh ditukar terus dalam tab <strong>Config</strong> dalam Google Sheet.</p>
     </div>
   </div>
 
+  <!-- Apps Script URL -->
   <div class="panel">
-    <div class="ph"><span class="pt">📖 Panduan Setup</span></div>
-    <div class="pb" style="font-size:13px;line-height:1.85;color:var(--tm);">
-      <p style="color:var(--t);font-weight:600;">1. Upload Google Sheet</p>
-      <p>Upload file <code>LeadFlow_Database.xlsx</code> ke Google Drive hang. Right-click → Open with Google Sheets.</p>
-      <div class="div"></div>
-      <p style="color:var(--t);font-weight:600;">2. Buka Apps Script</p>
-      <p>Dalam sheet tu, klik <strong>Extensions → Apps Script</strong>. Delete semua kod, paste kod dari <code>apps-script-backend.gs</code>. Save.</p>
-      <div class="div"></div>
-      <p style="color:var(--t);font-weight:600;">3. Run Setup</p>
-      <p>Pilih function <code>runSetup</code>, klik ▶ Run. Authorize bila diminta.</p>
-      <div class="div"></div>
-      <p style="color:var(--t);font-weight:600;">4. Deploy Web App</p>
-      <p><strong>Deploy → New Deployment → Web App</strong><br>Execute as: Me &nbsp;|&nbsp; Access: Anyone → Deploy → Copy URL</p>
-      <div class="div"></div>
-      <p style="color:var(--t);font-weight:600;">5. Sync Leads dari Drive</p>
-      <p>Paste URL di atas, klik Simpan. Lepas connected, klik <strong>"Sync dari Drive"</strong> — sistem akan baca semua spreadsheet dalam folder Drive hang dan standardize automatik.</p>
-      <div class="div"></div>
-      <p style="color:var(--t);font-weight:600;">6. Tambah Agent</p>
-      <p>Dalam Google Sheet, pergi tab <strong>Agents</strong>. Tambah nama, phone, dan code untuk setiap agent. Status = <code>active</code>.</p>
+    <div class="ph"><span class="pt">🔗 Apps Script URL</span><span id="conn-badge" class="badge bp">—</span></div>
+    <div class="pb">
+      <div class="fgr" style="margin-bottom:11px;">
+        <label>Web App URL</label>
+        <input type="text" id="script-url" placeholder="https://script.google.com/macros/s/xxxx/exec"/>
+      </div>
+      <div style="display:flex;gap:7px;flex-wrap:wrap;">
+        <button class="btn btn-p" onclick="saveConfig()">💾 Simpan & Connect</button>
+        <button class="btn btn-o" onclick="refreshStats()">🔄 Refresh</button>
+        <button class="btn btn-o" onclick="syncDrive()">☁️ Sync dari Drive</button>
+      </div>
     </div>
   </div>
+
 </div>
 
 </div></div>
-</div><!-- end app -->
+</div>
 
 <div class="notif" id="notif"></div>
 
 <script>
-// ============================================================
-// STATE
-// ============================================================
 let SCRIPT_URL = '';
-let SESSION = { code: '', name: '', isAdmin: false, adminToken: '' };
+let SESSION = { code:'', name:'', isAdmin:false, adminToken:'' };
 let selectedStates = [];
 let sessionLog = [];
 let _leads = [];
-let _sysConfig = {};
 
 const STATES = ['Johor','Kedah','Kelantan','Melaka','Negeri Sembilan','Pahang','Perak','Perlis','Pulau Pinang','Sabah','Sarawak','Selangor','Terengganu','WP Kuala Lumpur','WP Labuan','WP Putrajaya'];
 
 const SL = {
-  pending:['by','⏳ Pending'], called_interested:['bg','✅ Berminat'],
-  appointment:['bg','🗓️ Appointment'], closed_won:['bg','🏆 Closed Won'],
-  called_not_interested:['br','❌ Tak Berminat'], not_interested_final:['br','🔒 Tak Berminat Final'],
-  no_answer:['by','📵 Tak Angkat'], no_answer_3x:['bo','🚫 Tak Angkat 3x'],
-  wrong_number:['br','⚠️ Salah Nombor'], callback:['bb','🔄 Callback'],
-  not_interested_now:['bo','⏳ Serah Balik'], blacklist:['br','🚫 Blacklist'],
-  serah_balik:['bo','⏳ Serah Balik'],
+  pending:['by','Pending'], called_interested:['bg','Berminat'],
+  appointment:['bg','Appointment'], closed_won:['bg','Closed Won'],
+  called_not_interested:['br','Tak Berminat'], not_interested_final:['br','Tak Berminat Final'],
+  no_answer:['by','Tak Angkat'], no_answer_3x:['bo','Tak Angkat 3x'],
+  wrong_number:['br','Salah Nombor'], callback:['bb','Callback'],
+  not_interested_now:['bo','Serah Balik'], blacklist:['br','Blacklist'],
 };
 
-// ============================================================
-// LOGIN
-// ============================================================
-async function doLogin() {
-  const code = document.getElementById('login-code').value.trim();
-  if (!code) { showLoginError('Masuk kod agent'); return; }
-  if (!SCRIPT_URL) { showLoginError('Admin belum setup sistem. Cuba sebentar lagi.'); return; }
-  
-  const btn = document.getElementById('login-btn');
-  btn.disabled = true; btn.textContent = '⏳ Verifying...';
-  
-  try {
-    const r = await apiGet({ action: 'verifyAgent', code });
-    if (!r.valid) { showLoginError(r.error || 'Kod tidak sah'); return; }
-    SESSION = { code, name: r.name, isAdmin: false, adminToken: '' };
-    enterApp();
-  } catch(e) { showLoginError('Gagal connect ke sistem'); }
-  finally { btn.disabled = false; btn.textContent = 'Masuk →'; }
+// ── LOGIN TABS ──────────────────────────────
+function switchLTab(name, btn) {
+  document.querySelectorAll('.ltab').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.login-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('lp-' + name).classList.add('active');
 }
 
-function showAdminLogin() {
-  const s = document.getElementById('admin-login-section');
-  s.style.display = s.style.display === 'none' ? 'block' : 'none';
-}
-
-async function doAdminLogin() {
-  const pw = document.getElementById('admin-pw').value.trim();
-  if (!pw) return;
-
-  // Kalau URL belum ada, verify password locally dulu
-  // supaya admin boleh masuk dan setup URL
-  if (!SCRIPT_URL) {
-    const localPw = localStorage.getItem('lf_admin_pw') || 'admin123';
-    if (pw !== localPw) { showLoginError('Password salah'); return; }
-    SESSION = { code: 'ADMIN', name: 'Admin', isAdmin: true, adminToken: 'local' };
-    enterApp();
-    return;
+// ── REGISTER CODE PREVIEW ───────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  const nameEl = document.getElementById('reg-name');
+  const icEl = document.getElementById('reg-ic');
+  const preview = document.getElementById('code-preview');
+  function updatePreview() {
+    const n = (nameEl.value||'').replace(/\s+/g,'').toUpperCase().slice(0,4).padEnd(4,'X');
+    const ic = (icEl.value||'').replace(/[-\s]/g,'');
+    const i = ic.slice(-4).padStart(4,'0');
+    preview.textContent = n + i;
   }
+  nameEl.addEventListener('input', updatePreview);
+  icEl.addEventListener('input', updatePreview);
+});
 
-  // Kalau URL dah ada, verify dengan Apps Script
-  try {
-    const r = await apiPost({ action: 'verifyAdmin', password: pw });
-    if (!r.success) { showLoginError(r.error || 'Password salah'); return; }
-    SESSION = { code: 'ADMIN', name: 'Admin', isAdmin: true, adminToken: r.token };
-    enterApp();
-  } catch(e) { showLoginError('Gagal connect ke sistem'); }
-}
-
-function showLoginError(msg) {
-  const el = document.getElementById('login-error');
-  el.textContent = '⚠️ ' + msg;
-  el.style.display = 'block';
-}
-
-function enterApp() {
-  document.getElementById('login-screen').style.display = 'none';
-  document.getElementById('app').style.display = 'block';
-  document.getElementById('agent-display').textContent = SESSION.name + ' (' + SESSION.code + ')';
-  if (SESSION.isAdmin) document.querySelectorAll('.admin-only').forEach(el => el.style.display = '');
-  buildStateGrid();
-  refreshStats();
-  loadMyLeads();
-  loadConfig();
-}
-
-function logout() {
-  SESSION = { code: '', name: '', isAdmin: false, adminToken: '' };
-  document.getElementById('login-screen').style.display = 'flex';
-  document.getElementById('app').style.display = 'none';
-  document.getElementById('login-code').value = '';
-  document.getElementById('login-error').style.display = 'none';
-}
-
-// ============================================================
-// API
-// ============================================================
+// ── API ─────────────────────────────────────
 async function apiGet(p) {
   if (!SCRIPT_URL) throw new Error('URL belum dikonfigurasi');
   const r = await fetch(SCRIPT_URL + '?' + new URLSearchParams(p));
@@ -459,34 +407,16 @@ async function apiGet(p) {
 }
 async function apiPost(d) {
   if (!SCRIPT_URL) throw new Error('URL belum dikonfigurasi');
-  const r = await fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify(d) });
+  const r = await fetch(SCRIPT_URL, { method:'POST', body:JSON.stringify(d) });
   return r.json();
 }
 
-// ============================================================
-// CONFIG
-// ============================================================
+// ── CONFIG ───────────────────────────────────
 function loadStoredConfig() {
   const c = JSON.parse(localStorage.getItem('lf_cfg') || '{}');
   SCRIPT_URL = c.scriptUrl || '';
   if (c.scriptUrl) { try { document.getElementById('script-url').value = c.scriptUrl; } catch(e){} }
 }
-
-function loadConfig() {
-  if (!SCRIPT_URL) return;
-  apiGet({ action: 'getConfig' }).then(cfg => {
-    _sysConfig = cfg;
-    try {
-      if (cfg.max_pass_count) document.getElementById('cfg-pass').value = cfg.max_pass_count;
-      if (cfg.inactive_days) document.getElementById('cfg-days').value = cfg.inactive_days;
-      if (cfg.max_agents_per_lead) document.getElementById('cfg-agents').value = cfg.max_agents_per_lead;
-      if (cfg.max_calls_per_agent) document.getElementById('cfg-calls').value = cfg.max_calls_per_agent;
-      const maxCalls = parseInt(cfg.max_calls_per_agent) || 5;
-      document.getElementById('lc').max = 30;
-    } catch(e) {}
-  }).catch(() => {});
-}
-
 function saveConfig() {
   const url = document.getElementById('script-url').value.trim();
   if (!url || !url.includes('script.google.com')) { showNotif('URL tidak valid', 'e'); return; }
@@ -494,51 +424,140 @@ function saveConfig() {
   const c = JSON.parse(localStorage.getItem('lf_cfg') || '{}');
   c.scriptUrl = url;
   localStorage.setItem('lf_cfg', JSON.stringify(c));
-  showNotif('Config disimpan! Connecting...', 'i');
+  showNotif('Config disimpan!', 's');
   refreshStats();
 }
-
 async function saveSettings() {
-  if (!SESSION.isAdmin) { showNotif('Admin sahaja boleh ubah settings', 'e'); return; }
-  const body = {
-    action: 'updateConfig',
-    adminToken: SESSION.adminToken,
-    max_pass_count: document.getElementById('cfg-pass').value,
-    inactive_days: document.getElementById('cfg-days').value,
-    max_agents_per_lead: document.getElementById('cfg-agents').value,
-    max_calls_per_agent: document.getElementById('cfg-calls').value,
-  };
   try {
-    const r = await apiPost(body);
-    if (r.success) { showNotif('Settings disimpan!', 's'); loadConfig(); }
-    else showNotif(r.error || 'Gagal simpan', 'e');
+    const r = await apiPost({ action:'updateConfig', adminToken:SESSION.adminToken,
+      max_pass_count:document.getElementById('cfg-pass').value,
+      inactive_days:document.getElementById('cfg-days').value,
+      max_agents_per_lead:document.getElementById('cfg-agents').value,
+      max_calls_per_agent:document.getElementById('cfg-calls').value,
+    });
+    if (r.success) showNotif('Settings disimpan!', 's');
+    else showNotif(r.error || 'Gagal', 'e');
   } catch(e) { showNotif('Error: ' + e.message, 'e'); }
 }
-
 async function syncDrive() {
-  if (!SESSION.isAdmin) { showNotif('Admin sahaja boleh sync', 'e'); return; }
-  showNotif('⏳ Syncing dari Drive...', 'i');
+  showNotif('Syncing dari Drive...', 'i');
   try {
-    const r = await apiPost({ action: 'syncFromDrive', adminToken: SESSION.adminToken });
+    const r = await apiPost({ action:'syncFromDrive', adminToken:SESSION.adminToken });
     if (r.error) { showNotif('Error: ' + r.error, 'e'); return; }
-    showNotif(`✅ ${r.imported} leads baru dari ${r.filesProcessed} files. ${r.skipped} duplikat diskip.`, 's');
+    showNotif(r.imported + ' leads baru dari ' + r.filesProcessed + ' files. ' + r.csvSkipped + ' CSV diskip.', 's');
     refreshStats();
   } catch(e) { showNotif('Error: ' + e.message, 'e'); }
 }
 
-// ============================================================
-// STATS
-// ============================================================
+// ── AUTH ─────────────────────────────────────
+async function doLogin() {
+  const code = document.getElementById('login-code').value.trim().toUpperCase();
+  const errEl = document.getElementById('lerr-login');
+  errEl.style.display = 'none';
+  if (!code) { showErr(errEl, 'Masuk kod agent'); return; }
+  if (!SCRIPT_URL) { showErr(errEl, 'Sistem belum connected. Hubungi admin.'); return; }
+  try {
+    const r = await apiGet({ action:'verifyAgent', code });
+    if (!r.valid) { showErr(errEl, r.error); return; }
+    SESSION = { code, name:r.name, isAdmin:false, adminToken:'' };
+    enterApp();
+  } catch(e) { showErr(errEl, 'Gagal connect ke sistem'); }
+}
+
+async function doRegister() {
+  const name = document.getElementById('reg-name').value.trim();
+  const phone = document.getElementById('reg-phone').value.trim();
+  const email = document.getElementById('reg-email').value.trim();
+  const ic = document.getElementById('reg-ic').value.trim().replace(/[-\s]/g,'');
+  const errEl = document.getElementById('lerr-reg');
+  const sucEl = document.getElementById('lsuc-reg');
+  errEl.style.display = 'none'; sucEl.style.display = 'none';
+
+  if (!name || !phone || !ic) { showErr(errEl, 'Nama, phone dan No. IC wajib diisi'); return; }
+  if (ic.length < 12) { showErr(errEl, 'No. IC mesti 12 digit'); return; }
+  if (!SCRIPT_URL) { showErr(errEl, 'Sistem belum connected. Hubungi admin.'); return; }
+
+  try {
+    const r = await apiPost({ action:'registerAgent', name, phone, email, ic });
+    if (!r.success) { showErr(errEl, r.error); return; }
+    sucEl.textContent = 'Pendaftaran berjaya! Kod agent anda: ' + r.agentCode + '. Sila tunggu kelulusan admin sebelum boleh login.';
+    sucEl.style.display = 'block';
+    document.getElementById('reg-name').value = '';
+    document.getElementById('reg-phone').value = '';
+    document.getElementById('reg-email').value = '';
+    document.getElementById('reg-ic').value = '';
+    document.getElementById('code-preview').textContent = 'XXXX0000';
+  } catch(e) { showErr(errEl, 'Error: ' + e.message); }
+}
+
+async function doAdminLogin() {
+  const pw = document.getElementById('admin-pw').value.trim();
+  const errEl = document.getElementById('lerr-admin');
+  errEl.style.display = 'none';
+  if (!pw) return;
+
+  // Kalau URL belum ada, verify locally
+  if (!SCRIPT_URL) {
+    const localPw = localStorage.getItem('lf_admin_pw') || 'admin123';
+    if (pw !== localPw) { showErr(errEl, 'Password salah'); return; }
+    SESSION = { code:'ADMIN', name:'Admin', isAdmin:true, adminToken:'local' };
+    enterApp(); return;
+  }
+  try {
+    const r = await apiPost({ action:'verifyAdmin', password:pw });
+    if (!r.success) { showErr(errEl, r.error || 'Password salah'); return; }
+    SESSION = { code:'ADMIN', name:'Admin', isAdmin:true, adminToken:r.token };
+    enterApp();
+  } catch(e) { showErr(errEl, 'Gagal connect'); }
+}
+
+function showErr(el, msg) { el.textContent = msg; el.style.display = 'block'; }
+
+function enterApp() {
+  document.getElementById('login-screen').style.display = 'none';
+  document.getElementById('app').style.display = 'block';
+  document.getElementById('agent-display').textContent = SESSION.name + ' (' + SESSION.code + ')';
+  // Admin tab — hanya tunjuk untuk admin
+  if (SESSION.isAdmin) {
+    document.getElementById('admin-tab').style.display = '';
+    loadPending();
+    apiGet({ action:'getConfig' }).then(cfg => {
+      try {
+        if (cfg.max_pass_count) document.getElementById('cfg-pass').value = cfg.max_pass_count;
+        if (cfg.inactive_days) document.getElementById('cfg-days').value = cfg.inactive_days;
+        if (cfg.max_agents_per_lead) document.getElementById('cfg-agents').value = cfg.max_agents_per_lead;
+        if (cfg.max_calls_per_agent) document.getElementById('cfg-calls').value = cfg.max_calls_per_agent;
+      } catch(e){}
+    }).catch(()=>{});
+  }
+  buildStateGrid();
+  refreshStats();
+  loadMyLeads();
+}
+
+function logout() {
+  SESSION = { code:'', name:'', isAdmin:false, adminToken:'' };
+  document.getElementById('login-screen').style.display = 'flex';
+  document.getElementById('app').style.display = 'none';
+  document.getElementById('admin-tab').style.display = 'none';
+  document.getElementById('admin-pw').value = '';
+  document.getElementById('login-code').value = '';
+  // Reset to login tab
+  document.querySelectorAll('.ltab')[0].click();
+}
+
+// ── STATS ────────────────────────────────────
 async function refreshStats() {
   setConn('loading');
   try {
-    const d = await apiGet({ action: 'getStats' });
+    const d = await apiGet({ action:'getStats' });
     if (d.error) throw new Error(d.error);
     document.getElementById('st-total').textContent = d.total ?? '—';
     document.getElementById('st-avail').textContent = d.available ?? '—';
     document.getElementById('st-assign').textContent = d.assigned ?? '—';
     document.getElementById('st-won').textContent = d.closed_won ?? '—';
     setConn('ok');
+    try { document.getElementById('conn-badge').textContent = 'Connected'; } catch(e){}
     if (d.campCounts) {
       const sel = document.getElementById('camp-sel');
       sel.innerHTML = '<option value="">— Semua kempen —</option>';
@@ -548,210 +567,203 @@ async function refreshStats() {
         sel.appendChild(o);
       });
     }
-    try { document.getElementById('conn-badge').textContent = 'Connected'; } catch(e){}
   } catch(e) { setConn('err'); }
 }
-
 function setConn(s) {
   const el = document.getElementById('conn-status');
   const cls = s==='ok'?'cok':s==='loading'?'cld':'cer';
   const msg = s==='ok'?'Connected':s==='loading'?'Connecting...':'Disconnected';
-  el.innerHTML = `<span class="cdot ${cls}"></span>${msg}`;
+  el.innerHTML = '<span class="cdot ' + cls + '"></span>' + msg;
 }
 
-// ============================================================
-// STATE SELECT
-// ============================================================
+// ── STATE SELECT ─────────────────────────────
 function buildStateGrid() {
   document.getElementById('state-grid').innerHTML = STATES.map(s =>
-    `<button class="sb" onclick="toggleState('${s}',this)">${s}</button>`).join('');
+    '<button class="sb" onclick="toggleState(\'' + s + '\',this)">' + s + '</button>').join('');
 }
 function toggleState(s, el) {
   const i = selectedStates.indexOf(s);
-  if (i >= 0) { selectedStates.splice(i, 1); el.classList.remove('sel'); }
+  if (i >= 0) { selectedStates.splice(i,1); el.classList.remove('sel'); }
   else { selectedStates.push(s); el.classList.add('sel'); }
   const lbl = document.getElementById('state-label');
-  lbl.textContent = selectedStates.length ? '✓ ' + selectedStates.join(', ') : 'Tiada dipilih — semua negeri';
+  lbl.textContent = selectedStates.length ? 'Dipilih: ' + selectedStates.join(', ') : 'Tiada dipilih — semua negeri';
   lbl.style.color = selectedStates.length ? 'var(--a)' : 'var(--tm)';
 }
 
-// ============================================================
-// SUBMIT REQUEST
-// ============================================================
+// ── SUBMIT REQUEST ───────────────────────────
 async function submitRequest() {
-  if (!SESSION.code) { showNotif('Sila login dulu', 'e'); return; }
   const count = parseInt(document.getElementById('lc').value);
   const notes = document.getElementById('req-notes').value.trim();
   const campaign = document.getElementById('camp-sel').value;
-  if (!SCRIPT_URL) { showNotif('Hubungi admin untuk setup sistem', 'e'); return; }
-
+  if (!SCRIPT_URL) { showNotif('Hubungi admin', 'e'); return; }
   const btn = document.getElementById('sub-btn');
-  btn.disabled = true; btn.textContent = '⏳ Processing...';
-
+  btn.disabled = true; btn.textContent = 'Processing...';
   try {
-    const r = await apiPost({ action: 'assignLeads', agentCode: SESSION.code, states: selectedStates, campaign, count, notes });
-    if (!r.success) { showNotif(r.error || 'Gagal assign leads', 'e'); return; }
-    showNotif(`✅ ${r.assigned} leads berjaya! (${r.remaining} lagi available)`, 's');
+    const r = await apiPost({ action:'assignLeads', agentCode:SESSION.code, states:selectedStates, campaign, count, notes });
+    if (!r.success) { showNotif(r.error || 'Gagal', 'e'); return; }
+    showNotif(r.assigned + ' leads berjaya! (' + r.remaining + ' lagi available)', 's');
     renderResults(r.leads);
     refreshStats();
-    sendTgNotif(r.leads);
   } catch(e) { showNotif('Error: ' + e.message, 'e'); }
   finally { btn.disabled = false; btn.textContent = '🚀 Hantar Request'; }
 }
 
 function renderResults(leads) {
-  const sec = document.getElementById('res-section');
-  sec.style.display = 'block';
+  document.getElementById('res-section').style.display = 'block';
   document.getElementById('res-badge').textContent = leads.length + ' leads';
   _leads = leads;
-
-  const body = document.getElementById('res-body');
-  body.innerHTML = leads.map((l, i) => `
-    <div class="lead-card">
-      <div class="lead-card-header">
-        <div style="display:flex;align-items:center;gap:10px;">
-          <span class="lead-num">${i+1}</span>
-          <span class="lead-name">${l.name || '—'}</span>
-        </div>
-        <span class="lead-phone">${l.phone}</span>
-      </div>
-      <div class="lead-details">
-        <div class="lead-detail"><div class="lbl">Negeri</div><div class="val">${l.state||'—'}</div></div>
-        <div class="lead-detail"><div class="lbl">Lokasi</div><div class="val">${l.location||l.state||'—'}</div></div>
-        <div class="lead-detail"><div class="lbl">Pekerjaan</div><div class="val">${l.job||'—'}</div></div>
-        <div class="lead-detail"><div class="lbl">Platform</div><div class="val">${l.platform||'—'}</div></div>
-        <div class="lead-detail"><div class="lbl">Milikan Rumah</div><div class="val">${l.house_ownership||'—'}</div></div>
-        <div class="lead-detail"><div class="lbl">Pernah Mohon PPR</div><div class="val">${l.ppr||'—'}</div></div>
-      </div>
-    </div>`).join('');
-
-  sec.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  document.getElementById('res-body').innerHTML = leads.map((l,i) =>
+    '<div class="lead-card">' +
+    '<div class="lead-card-header">' +
+    '<div style="display:flex;align-items:center;gap:9px;"><span class="lead-num">' + (i+1) + '</span>' +
+    '<span style="font-weight:600;font-size:14px;">' + (l.name||'—') + '</span></div>' +
+    '<span class="pc">' + l.phone + '</span>' +
+    '</div>' +
+    '<div class="lead-details">' +
+    '<div class="ld"><div class="lbl">Negeri</div><div class="val">' + (l.state||'—') + '</div></div>' +
+    '<div class="ld"><div class="lbl">Lokasi</div><div class="val">' + (l.location||l.state||'—') + '</div></div>' +
+    '<div class="ld"><div class="lbl">Pekerjaan</div><div class="val">' + (l.job||'—') + '</div></div>' +
+    '<div class="ld"><div class="lbl">Platform</div><div class="val">' + (l.platform||'—') + '</div></div>' +
+    '<div class="ld"><div class="lbl">Milikan Rumah</div><div class="val">' + (l.house_ownership||'—') + '</div></div>' +
+    '<div class="ld"><div class="lbl">Pernah Mohon PPR</div><div class="val">' + (l.ppr||'—') + '</div></div>' +
+    '</div></div>'
+  ).join('');
+  document.getElementById('res-section').scrollIntoView({ behavior:'smooth', block:'nearest' });
 }
 
-// ============================================================
-// MY LEADS
-// ============================================================
+// ── MY LEADS ─────────────────────────────────
 async function loadMyLeads() {
   if (!SESSION.code || !SCRIPT_URL) return;
   const body = document.getElementById('my-leads-body');
   body.innerHTML = '<div class="loading"><div class="spin"></div>Loading...</div>';
   try {
-    const d = await apiGet({ action: 'getLeads', agentCode: SESSION.code });
+    const d = await apiGet({ action:'getLeads', agentCode:SESSION.code });
     if (d.error) throw new Error(d.error);
     if (!d.leads || !d.leads.length) {
-      body.innerHTML = '<div class="empty"><div class="ic">📭</div><p>Tiada leads lagi. Pergi tab "Request Leads" untuk dapatkan leads.</p></div>';
+      body.innerHTML = '<div class="empty"><div class="ic">📭</div><p>Tiada leads lagi. Pergi tab Request Leads.</p></div>';
       return;
     }
-    body.innerHTML = d.leads.map((l, i) => {
-      const st = SL[l.callStatus] || ['by', l.callStatus];
-      return `<div class="lead-card" style="margin:0 18px;margin-bottom:10px;margin-top:${i===0?'14px':'0'};">
-        <div class="lead-card-header">
-          <div style="display:flex;align-items:center;gap:10px;">
-            <span class="lead-num">${i+1}</span>
-            <span class="lead-name">${l.name||'—'}</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:8px;">
-            <span class="lead-phone">${l.phone}</span>
-            <span class="badge ${st[0]}">${st[1]}</span>
-          </div>
-        </div>
-        <div class="lead-details">
-          <div class="lead-detail"><div class="lbl">Negeri</div><div class="val">${l.state||'—'}</div></div>
-          <div class="lead-detail"><div class="lbl">Lokasi</div><div class="val">${l.location||l.state||'—'}</div></div>
-          <div class="lead-detail"><div class="lbl">Pekerjaan</div><div class="val">${l.job||'—'}</div></div>
-          <div class="lead-detail"><div class="lbl">Platform</div><div class="val">${l.platform||'—'}</div></div>
-          <div class="lead-detail"><div class="lbl">Milikan Rumah</div><div class="val">${l.house_ownership||'—'}</div></div>
-          <div class="lead-detail"><div class="lbl">Pernah Mohon PPR</div><div class="val">${l.ppr||'—'}</div></div>
-        </div>
-        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
-          <span style="font-size:11px;color:var(--tm);font-family:'DM Mono',monospace;">Pass #${l.passCount||1}</span>
-          ${l.finalStatus ? `<span class="badge bo">${l.finalStatus}</span>` : ''}
-        </div>
-      </div>`;
-    }).join('') + '<div style="height:14px;"></div>';
+    body.innerHTML = '<div style="padding:14px;display:flex;flex-direction:column;gap:9px;">' +
+      d.leads.map((l,i) => {
+        const st = SL[l.callStatus] || ['by', l.callStatus||'Pending'];
+        return '<div class="lead-card">' +
+          '<div class="lead-card-header">' +
+          '<div style="display:flex;align-items:center;gap:9px;"><span class="lead-num">' + (i+1) + '</span>' +
+          '<span style="font-weight:600;font-size:14px;">' + (l.name||'—') + '</span></div>' +
+          '<div style="display:flex;align-items:center;gap:7px;">' +
+          '<span class="pc">' + l.phone + '</span>' +
+          '<span class="badge ' + st[0] + '">' + st[1] + '</span>' +
+          '</div></div>' +
+          '<div class="lead-details">' +
+          '<div class="ld"><div class="lbl">Negeri</div><div class="val">' + (l.state||'—') + '</div></div>' +
+          '<div class="ld"><div class="lbl">Lokasi</div><div class="val">' + (l.location||l.state||'—') + '</div></div>' +
+          '<div class="ld"><div class="lbl">Pekerjaan</div><div class="val">' + (l.job||'—') + '</div></div>' +
+          '<div class="ld"><div class="lbl">Platform</div><div class="val">' + (l.platform||'—') + '</div></div>' +
+          '<div class="ld"><div class="lbl">Milikan Rumah</div><div class="val">' + (l.house_ownership||'—') + '</div></div>' +
+          '<div class="ld"><div class="lbl">PPR</div><div class="val">' + (l.ppr||'—') + '</div></div>' +
+          '</div>' +
+          (l.finalStatus ? '<div><span class="badge bo">' + l.finalStatus + '</span></div>' : '') +
+          '</div>';
+      }).join('') + '</div>';
   } catch(e) {
-    body.innerHTML = `<div class="empty"><div class="ic">❌</div><p>${e.message}</p></div>`;
+    body.innerHTML = '<div class="empty"><div class="ic">❌</div><p>' + e.message + '</p></div>';
   }
 }
 
-// ============================================================
-// UPDATE STATUS
-// ============================================================
+// ── STATUS UPDATE ────────────────────────────
 async function submitStatus() {
   const phone = document.getElementById('st-phone').value.trim();
   const callStatus = document.getElementById('st-status').value;
   const notes = document.getElementById('st-notes').value.trim();
   if (!phone) { showNotif('Masuk no. phone lead', 'e'); return; }
-  if (!SCRIPT_URL) { showNotif('Sistem belum connected', 'e'); return; }
-
   const btn = document.getElementById('upd-btn');
-  btn.disabled = true; btn.textContent = '⏳ Updating...';
-
+  btn.disabled = true; btn.textContent = 'Updating...';
   try {
-    const r = await apiPost({ action: 'updateStatus', agentCode: SESSION.code, phone, callStatus, notes });
-    const st = SL[callStatus] || ['', callStatus];
-    sessionLog.unshift({ time: new Date().toLocaleTimeString('ms-MY'), phone, status: st[1], notes });
+    const r = await apiPost({ action:'updateStatus', agentCode:SESSION.code, phone, callStatus, notes });
+    const st = SL[callStatus] || ['',''];
+    sessionLog.unshift({ time:new Date().toLocaleTimeString('ms-MY'), phone, status:st[1], notes });
     renderSLog();
-
-    if (r.success) {
-      showNotif(`✅ "${r.updated}" — Call ${r.callSlot} dikemaskini!`, 's');
-      loadMyLeads();
-    } else {
-      showNotif('⚠️ ' + (r.error || 'Lead tidak dijumpai dalam senarai anda'), 'i');
-    }
-
+    if (r.success) { showNotif('"' + r.updated + '" — Call ' + r.callSlot + ' dikemaskini!', 's'); loadMyLeads(); }
+    else showNotif(r.error || 'Lead tidak dijumpai', 'i');
     document.getElementById('st-phone').value = '';
     document.getElementById('st-notes').value = '';
   } catch(e) { showNotif('Error: ' + e.message, 'e'); }
   finally { btn.disabled = false; btn.textContent = '💾 Update ke Sheet'; }
 }
-
 function renderSLog() {
   const t = document.getElementById('slog');
-  if (!sessionLog.length) { t.innerHTML = '<tr><td colspan="4"><div class="empty" style="padding:20px;"><p>Tiada update lagi</p></div></td></tr>'; return; }
-  t.innerHTML = sessionLog.slice(0, 12).map(l =>
-    `<tr><td style="font-family:'DM Mono',monospace;font-size:11px;color:var(--tm)">${l.time}</td>
-    <td class="pc">${l.phone}</td><td>${l.status}</td>
-    <td style="color:var(--tm);font-size:11px">${l.notes||'—'}</td></tr>`).join('');
+  if (!sessionLog.length) { t.innerHTML = '<tr><td colspan="4"><div class="empty" style="padding:18px;"><p>Tiada update lagi</p></div></td></tr>'; return; }
+  t.innerHTML = sessionLog.slice(0,12).map(l =>
+    '<tr><td style="font-family:\'DM Mono\',monospace;font-size:11px;color:var(--tm)">' + l.time + '</td>' +
+    '<td class="pc">' + l.phone + '</td><td>' + l.status + '</td>' +
+    '<td style="color:var(--tm);font-size:11px">' + (l.notes||'—') + '</td></tr>').join('');
 }
 
-// ============================================================
-// COPY / EXPORT
-// ============================================================
+// ── PENDING APPROVALS ─────────────────────────
+async function loadPending() {
+  if (!SESSION.isAdmin) return;
+  try {
+    const r = await apiPost({ action:'getPendingAgents', adminToken:SESSION.adminToken });
+    const body = document.getElementById('pending-body');
+    const badge = document.getElementById('pending-badge');
+    badge.textContent = (r.agents ? r.agents.length : 0) + ' pending';
+
+    if (!r.agents || !r.agents.length) {
+      body.innerHTML = '<div class="empty"><div class="ic">✅</div><p>Tiada pendaftaran baru</p></div>';
+      return;
+    }
+    body.innerHTML = r.agents.map(a =>
+      '<div class="pending-card">' +
+      '<div class="pending-info">' +
+      '<div class="name">' + a.name + ' <span class="badge bp">' + a.code + '</span></div>' +
+      '<div class="meta">' + a.phone + ' · ' + (a.email||'—') + ' · IC: ' + maskIC(a.ic) + '</div>' +
+      '<div class="meta">Daftar: ' + (a.registeredAt||'—') + '</div>' +
+      '</div>' +
+      '<div style="display:flex;gap:7px;">' +
+      '<button class="btn btn-g btn-sm" onclick="approveAgent(\'' + a.code + '\',\'approve\')">✓ Lulus</button>' +
+      '<button class="btn btn-r btn-sm" onclick="approveAgent(\'' + a.code + '\',\'reject\')">✗ Tolak</button>' +
+      '</div></div>'
+    ).join('');
+  } catch(e) { console.error(e); }
+}
+
+function maskIC(ic) {
+  if (!ic) return '—';
+  return ic.toString().slice(0,6) + '****' + ic.toString().slice(-2);
+}
+
+async function approveAgent(code, action) {
+  try {
+    const r = await apiPost({ action:'approveAgent', adminToken:SESSION.adminToken, agentCode:code, action });
+    if (r.success) {
+      showNotif(code + ' — ' + (action==='approve'?'Diluluskan!':'Ditolak'), action==='approve'?'s':'e');
+      loadPending();
+    } else showNotif(r.error || 'Gagal', 'e');
+  } catch(e) { showNotif('Error: ' + e.message, 'e'); }
+}
+
+// ── COPY / EXPORT ────────────────────────────
 function copyLeads() {
   if (!_leads.length) return;
   const text = _leads.map((l,i) =>
-    `${i+1}. ${l.name} | ${l.phone} | ${l.state||''} ${l.location?'('+l.location+')':''} | ${l.job||''} | ${l.platform||''} | ${l.house_ownership||''} | PPR: ${l.ppr||'—'}`
+    (i+1) + '. ' + l.name + ' | ' + l.phone + ' | ' + (l.state||'') +
+    (l.location?' ('+l.location+')':'') + ' | ' + (l.job||'') +
+    ' | ' + (l.platform||'') + ' | ' + (l.house_ownership||'') + ' | PPR: ' + (l.ppr||'—')
   ).join('\n');
   navigator.clipboard.writeText(text).then(() => showNotif('Disalin!', 's'));
 }
 function exportLeads() {
   if (!_leads.length) return;
-  const rows = [['No','Nama','Phone','Negeri','Lokasi','Pekerjaan','Platform','Milikan Rumah','Pernah Mohon PPR']];
+  const rows = [['No','Nama','Phone','Negeri','Lokasi','Pekerjaan','Platform','Milikan Rumah','PPR']];
   _leads.forEach((l,i) => rows.push([i+1,l.name,l.phone,l.state||'',l.location||'',l.job||'',l.platform||'',l.house_ownership||'',l.ppr||'']));
-  const csv = rows.map(r => r.map(c => `"${String(c).replace(/"/g,'""')}"`).join(',')).join('\n');
+  const csv = rows.map(r => r.map(c => '"' + String(c).replace(/"/g,'""') + '"').join(',')).join('\n');
   const a = document.createElement('a');
-  a.href = URL.createObjectURL(new Blob([csv], {type:'text/csv'}));
-  a.download = `leads_${SESSION.name}_${new Date().toISOString().slice(0,10)}.csv`;
+  a.href = URL.createObjectURL(new Blob([csv],{type:'text/csv'}));
+  a.download = 'leads_' + SESSION.name + '_' + new Date().toISOString().slice(0,10) + '.csv';
   a.click();
 }
 
-// ============================================================
-// TELEGRAM
-// ============================================================
-async function sendTgNotif(leads) {
-  const c = JSON.parse(localStorage.getItem('lf_cfg') || '{}');
-  if (!c.tgToken || !c.tgChat) return;
-  const msg = `🎯 *Leads Baru*\n\n👤 ${SESSION.name} (${SESSION.code})\n📊 ${leads.length} leads\n🗺️ ${selectedStates.join(', ')||'Semua'}\n\n`+
-    leads.slice(0,8).map((l,i)=>`${i+1}. ${l.name} — \`${l.phone}\`\n   📍 ${l.state||''} | ${l.job||''} | ${l.house_ownership||''}`).join('\n')+
-    (leads.length>8?`\n_...dan ${leads.length-8} lagi_`:'');
-  try { await fetch(`https://api.telegram.org/bot${c.tgToken}/sendMessage`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:c.tgChat,text:msg,parse_mode:'Markdown'})}); }
-  catch(e){}
-}
-
-// ============================================================
-// UTILS
-// ============================================================
+// ── UTILS ────────────────────────────────────
 function resetForm() {
   document.getElementById('lc').value = 10;
   document.getElementById('sv').textContent = '10';
@@ -762,7 +774,6 @@ function resetForm() {
   document.getElementById('state-label').style.color = 'var(--tm)';
   document.getElementById('res-section').style.display = 'none';
 }
-
 function switchTab(name, btn) {
   document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
@@ -770,28 +781,19 @@ function switchTab(name, btn) {
   btn.classList.add('active');
   if (name === 'status') renderSLog();
   if (name === 'my-leads') loadMyLeads();
+  if (name === 'admin') loadPending();
 }
-
 let _nt;
-function showNotif(msg, type='i') {
+function showNotif(msg, type) {
   const el = document.getElementById('notif');
   el.textContent = msg;
-  const cls = type==='s'?'ns':type==='e'?'ne':'ni';
-  el.className = `notif ${cls} show`;
+  el.className = 'notif ' + (type==='s'?'ns':type==='e'?'ne':'ni') + ' show';
   clearTimeout(_nt);
   _nt = setTimeout(() => el.classList.remove('show'), 4500);
 }
 
-// ============================================================
-// INIT
-// ============================================================
+// ── INIT ─────────────────────────────────────
 loadStoredConfig();
-if (!SCRIPT_URL) {
-  const el = document.getElementById('login-error');
-  el.textContent = 'First time setup: Guna Admin Login di bawah';
-  el.style.color = 'var(--y)';
-  el.style.display = 'block';
-}
 </script>
 </body>
 </html>
