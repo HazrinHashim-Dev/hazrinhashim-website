@@ -404,13 +404,24 @@ function showAdminLogin() {
 async function doAdminLogin() {
   const pw = document.getElementById('admin-pw').value.trim();
   if (!pw) return;
-  if (!SCRIPT_URL) { showLoginError('Setup Apps Script URL dulu'); return; }
+
+  // Kalau URL belum ada, verify password locally dulu
+  // supaya admin boleh masuk dan setup URL
+  if (!SCRIPT_URL) {
+    const localPw = localStorage.getItem('lf_admin_pw') || 'admin123';
+    if (pw !== localPw) { showLoginError('Password salah'); return; }
+    SESSION = { code: 'ADMIN', name: 'Admin', isAdmin: true, adminToken: 'local' };
+    enterApp();
+    return;
+  }
+
+  // Kalau URL dah ada, verify dengan Apps Script
   try {
     const r = await apiPost({ action: 'verifyAdmin', password: pw });
     if (!r.success) { showLoginError(r.error || 'Password salah'); return; }
     SESSION = { code: 'ADMIN', name: 'Admin', isAdmin: true, adminToken: r.token };
     enterApp();
-  } catch(e) { showLoginError('Gagal connect'); }
+  } catch(e) { showLoginError('Gagal connect ke sistem'); }
 }
 
 function showLoginError(msg) {
@@ -775,11 +786,11 @@ function showNotif(msg, type='i') {
 // INIT
 // ============================================================
 loadStoredConfig();
-// Show login, check if URL configured
 if (!SCRIPT_URL) {
-  // Show placeholder in login
-  document.getElementById('login-error').textContent = '⚠️ Sistem belum di-setup. Guna Admin Login untuk setup.';
-  document.getElementById('login-error').style.display = 'block';
+  const el = document.getElementById('login-error');
+  el.textContent = 'First time setup: Guna Admin Login di bawah';
+  el.style.color = 'var(--y)';
+  el.style.display = 'block';
 }
 </script>
 </body>
