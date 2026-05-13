@@ -679,13 +679,26 @@ async function saveSettings() {
   } catch(e) { showNotif('Ralat: ' + e.message, 'e'); }
 }
 async function syncDrive() {
-  showNotif('Menyegerakkan dari Drive...', 'i');
-  try {
-    const r = await apiPost({ action:'syncFromDrive', adminToken:SESSION.adminToken });
-    if (r.error) { showNotif('Ralat: ' + r.error, 'e'); return; }
-    showNotif(r.imported + ' leads baharu dari ' + r.filesProcessed + ' fail. ' + r.csvSkipped + ' CSV dilangkau.', 's');
-    refreshStats();
-  } catch(e) { showNotif('Ralat: ' + e.message, 'e'); }
+  let totalImported = 0, totalSkipped = 0, totalFiles = 0, batch = 0;
+  showNotif('⏳ Mula sync dari Drive...', 'i');
+  while (true) {
+    batch++;
+    try {
+      const r = await apiPost({ action:'syncFromDrive', adminToken:SESSION.adminToken });
+      if (r.error) { showNotif('Ralat: ' + r.error, 'e'); break; }
+      totalImported += r.imported || 0;
+      totalSkipped += r.skipped || 0;
+      totalFiles = r.filesProcessed || totalFiles;
+      if (r.done) {
+        showNotif('✅ Sync selesai! ' + totalImported + ' leads baharu, ' + totalFiles + '/' + r.totalFiles + ' fail diproses.', 's');
+        refreshStats();
+        break;
+      } else {
+        showNotif('⏳ Batch ' + batch + ' selesai (' + totalImported + ' leads). Masih ' + r.remaining + ' fail lagi...', 'i');
+        await new Promise(res => setTimeout(res, 2000)); // 2s gap between batches
+      }
+    } catch(e) { showNotif('Ralat: ' + e.message, 'e'); break; }
+  }
 }
 
 async function doLogin() {
